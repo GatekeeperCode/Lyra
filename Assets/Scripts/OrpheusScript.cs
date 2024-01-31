@@ -74,8 +74,8 @@ public class OrpheusScript : MonoBehaviour
     private bool IsGrounded()
     {
         Vector2 playerVector = transform.position;
-        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 1.32f, playerVector.y), Vector2.down, 1.2f, groundLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 1.32f, playerVector.y), Vector2.down, 1.2f, groundLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.2f, playerVector.y), Vector2.down, 1.2f, groundLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.2f, playerVector.y), Vector2.down, 1.2f, groundLayer);
         return (hitLeft.collider != null || hitRight.collider != null);
     }
 
