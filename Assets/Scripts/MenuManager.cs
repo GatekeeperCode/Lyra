@@ -17,8 +17,8 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    public void OnStartGameDown()
+    public void OnStartButtonDown()
     {
-        SceneManager.LoadScene("Level1");   
+        SceneManager.LoadScene("Level1");
     }
 }

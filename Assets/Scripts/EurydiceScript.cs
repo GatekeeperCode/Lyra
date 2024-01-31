@@ -15,7 +15,7 @@ public class EurydiceScript : MonoBehaviour
 
     bool _startedJump = false;
     bool _stoppedJump = false;
-    bool _facingRight = false;
+    bool _facingRight = true;
     float _lastTimegrounded = 0;
     // Start is called before the first frame update
     void Start()
