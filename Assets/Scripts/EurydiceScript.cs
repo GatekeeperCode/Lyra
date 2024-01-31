@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class OrpheusScript : MonoBehaviour
+public class EurydiceScript : MonoBehaviour
 {
     public LayerMask groundLayer;
     public float playerSpeed;
@@ -16,7 +15,7 @@ public class OrpheusScript : MonoBehaviour
 
     bool _startedJump = false;
     bool _stoppedJump = false;
-    bool _facingRight = true;
+    bool _facingRight = false;
     float _lastTimegrounded = 0;
     // Start is called before the first frame update
     void Start()
@@ -31,17 +30,17 @@ public class OrpheusScript : MonoBehaviour
         {
             _lastTimegrounded = Time.time;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && WasGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && WasGrounded())
         {
             _startedJump = true;
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyUp(KeyCode.W))
         {
             _stoppedJump = true;
         }
 
         //Flip character
-        float xdir = Input.GetAxis("Horizontal");
+        float xdir = Input.GetAxis("EuroHorizontal");
         if (xdir < 0 && _facingRight)
         {
             Flip();
@@ -54,7 +53,7 @@ public class OrpheusScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float xdir = Input.GetAxis("Horizontal");
+        float xdir = Input.GetAxis("EuroHorizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
         if (_startedJump)
