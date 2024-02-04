@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: MenuBackground
+    uniqueID: 3353924495
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MenuCharacters
+    uniqueID: 2822130575
     locked: 0
