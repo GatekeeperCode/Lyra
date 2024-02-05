@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4243342001439188816}
   - component: {fileID: 5313401783985912894}
   - component: {fileID: -1114733555690551183}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eury - Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
