@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4243342001439188816}
   - component: {fileID: 5313401783985912894}
   - component: {fileID: 875663127472288241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Orpheus Lyre Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
