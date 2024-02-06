@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     OrpheusScript Orpheus;
     EurydiceScript Eurydice;
 
+    int CameraSize = 5;
     Vector3 offset = new Vector3(0, 0, -10);
     // Start is called before the first frame update
     void Start()
@@ -18,23 +19,43 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3((Orpheus.transform.position.x + Eurydice.transform.position.x)/2 + offset.x, (Orpheus.transform.position.y+ Eurydice.transform.position.y) /2 + offset.y, offset.z);
+        float EuryX = Eurydice.transform.position.x;
+        float EuryY = Eurydice.transform.position.y;
+        float OrphX = Orpheus.transform.position.x;
+        float OrphY = Orpheus.transform.position.y;
 
-        if (Orpheus.transform.position.x - Eurydice.transform.position.x > 25 || Eurydice.transform.position.x - Orpheus.transform.position.x > 25)
+        // center camera on both characters
+        transform.position = new Vector3((OrphX + EuryX) / 2 + offset.x, (OrphY + EuryY) / 2 + offset.y, offset.z);
+
+        // determine camera zoom
+        if (OrphX - EuryX > 25 || EuryX - OrphX > 25)
         {
-            gameObject.GetComponent<Camera>().orthographicSize = 8;
+            CameraSize = 8;
         }
-        else if (Orpheus.transform.position.x - Eurydice.transform.position.x > 20 || Eurydice.transform.position.x - Orpheus.transform.position.x > 20)
+        else if (OrphX - EuryX > 20 || EuryX - OrphX > 20)
         {
-            gameObject.GetComponent<Camera>().orthographicSize = 7;
+            CameraSize = 7;
         }
-        else if (Orpheus.transform.position.x - Eurydice.transform.position.x > 15 || Eurydice.transform.position.x - Orpheus.transform.position.x > 15)
+        else if (OrphX - EuryX > 15 || EuryX - OrphX > 15)
         {
-            gameObject.GetComponent<Camera>().orthographicSize= 6;
+            CameraSize = 6;
         }
         else
         {
-            gameObject.GetComponent<Camera>().orthographicSize = 5;
+            CameraSize = 5;
+        }
+
+        // set camera orthographic size
+        if (Mathf.Abs(gameObject.GetComponent<Camera>().orthographicSize - CameraSize) <= 0.02f)
+        {
+            gameObject.GetComponent<Camera>().orthographicSize = CameraSize;
+        }
+        else if (gameObject.GetComponent<Camera>().orthographicSize >= CameraSize)
+        {
+            gameObject.GetComponent<Camera>().orthographicSize -= 0.01f;
+        } else
+        {
+            gameObject.GetComponent<Camera>().orthographicSize += 0.01f;
         }
     }
 }
