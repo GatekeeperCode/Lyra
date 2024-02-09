@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7328707896350948133}
   - component: {fileID: 4546682896529672387}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orpheus Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7629055018391451247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 31.04, y: 0.11, z: 0}
-  m_LocalScale: {x: 2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.22125387, y: 0.23664944, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 26086d75e857f0448a240e7eed859dd8, type: 3}
-  m_Color: {r: 1, g: 0.93442965, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 2046600405, guid: 9fb32e72b11b1304396aa3a504d84175, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
