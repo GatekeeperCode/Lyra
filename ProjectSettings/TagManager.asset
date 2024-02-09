@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - EuryButton
+  - Goal
+  - Orpheus
+  - Eurydice
   layers:
   - Default
   - TransparentFX
