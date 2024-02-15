@@ -32,13 +32,13 @@ public class ManagerScript : MonoBehaviour
 
         if (PlayerPrefs.HasKey("BestSeconds"))
         {
-            if(PlayerPrefs.GetInt("BestMinutes") < minutes)
+            if(PlayerPrefs.GetInt("BestMinutes") > minutes)
             {
                 PlayerPrefs.SetInt("BestMinutes", minutes);
                 PlayerPrefs.SetInt("BestSeconds", seconds);
             } else if (PlayerPrefs.GetInt("BestMinutes") == minutes)
             {
-                if (PlayerPrefs.GetInt("BestSeconds") < seconds)
+                if (PlayerPrefs.GetInt("BestSeconds") > seconds)
                 {
                     PlayerPrefs.SetInt("BestSeconds", seconds);
                 }
@@ -48,10 +48,8 @@ public class ManagerScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("BestMinutes", minutes);
             PlayerPrefs.SetInt("BestSeconds", seconds);
-            print("idk");
         }
 
-        print("sec:" + PlayerPrefs.GetInt("BestSeconds"));
         SceneManager.LoadScene("EndScene");
 
     }
