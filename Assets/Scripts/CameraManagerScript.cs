@@ -23,7 +23,7 @@ public class CameraManagerScript : MonoBehaviour
         }
         else
         {
-            _singlePlayerCam2.SetActive(true);
+            _singlePlayerCam2.SetActive(false);
             _singlePlayerCam1.SetActive(true);
             isSinglePlayer = true;
             _splitCam1.SetActive(false);
