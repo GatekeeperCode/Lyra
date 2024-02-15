@@ -29,6 +29,7 @@ public class EurydiceScript : MonoBehaviour
         if (IsGrounded())
         {
             _lastTimegrounded = Time.time;
+            _rbody.gravityScale = 1;
         }
         if (Input.GetKeyDown(KeyCode.W) && WasGrounded())
         {
@@ -37,6 +38,7 @@ public class EurydiceScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W))
         {
             _stoppedJump = true;
+            _rbody.gravityScale = .5f;
         }
 
         //Flip character
@@ -65,7 +67,7 @@ public class EurydiceScript : MonoBehaviour
         {
             if (_rbody.velocity.y > 0)
             {
-                _rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+                //_rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
             }
             _stoppedJump = false;
         }
@@ -73,8 +75,8 @@ public class EurydiceScript : MonoBehaviour
     private bool IsGrounded()
     {
         Vector2 playerVector = transform.position;
-        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.08f, playerVector.y), Vector2.down, 1.2f, groundLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.08f, playerVector.y), Vector2.down, 1.2f, groundLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.08f, playerVector.y), Vector2.down, 1f, groundLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.08f, playerVector.y), Vector2.down, 1f, groundLayer);
         return (hitLeft.collider != null || hitRight.collider != null);
     }
 
