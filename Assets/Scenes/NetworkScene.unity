@@ -660,9 +660,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Single Player
-
-    -Selected'
+  m_Text: Single Player
 --- !u!222 &783593346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1848,7 +1846,6 @@ MonoBehaviour:
   single: {fileID: 783593345}
   local: {fileID: 896520157}
   networked: {fileID: 1979806751}
-  netButton: {fileID: 2089727941}
 --- !u!4 &1853043468
 Transform:
   m_ObjectHideFlags: 0
