@@ -38,7 +38,6 @@ public class EurydiceScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W))
         {
             _stoppedJump = true;
-            _rbody.gravityScale = .5f;
         }
 
         //Flip character
@@ -67,7 +66,8 @@ public class EurydiceScript : MonoBehaviour
         {
             if (_rbody.velocity.y > 0)
             {
-                //_rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+                _rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+                _rbody.gravityScale = .5f;
             }
             _stoppedJump = false;
         }

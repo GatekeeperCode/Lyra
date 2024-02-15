@@ -8,6 +8,7 @@ TagManager:
   - Goal
   - Orpheus
   - Eurydice
+  - OrphWall
   layers:
   - Default
   - TransparentFX
