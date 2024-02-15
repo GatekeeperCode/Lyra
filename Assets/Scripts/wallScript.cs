@@ -19,11 +19,11 @@ public class wallScript : MonoBehaviour
     {
         if(_button1Pressed && _button2Pressed)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 100);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, transform.position.y - 100), .5f);
         }
         else if(!_stayDown)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y - 100);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, transform.position.y + 100), .5f);
         }
     }
 }

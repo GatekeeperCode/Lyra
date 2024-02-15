@@ -10,29 +10,35 @@ public class MultiWallButtonScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_isButton1)
+        if(collision.tag=="Orpheus"||collision.tag=="Eurydice")
         {
-            _wall1._button1Pressed = true;
-            _wall2._button1Pressed = true;
-        }
-        else
-        {
-            _wall1._button2Pressed = true;
-            _wall2._button2Pressed = true;
+            if (_isButton1)
+            {
+                _wall1._button1Pressed = true;
+                _wall2._button1Pressed = true;
+            }
+            else
+            {
+                _wall1._button2Pressed = true;
+                _wall2._button2Pressed = true;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_isButton1)
+        if (collision.tag == "Orpheus" || collision.tag == "Eurydice")
         {
-            _wall1._button1Pressed = false;
-            _wall2._button1Pressed = false;
-        }
-        else
-        {
-            _wall1._button2Pressed = false;
-            _wall2._button2Pressed = false;
-        }
+            if (_isButton1)
+            {
+                _wall1._button1Pressed = false;
+                _wall2._button1Pressed = false;
+            }
+            else
+            {
+                _wall1._button2Pressed = false;
+                _wall2._button2Pressed = false;
+            }
+        }   
     }
 }
