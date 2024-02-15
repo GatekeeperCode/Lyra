@@ -19,13 +19,18 @@ public class CameraManagerScript : MonoBehaviour
             _singlePlayerCam1.SetActive(false);
             isSinglePlayer = false;
             _splitCam1.SetActive(true);
-            _splitCam1.SetActive(true);
+            _splitCam2.SetActive(true);
         }
         else
         {
-            _singlePlayerCam2.SetActive(false);
+            _singlePlayerCam2.SetActive(true);
+            _singlePlayerCam1.SetActive(true);
             isSinglePlayer = true;
+            _splitCam1.SetActive(false);
+            _splitCam2.SetActive(false);
         }
+
+        print(PlayerPrefs.GetInt("playerCount"));
     }
 
     // Update is called once per frame
