@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1759347504522591268}
   - component: {fileID: 2719566416098119075}
   - component: {fileID: 6166589964026941100}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Orph View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 7888708327446788817}
   - component: {fileID: 6624502486548041418}
   - component: {fileID: 336134328982506248}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Eurydice
   m_TagString: Eurydice
   m_Icon: {fileID: 0}
