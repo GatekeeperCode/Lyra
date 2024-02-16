@@ -24,6 +24,7 @@ public class EurydiceScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        //_animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -77,6 +78,7 @@ public class EurydiceScript : MonoBehaviour
         {
             _rbody.gravityScale = 1;
         }
+
         if (_startedJump)
         {
             _rbody.velocity = new Vector2(_rbody.velocity.x, jumpForce);
@@ -130,10 +132,6 @@ public class EurydiceScript : MonoBehaviour
         float ydir = Input.GetAxis("EuroVertical");
         _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
 
-        if (!climbAttempt())
-        {
-            _rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
-        }
     }
 
 }

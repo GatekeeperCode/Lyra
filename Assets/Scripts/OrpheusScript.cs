@@ -8,14 +8,19 @@ public class OrpheusScript : MonoBehaviour
 {
     public LayerMask groundLayer;
     public LayerMask ladderLayer;
+    public LayerMask floorLayer;
+    public GameObject wall;
     public float playerSpeed;
     public float climbingSpeed;
     public float jumpForce;
     public float coyoteTime;
+    public float max;
+    public float min;
 
     Rigidbody2D _rbody;
     Animator _animator;
 
+    bool _lyreRaise = false;
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
@@ -25,6 +30,7 @@ public class OrpheusScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        //_animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,6 +48,17 @@ public class OrpheusScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightShift))
         {
             _stoppedJump = true;
+        }
+
+        //Check for lyre
+        if (Input.GetKey(KeyCode.RightControl) && IsOnFloor())
+        {
+            _lyreRaise = true;
+
+        }
+        if (Input.GetKeyUp(KeyCode.RightControl))
+        {
+            _lyreRaise = false;
         }
 
         //Check for climbing
@@ -69,6 +86,20 @@ public class OrpheusScript : MonoBehaviour
         float xdir = Input.GetAxis("Horizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
+        if (_lyreRaise)
+        {
+            if(wall.transform.position.y > 2)
+            {
+                wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y - .1f);
+            }
+        } else
+        {
+            if(wall.transform.position.y < 6.7)
+            {
+                wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y + .1f);
+            }
+        }
+
         if (_climbing)
         {
             Climb();
@@ -76,6 +107,7 @@ public class OrpheusScript : MonoBehaviour
         {
             _rbody.gravityScale = 1;
         }
+
         if (_startedJump)
         {
             _rbody.velocity = new Vector2(_rbody.velocity.x, jumpForce);
@@ -128,5 +160,13 @@ public class OrpheusScript : MonoBehaviour
 
         float ydir = Input.GetAxis("Vertical");
         _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
+    }
+
+    private bool IsOnFloor()
+    {
+        Vector2 playerVector = transform.position;
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.2f, playerVector.y), Vector2.down, 1f, floorLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.2f, playerVector.y), Vector2.down, 1f, floorLayer);
+        return (hitLeft.collider != null || hitRight.collider != null);
     }
 }
