@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311520545813052595}
   - component: {fileID: 1634369846048459464}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724211382805367426}
   - component: {fileID: 4457583159746177326}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ladder_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2851619291951984456}
   - component: {fileID: 7939640605419654794}
   - component: {fileID: 4218127395970182194}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: OrpheusLadder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
