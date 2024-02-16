@@ -29,8 +29,6 @@ public class CameraManagerScript : MonoBehaviour
             _splitCam1.SetActive(false);
             _splitCam2.SetActive(false);
         }
-
-        print(PlayerPrefs.GetInt("playerCount"));
     }
 
     // Update is called once per frame

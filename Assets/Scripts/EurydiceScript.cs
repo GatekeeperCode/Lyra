@@ -6,7 +6,9 @@ using UnityEngine;
 public class EurydiceScript : MonoBehaviour
 {
     public LayerMask groundLayer;
+    public LayerMask ladderLayer;
     public float playerSpeed;
+    public float climbingSpeed;
     public float jumpForce;
     public float coyoteTime;
 
@@ -16,6 +18,7 @@ public class EurydiceScript : MonoBehaviour
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
+    bool _climbing = true;
     float _lastTimegrounded = 0;
     // Start is called before the first frame update
     void Start()
@@ -26,18 +29,27 @@ public class EurydiceScript : MonoBehaviour
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
+        //Check for jumping
         if (IsGrounded())
         {
             _lastTimegrounded = Time.time;
             _rbody.gravityScale = 1;
         }
-        if (Input.GetKeyDown(KeyCode.W) && WasGrounded())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && WasGrounded())
         {
             _startedJump = true;
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _stoppedJump = true;
+        }
+
+        //Check for climbinng
+        if (climbAttempt()) { 
+            _climbing = true;
+        }
+        else { 
+            _climbing = false;
         }
 
         //Flip character
@@ -57,6 +69,14 @@ public class EurydiceScript : MonoBehaviour
         float xdir = Input.GetAxis("EuroHorizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
+        if (_climbing)
+        {
+            Climb();
+        }
+        else
+        {
+            _rbody.gravityScale = 1;
+        }
         if (_startedJump)
         {
             _rbody.velocity = new Vector2(_rbody.velocity.x, jumpForce);
@@ -92,4 +112,28 @@ public class EurydiceScript : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    private bool climbAttempt()
+    {
+        Vector2 playerVector = transform.position;
+
+        RaycastHit2D hitAbove = Physics2D.Raycast(new Vector2(playerVector.x + 0.1f, playerVector.y + 0.1f), Vector2.down, .3f, ladderLayer);
+        RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(playerVector.x + 0.1f, playerVector.y), Vector2.left, .3f, ladderLayer);
+        RaycastHit2D hitBelow = Physics2D.Raycast(new Vector2(playerVector.x + 0.1f, playerVector.y - 0.1f), Vector2.down, .3f, ladderLayer);
+
+        return (hitAbove.collider != null || hitMiddle.collider != null || hitBelow.collider != null);
+    }
+
+    private void Climb()
+    {
+        _rbody.gravityScale = 0;
+
+        float ydir = Input.GetAxis("EuroVertical");
+        _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
+
+        if (!climbAttempt())
+        {
+            _rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+        }
+    }
+
 }
