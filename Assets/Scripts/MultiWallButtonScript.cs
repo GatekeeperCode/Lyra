@@ -7,10 +7,19 @@ public class MultiWallButtonScript : MonoBehaviour
     public wallScript _wall1;
     public wallScript _wall2;
     public bool _isButton1;
+    AudioSource _asource;
+    public AudioClip _clip;
+    public float _volume = 0.5f;
+
+    private void Start()
+    {
+        _asource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag=="Orpheus"||collision.tag=="Eurydice")
+        _asource.PlayOneShot(_clip, _volume);
+        if (collision.tag=="Orpheus"||collision.tag=="Eurydice")
         {
             if (_isButton1)
             {
@@ -27,6 +36,8 @@ public class MultiWallButtonScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        print("Left");
+        _asource.PlayOneShot(_clip, _volume);
         if (collision.tag == "Orpheus" || collision.tag == "Eurydice")
         {
             if (_isButton1)

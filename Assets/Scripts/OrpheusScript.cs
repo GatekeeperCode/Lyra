@@ -26,10 +26,15 @@ public class OrpheusScript : MonoBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     float _lastTimegrounded = 0;
+
+    AudioSource _asource;
+    public AudioClip _clip;
+    public float _volume = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        _asource = GetComponent<AudioSource>();
         //_animator = GetComponent<Animator>();
     }
 
@@ -53,6 +58,10 @@ public class OrpheusScript : MonoBehaviour
         //Check for lyre
         if (Input.GetKey(KeyCode.RightControl) && IsOnFloor())
         {
+            if(!_asource.isPlaying)
+            {
+                _asource.PlayOneShot(_clip, _volume);
+            }
             _lyreRaise = true;
 
         }

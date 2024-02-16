@@ -9,10 +9,15 @@ public class GoalScript : MonoBehaviour
     bool EurydiceGoal = false;
 
     ManagerScript manager;
+    AudioSource _asource;
+    public AudioClip _clip;
+    public float _volume = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
         manager = FindObjectOfType<ManagerScript>();
+        _asource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class GoalScript : MonoBehaviour
 
         if(OrpheusGoal && EurydiceGoal)
         {
+            _asource.PlayOneShot(_clip, _volume);
             manager.EndGame();
         }
     }
