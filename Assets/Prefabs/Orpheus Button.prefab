@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5324689512848175741}
   - component: {fileID: 8673787195437980430}
   - component: {fileID: 3052461064529903358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orpheus Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

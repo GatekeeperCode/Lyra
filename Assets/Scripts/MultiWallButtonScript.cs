@@ -19,7 +19,7 @@ public class MultiWallButtonScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _asource.PlayOneShot(_clip, _volume);
-        if (collision.tag=="Orpheus"||collision.tag=="Eurydice")
+        if (collision.tag=="Orpheus"||collision.tag=="Eurydice" || collision.tag=="Box")
         {
             if (_isButton1)
             {
@@ -38,7 +38,7 @@ public class MultiWallButtonScript : MonoBehaviour
     {
         print("Left");
         _asource.PlayOneShot(_clip, _volume);
-        if (collision.tag == "Orpheus" || collision.tag == "Eurydice")
+        if (collision.tag == "Orpheus" || collision.tag == "Eurydice" || collision.tag == "Box")
         {
             if (_isButton1)
             {
