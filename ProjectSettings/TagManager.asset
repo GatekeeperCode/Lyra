@@ -9,6 +9,7 @@ TagManager:
   - Orpheus
   - Eurydice
   - OrphWall
+  - Box
   layers:
   - Default
   - TransparentFX
