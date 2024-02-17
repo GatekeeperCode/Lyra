@@ -26,7 +26,20 @@ public class ManagerScript : MonoBehaviour
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";
     }
 
-    public void EndGame()
+    public void Nextlevel()
+    {
+        if(_nextScene == "EndScene")
+        {
+            EndGame();
+        } else
+        {
+            PlayerPrefs.SetFloat("currentMinutes", minutes);
+            PlayerPrefs.SetFloat("currentSeconds", seconds);
+
+            SceneManager.LoadScene(_nextScene);
+        }
+    }
+    private void EndGame()
     {
         PlayerPrefs.SetInt("TimeMinutes", minutes);
         PlayerPrefs.SetInt("TimeSeconds", seconds);
