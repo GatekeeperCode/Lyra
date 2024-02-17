@@ -9,7 +9,6 @@ public class OrpheusScript : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask ladderLayer;
     public LayerMask floorLayer;
-    public GameObject wall;
     public float playerSpeed;
     public float climbingSpeed;
     public float jumpForce;
@@ -20,7 +19,7 @@ public class OrpheusScript : MonoBehaviour
     Rigidbody2D _rbody;
     Animator _animator;
 
-    bool _lyreRaise = false;
+    public bool _lyreRaise = false;
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
@@ -94,20 +93,6 @@ public class OrpheusScript : MonoBehaviour
     {
         float xdir = Input.GetAxis("Horizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
-
-        if (_lyreRaise)
-        {
-            if(wall.transform.position.y > 2)
-            {
-                wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y - .1f);
-            }
-        } else
-        {
-            if(wall.transform.position.y < 6.7)
-            {
-                wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y + .1f);
-            }
-        }
 
         if (_climbing)
         {
