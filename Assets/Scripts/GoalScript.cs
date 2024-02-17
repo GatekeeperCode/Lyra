@@ -25,7 +25,7 @@ public class GoalScript : MonoBehaviour
     {
         if (CharactersInGoal() || Input.GetKeyDown(KeyCode.Q)) //dev key -> delete later
         {
-            manager.EndGame();
+            manager.Nextlevel();
         }
     }
 
