@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ManagerScript : MonoBehaviour
 {
     public Text _timer;
+    public string _nextScene;
     float startTime;
     int minutes;
     int seconds;
@@ -50,7 +51,7 @@ public class ManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("BestSeconds", seconds);
         }
 
-        SceneManager.LoadScene("EndScene");
+        SceneManager.LoadScene(_nextScene);
 
     }
 }

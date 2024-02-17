@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GoalScript : MonoBehaviour
 {
-    bool OrpheusGoal = false;
-    bool EurydiceGoal = false;
-
+    public LayerMask OrphLayer;
+    public LayerMask EuryLayer;
     ManagerScript manager;
     AudioSource _asource;
     public AudioClip _clip;
     public float _volume = 0.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,40 +23,29 @@ public class GoalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) //dev key -> delete later
+        if (CharactersInGoal() || Input.GetKeyDown(KeyCode.Q)) //dev key -> delete later
         {
             manager.EndGame();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private bool CharactersInGoal()
     {
-        if(collision.gameObject.tag == "Orpheus")
-        {
-            OrpheusGoal = true;
-        } else if(collision.gameObject.tag == "Eurydice")
-        {
-            EurydiceGoal = true;
-        }
+        bool OrphInGoal = false;
+        bool EuryInGoal = false;
+        Vector2 GoalVector = transform.position;
+        Vector2 GoalSize = transform.localScale;
 
+        RaycastHit2D OrphFromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 5f, OrphLayer);
+        RaycastHit2D OrphFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 5f, OrphLayer);
+        RaycastHit2D EuryfromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 5f, EuryLayer);
+        RaycastHit2D EuryFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 5f, EuryLayer);
 
-        if(OrpheusGoal && EurydiceGoal)
-        {
-            _asource.PlayOneShot(_clip, _volume);
-            manager.EndGame();
-        }
-    }
+        if (OrphFromLeft.collider != null && OrphFromRight.collider != null) { OrphInGoal = true; }
+        if (EuryfromLeft.collider != null && EuryFromRight.collider != null){ EuryInGoal = true; }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Orpheus")
-        {
-            OrpheusGoal = false;
-        }
-        else if (collision.gameObject.tag == "Eurydice")
-        {
-            EurydiceGoal = false;
-        }
+        return OrphInGoal && EuryInGoal;
     }
 
 }
