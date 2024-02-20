@@ -4394,6 +4394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 705602379}
     m_Modifications:
+    - target: {fileID: 1284989658, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1157158476205735858, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
       propertyPath: m_Name
       value: Eury - Wall
@@ -4403,12 +4407,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.9385
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435375844277618113, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.56712
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20178938
+      value: 2.1712
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5148,7 +5156,7 @@ GameObject:
   - component: {fileID: 1710874033}
   - component: {fileID: 1710874035}
   - component: {fileID: 1710874034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eurydice Catch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
