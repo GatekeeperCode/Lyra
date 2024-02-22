@@ -16,6 +16,23 @@ public class MultiWallButtonScript : MonoBehaviour
         _asource = GetComponent<AudioSource>();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Orpheus" || collision.tag == "Eurydice" || collision.tag == "Box")
+        {
+            if (_isButton1)
+            {
+                _wall1._button1Pressed = true;
+                _wall2._button1Pressed = true;
+            }
+            else
+            {
+                _wall1._button2Pressed = true;
+                _wall2._button2Pressed = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _asource.PlayOneShot(_clip, _volume);

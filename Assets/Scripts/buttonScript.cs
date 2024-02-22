@@ -15,6 +15,23 @@ public class buttonScript : MonoBehaviour
         _asource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        
+    }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (_isButton1)
+        {
+            _wall._button1Pressed = true;
+        }
+        else
+        {
+            _wall._button2Pressed = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _asource.PlayOneShot(_clip, _volume);
