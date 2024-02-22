@@ -168,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1833144366, guid: 448f3ec221a57a24fa7fb57c085438b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -313,13 +313,13 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 16384
-  wall: {fileID: 0}
   playerSpeed: 5
   climbingSpeed: 4
   jumpForce: 7
   coyoteTime: 0.15
   max: 5
   min: 1
+  _lyreRaise: 0
   _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
   _volume: 0.5
 --- !u!61 &-4730336940088447072
