@@ -15,7 +15,16 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Quit Game
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerPrefs.DeleteKey("CurrentTime");
+            PlayerPrefs.DeleteKey("ThisTime");
+            PlayerPrefs.DeleteKey("BestTime");
+            PlayerPrefs.DeleteKey("playerCount");
+
+            Application.Quit();
+        }
     }
 
     public void OnStartButtonDown()
