@@ -98,6 +98,7 @@ public class FloorScript : MonoBehaviour
 
     private void lower(GameObject wall, float bottom)
     {
+        wall.GetComponent<Collider2D>().enabled = true;
         if (wall.transform.position.y > bottom)
         {
             wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y - .1f);
@@ -106,6 +107,7 @@ public class FloorScript : MonoBehaviour
 
     private void raise(GameObject wall, float top)
     {
+        wall.GetComponent<Collider2D>().enabled = false;
         if (wall.transform.position.y < top)
         {
             wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y + .1f);
