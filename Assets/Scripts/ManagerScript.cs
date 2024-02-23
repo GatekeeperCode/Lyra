@@ -9,59 +9,71 @@ public class ManagerScript : MonoBehaviour
     public Text _timer;
     public string _nextScene;
     float startTime;
-    int minutes;
-    int seconds;
+    float previousLevelTime;
+    int currentTime;
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
+        if(_nextScene == "Level2")
+        {
+            previousLevelTime = 0;
+        } else
+        {
+            previousLevelTime = (float)PlayerPrefs.GetInt("CurrentTime");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        int currentTime = (int)(Time.time - startTime);
-        minutes = currentTime / 60;
-        seconds = currentTime % 60;
+        // Quit Game
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerPrefs.DeleteKey("CurrentTime");
+            PlayerPrefs.DeleteKey("ThisTime");
+            PlayerPrefs.DeleteKey("BestTime");
+            PlayerPrefs.DeleteKey("playerCount");
+
+            Application.Quit();
+        }
+    
+
+        currentTime = (int)(Time.time + previousLevelTime - startTime);
+        int minutes = currentTime / 60;
+        int seconds = currentTime % 60;
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";
     }
 
     public void Nextlevel()
     {
-        if(_nextScene == "EndScene")
+        PlayerPrefs.SetInt("CurrentTime", currentTime);
+
+        if (_nextScene == "EndScene")
         {
             EndGame();
         } else
         {
-            PlayerPrefs.SetFloat("currentMinutes", minutes);
-            PlayerPrefs.SetFloat("currentSeconds", seconds);
-
             SceneManager.LoadScene(_nextScene);
         }
     }
     private void EndGame()
     {
-        PlayerPrefs.SetInt("TimeMinutes", minutes);
-        PlayerPrefs.SetInt("TimeSeconds", seconds);
-
-        if (PlayerPrefs.HasKey("BestSeconds"))
+        PlayerPrefs.SetInt("ThisTime", currentTime);
+        if (PlayerPrefs.HasKey("BestTime"))
         {
-            if(PlayerPrefs.GetInt("BestMinutes") > minutes)
+            if(PlayerPrefs.GetInt("BestTime")/60 > currentTime/60)
             {
-                PlayerPrefs.SetInt("BestMinutes", minutes);
-                PlayerPrefs.SetInt("BestSeconds", seconds);
-            } else if (PlayerPrefs.GetInt("BestMinutes") == minutes)
+                PlayerPrefs.SetInt("BestTime", currentTime);
+            }
+            else if ((PlayerPrefs.GetInt("BestTime") / 60 == currentTime / 60) && (PlayerPrefs.GetInt("BestTime") % 60 > currentTime % 60))
             {
-                if (PlayerPrefs.GetInt("BestSeconds") > seconds)
-                {
-                    PlayerPrefs.SetInt("BestSeconds", seconds);
-                }
+                PlayerPrefs.SetInt("BestTime", currentTime);
             }
         }
         else
         {
-            PlayerPrefs.SetInt("BestMinutes", minutes);
-            PlayerPrefs.SetInt("BestSeconds", seconds);
+            PlayerPrefs.SetInt("BestTime", currentTime);
         }
 
         SceneManager.LoadScene(_nextScene);

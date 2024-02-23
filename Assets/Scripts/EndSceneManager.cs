@@ -11,28 +11,33 @@ public class EndSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("TimeSeconds"))
+        if (!PlayerPrefs.HasKey("BestTime"))
         {
-            PlayerPrefs.SetInt("TimeSeconds", 0);
-            PlayerPrefs.SetInt("TimeMinutes", 0);
-            print("idk2");
-        }
-        if (!PlayerPrefs.HasKey("BestSeconds"))
+            PlayerPrefs.SetInt("BestTime", 0);
+        }if (!PlayerPrefs.HasKey("ThisTime"))
         {
-            PlayerPrefs.SetInt("BestSeconds", 0);
-            PlayerPrefs.SetInt("BestMinutes", 0);
-            print("idk3");
+            PlayerPrefs.SetInt("ThisTime", 0);
         }
 
-        _Time.text = "Time: " + PlayerPrefs.GetInt("TimeMinutes").ToString("00") + ":" + PlayerPrefs.GetInt("TimeSeconds").ToString("00") +
-                        "\nBest: " + PlayerPrefs.GetInt("BestMinutes").ToString("00") + ":" + PlayerPrefs.GetInt("BestSeconds").ToString("00");
+        _Time.text = "Time: " + (PlayerPrefs.GetInt("ThisTime")/60).ToString("00") + ":" + (PlayerPrefs.GetInt("ThisTime") % 60).ToString("00") +
+                        "\nBest: " + (PlayerPrefs.GetInt("BestTime") / 60).ToString("00") + ":" + (PlayerPrefs.GetInt("BestTime") % 60).ToString("00");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Quit Game
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerPrefs.DeleteKey("CurrentTime");
+            PlayerPrefs.DeleteKey("ThisTime");
+            PlayerPrefs.DeleteKey("BestTime");
+            PlayerPrefs.DeleteKey("playerCount");
+
+            Application.Quit();
+        }
     }
+
 
     public void OnRestartButtonDown()
     {

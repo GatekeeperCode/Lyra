@@ -23,7 +23,7 @@ public class GoalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CharactersInGoal() || Input.GetKeyDown(KeyCode.Q)) //dev key -> delete later
+        if (CharactersInGoal() || Input.GetKeyDown(KeyCode.G)) //dev key -> delete later
         {
             manager.Nextlevel();
         }

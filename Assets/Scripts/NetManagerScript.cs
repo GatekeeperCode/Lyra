@@ -13,27 +13,34 @@ public class NetManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("playerCount") == 1)
-        {
-            onSinglePlayerDown();
-        }
-        else if (PlayerPrefs.GetInt("playerCount") == 2)
+        if (PlayerPrefs.GetInt("playerCount") == 2)
         {
             OnLocalDown();
         }
         else if (PlayerPrefs.GetInt("playerCount") == 3)
         {
             onNetworkedDown();
+        } else
+        {
+            onSinglePlayerDown();
         }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Quit Game
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerPrefs.DeleteKey("CurrentTime");
+            PlayerPrefs.DeleteKey("ThisTime");
+            PlayerPrefs.DeleteKey("BestTime");
+            PlayerPrefs.DeleteKey("playerCount");
+
+            Application.Quit();
+        }
     }
+
 
     public void OnBackButtonDown()
     {
