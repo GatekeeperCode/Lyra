@@ -47,7 +47,7 @@ public class buttonScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _asource.PlayOneShot(_clip, _volume);
+        //_asource.PlayOneShot(_clip, _volume);
         if (_isButton1)
         {
             _wall._button1Pressed = false;

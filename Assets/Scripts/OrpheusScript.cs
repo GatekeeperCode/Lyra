@@ -66,6 +66,7 @@ public class OrpheusScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightControl))
         {
             _lyreRaise = false;
+            _asource.Stop();
         }
 
         //Check for climbing

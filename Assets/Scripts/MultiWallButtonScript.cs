@@ -53,8 +53,8 @@ public class MultiWallButtonScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("Left");
-        _asource.PlayOneShot(_clip, _volume);
+        //print("Left");
+        //_asource.PlayOneShot(_clip, _volume);
         if (collision.tag == "Orpheus" || collision.tag == "Eurydice" || collision.tag == "Box")
         {
             if (_isButton1)
