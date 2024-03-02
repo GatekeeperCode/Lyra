@@ -7,15 +7,19 @@ using UnityEngine.UI;
 public class ManagerScript : MonoBehaviour
 {
     public Text _timer;
+    public Text _paused;
     public string _nextScene;
+    public bool pausedGame = false;
     float startTime;
+    float pausedStartTime;
     float previousLevelTime;
     int currentTime;
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
-        if(_nextScene == "Level2")
+        pausedStartTime = startTime;
+        if (_nextScene == "Level2")
         {
             previousLevelTime = 0;
         } else
@@ -37,9 +41,30 @@ public class ManagerScript : MonoBehaviour
 
             Application.Quit();
         }
-    
 
-        currentTime = (int)(Time.time + previousLevelTime - startTime);
+        //Paused Screen
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!pausedGame) //entering paused screen
+            {
+                pausedStartTime = (int)currentTime;
+            } else //leaving paused screen
+            {
+                startTime = (startTime + (Time.time-pausedStartTime));
+            }
+
+            pausedGame = !pausedGame;
+            _paused.gameObject.SetActive(!_paused.gameObject.activeSelf);
+        }
+
+        if (pausedGame)
+        {
+            currentTime = (int)pausedStartTime;
+        } else
+        {
+            currentTime = (int)(Time.time + previousLevelTime - startTime);
+        }
+
         int minutes = currentTime / 60;
         int seconds = currentTime % 60;
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";

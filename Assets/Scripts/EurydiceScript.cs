@@ -15,6 +15,7 @@ public class EurydiceScript : MonoBehaviour
     Rigidbody2D _rbody;
     Animator _animator;
 
+    ManagerScript _manager;
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
@@ -24,12 +25,19 @@ public class EurydiceScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        //_animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
+        _manager = FindObjectOfType<ManagerScript>();
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
+        //Paused Screen
+        if (_manager.pausedGame) { _animator.speed = 0;  return; }
+
+        //Reset animator
+        _animator.speed = 1;
+
         //Check for jumping
         if (IsGrounded())
         {
@@ -67,6 +75,13 @@ public class EurydiceScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Paused Screen
+        if (_manager.pausedGame) { _rbody.constraints = RigidbodyConstraints2D.FreezePosition; return; }
+
+        //Reset constraints
+        _rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        
+        //Move Character
         float xdir = Input.GetAxis("EuroHorizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
