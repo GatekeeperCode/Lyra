@@ -613,26 +613,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 296726307, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 296726307, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.08235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 296726307, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 296726307, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.53333336
-      objectReference: {fileID: 0}
-    - target: {fileID: 516390807864865660, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
-      propertyPath: wall
-      value: 
-      objectReference: {fileID: 1436085541}
     - target: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
       propertyPath: m_Name
       value: Orpheus
@@ -4304,22 +4284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 120199393, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 120199393, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.227451
-      objectReference: {fileID: 0}
-    - target: {fileID: 120199393, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 120199393, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.43529415
-      objectReference: {fileID: 0}
     - target: {fileID: 2499029780133683651, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
       propertyPath: m_RootOrder
       value: 5
