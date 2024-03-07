@@ -13,7 +13,7 @@ public class ManagerScript : MonoBehaviour
     float startTime;
     float pausedStartTime;
     float previousLevelTime;
-    int currentTime;
+    float currentTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class ManagerScript : MonoBehaviour
             previousLevelTime = 0;
         } else
         {
-            previousLevelTime = (float)PlayerPrefs.GetInt("CurrentTime");
+            previousLevelTime = (float)PlayerPrefs.GetFloat("CurrentTime");
         }
     }
 
@@ -47,10 +47,11 @@ public class ManagerScript : MonoBehaviour
         {
             if (!pausedGame) //entering paused screen
             {
-                pausedStartTime = (int)currentTime;
+                pausedStartTime = currentTime;
             } else //leaving paused screen
             {
-                startTime = (startTime + (Time.time-pausedStartTime));
+                float pausedEndTime = currentTime;
+                startTime = (startTime + (pausedEndTime-pausedStartTime));
             }
 
             pausedGame = !pausedGame;
@@ -59,20 +60,20 @@ public class ManagerScript : MonoBehaviour
 
         if (pausedGame)
         {
-            currentTime = (int)pausedStartTime;
+            currentTime = pausedStartTime;
         } else
         {
-            currentTime = (int)(Time.time + previousLevelTime - startTime);
+            currentTime = (Time.time + previousLevelTime - startTime);
         }
 
-        int minutes = currentTime / 60;
-        int seconds = currentTime % 60;
+        float minutes = (int)currentTime / 60;
+        float seconds = (int)currentTime % 60;
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";
     }
 
     public void Nextlevel()
     {
-        PlayerPrefs.SetInt("CurrentTime", currentTime);
+        PlayerPrefs.SetFloat("CurrentTime", currentTime);
 
         if (_nextScene == "EndScene")
         {
@@ -84,21 +85,21 @@ public class ManagerScript : MonoBehaviour
     }
     private void EndGame()
     {
-        PlayerPrefs.SetInt("ThisTime", currentTime);
+        PlayerPrefs.SetFloat("ThisTime", currentTime);
         if (PlayerPrefs.HasKey("BestTime"))
         {
-            if(PlayerPrefs.GetInt("BestTime")/60 > currentTime/60)
+            if(PlayerPrefs.GetFloat("BestTime")/60 > currentTime/60)
             {
-                PlayerPrefs.SetInt("BestTime", currentTime);
+                PlayerPrefs.SetFloat("BestTime", currentTime);
             }
-            else if ((PlayerPrefs.GetInt("BestTime") / 60 == currentTime / 60) && (PlayerPrefs.GetInt("BestTime") % 60 > currentTime % 60))
+            else if ((PlayerPrefs.GetFloat("BestTime") / 60 == currentTime / 60) && (PlayerPrefs.GetFloat("BestTime") % 60 > currentTime % 60))
             {
-                PlayerPrefs.SetInt("BestTime", currentTime);
+                PlayerPrefs.SetFloat("BestTime", currentTime);
             }
         }
         else
         {
-            PlayerPrefs.SetInt("BestTime", currentTime);
+            PlayerPrefs.SetFloat("BestTime", currentTime);
         }
 
         SceneManager.LoadScene(_nextScene);
