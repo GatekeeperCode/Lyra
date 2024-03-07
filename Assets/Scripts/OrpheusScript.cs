@@ -42,10 +42,13 @@ public class OrpheusScript : MonoBehaviour
     void Update() //display in update, physics in fixed update
     {
         //Paused Screen
-        if (_manager.pausedGame) { _animator.speed = 0; return; }
+        if (_manager.pausedGame) { 
+            //_animator.speed = 0; 
+            return; 
+        }
 
         //Reset animator
-        _animator.speed = 1;
+        //_animator.speed = 1;
 
         //Check for jumping
         if (IsGrounded())
