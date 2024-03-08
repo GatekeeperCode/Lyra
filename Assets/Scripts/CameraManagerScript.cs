@@ -12,7 +12,7 @@ public class CameraManagerScript : MonoBehaviour
     public GameObject _splitCam2;
     public bool orphView = true;
     bool isSinglePlayer;
-    Vector3 camOffset = new Vector3(0, 0, -10);
+    Vector3 camOffset = new Vector3(2, 2, -10);
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,27 @@ public class CameraManagerScript : MonoBehaviour
 
     private void characterCenter(GameObject character, GameObject camera)
     {
-        camera.transform.position = new Vector3(character.transform.position.x + camOffset.x, character.transform.position.y + camOffset.y, camOffset.z);
+        // Determine Camera X Value
+        float camX = camera.transform.position.x;
+        if (camera.transform.position.x - character.transform.position.x >= camOffset.x) //character to left
+        {
+            camX = character.transform.position.x + camOffset.x;
+        } else if (character.transform.position.x - camera.transform.position.x >= camOffset.x) //character to right
+        {
+            camX = character.transform.position.x - camOffset.x;
+        }
+
+        // Determine Camera Y Value
+        float camY = camera.transform.position.y;
+        if (camera.transform.position.y - character.transform.position.y >= camOffset.y) //character below
+        {
+            camY = character.transform.position.y + camOffset.y;
+        }
+        else if (character.transform.position.y - camera.transform.position.y >= camOffset.y) //character above
+        {
+            camY = character.transform.position.y - camOffset.y;
+        }
+
+        camera.transform.position = new Vector3(camX, camY, camOffset.z);
     }
 }
