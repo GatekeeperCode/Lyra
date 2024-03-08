@@ -32,11 +32,6 @@ public class NetManagerScript : MonoBehaviour
         // Quit Game
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerPrefs.DeleteKey("CurrentTime");
-            PlayerPrefs.DeleteKey("ThisTime");
-            PlayerPrefs.DeleteKey("BestTime");
-            PlayerPrefs.DeleteKey("playerCount");
-
             Application.Quit();
         }
     }
@@ -74,5 +69,9 @@ public class NetManagerScript : MonoBehaviour
         PlayerPrefs.SetInt("playerCount", 3);
     }
 
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
 }

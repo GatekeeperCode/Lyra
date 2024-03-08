@@ -13,14 +13,14 @@ public class EndSceneManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("BestTime"))
         {
-            PlayerPrefs.SetInt("BestTime", 0);
+            PlayerPrefs.SetFloat("BestTime", 0);
         }if (!PlayerPrefs.HasKey("ThisTime"))
         {
-            PlayerPrefs.SetInt("ThisTime", 0);
+            PlayerPrefs.SetFloat("ThisTime", 0);
         }
 
-        _Time.text = "Time: " + (PlayerPrefs.GetInt("ThisTime")/60).ToString("00") + ":" + (PlayerPrefs.GetInt("ThisTime") % 60).ToString("00") +
-                        "\nBest: " + (PlayerPrefs.GetInt("BestTime") / 60).ToString("00") + ":" + (PlayerPrefs.GetInt("BestTime") % 60).ToString("00");
+        _Time.text = "Time: " + (PlayerPrefs.GetFloat("ThisTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("ThisTime")%60).ToString("00") +
+                        "\nBest: " + (PlayerPrefs.GetFloat("BestTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("BestTime")%60).ToString("00");
     }
 
     // Update is called once per frame
@@ -29,11 +29,6 @@ public class EndSceneManager : MonoBehaviour
         // Quit Game
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerPrefs.DeleteKey("CurrentTime");
-            PlayerPrefs.DeleteKey("ThisTime");
-            PlayerPrefs.DeleteKey("BestTime");
-            PlayerPrefs.DeleteKey("playerCount");
-
             Application.Quit();
         }
     }
@@ -42,5 +37,10 @@ public class EndSceneManager : MonoBehaviour
     public void OnRestartButtonDown()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
