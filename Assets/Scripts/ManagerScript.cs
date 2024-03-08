@@ -34,11 +34,6 @@ public class ManagerScript : MonoBehaviour
         // Quit Game
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerPrefs.DeleteKey("CurrentTime");
-            PlayerPrefs.DeleteKey("ThisTime");
-            PlayerPrefs.DeleteKey("BestTime");
-            PlayerPrefs.DeleteKey("playerCount");
-
             Application.Quit();
         }
 
@@ -47,21 +42,20 @@ public class ManagerScript : MonoBehaviour
         {
             if (!pausedGame) //entering paused screen
             {
-                pausedStartTime = currentTime;
+                print("StartTime: " + startTime);
+                pausedStartTime = Time.time;
             } else //leaving paused screen
             {
-                float pausedEndTime = currentTime;
+                float pausedEndTime = Time.time;
                 startTime = (startTime + (pausedEndTime-pausedStartTime));
+                print("startTime: " + startTime + " pauseStart: " + pausedStartTime + " pauseEnd: " + pausedEndTime);
             }
 
             pausedGame = !pausedGame;
             _paused.gameObject.SetActive(!_paused.gameObject.activeSelf);
         }
 
-        if (pausedGame)
-        {
-            currentTime = pausedStartTime;
-        } else
+        if (!pausedGame)
         {
             currentTime = (Time.time + previousLevelTime - startTime);
         }
@@ -85,6 +79,7 @@ public class ManagerScript : MonoBehaviour
     }
     private void EndGame()
     {
+        print("EndGame");
         PlayerPrefs.SetFloat("ThisTime", currentTime);
         if (PlayerPrefs.HasKey("BestTime"))
         {
@@ -103,6 +98,10 @@ public class ManagerScript : MonoBehaviour
         }
 
         SceneManager.LoadScene(_nextScene);
+    }
 
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

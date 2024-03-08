@@ -18,11 +18,6 @@ public class MenuManager : MonoBehaviour
         // Quit Game
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerPrefs.DeleteKey("CurrentTime");
-            PlayerPrefs.DeleteKey("ThisTime");
-            PlayerPrefs.DeleteKey("BestTime");
-            PlayerPrefs.DeleteKey("playerCount");
-
             Application.Quit();
         }
     }
@@ -35,5 +30,10 @@ public class MenuManager : MonoBehaviour
     public void onNetworkedDown()
     {
         SceneManager.LoadScene("NetworkScene");
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
