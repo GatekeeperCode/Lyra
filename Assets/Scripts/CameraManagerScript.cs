@@ -11,7 +11,9 @@ public class CameraManagerScript : MonoBehaviour
     public GameObject _splitCam1;
     public GameObject _splitCam2;
     public bool orphView = true;
+    float cameraTransitionSpeed = 0.2f;
     bool isSinglePlayer;
+    bool transition = false;
     Vector3 camOffset = new Vector3(2, 2, -10);
 
     // Start is called before the first frame update
@@ -41,22 +43,39 @@ public class CameraManagerScript : MonoBehaviour
         // Check for camera switching
         if(Input.GetKeyDown(KeyCode.Space) && isSinglePlayer)
         {
-            orphView = !orphView;
+            //Set up transition
+            transition = true;
+            if (_singlePlayerCam1.activeSelf) _singlePlayerCam2.transform.position = _singlePlayerCam1.transform.position;
+            else _singlePlayerCam1.transform.position = _singlePlayerCam2.transform.position;
+
+            print("1: " + _singlePlayerCam1.transform.position);
+            print("2: " + _singlePlayerCam2.transform.position);
+
+            //Switch cameras
             _singlePlayerCam2.SetActive(!_singlePlayerCam2.activeSelf);
             _singlePlayerCam1.SetActive(!_singlePlayerCam1.activeSelf);
+        }
+
+        // Pan camera to new character
+        if (transition)
+        {
+            if (orphView) transitionCamera(Eurydice, _singlePlayerCam2);
+            else transitionCamera(Orpheus, _singlePlayerCam1);
+
+            if (!transition)
+            {
+                _singlePlayerCam1.transform.position = new Vector3(Orpheus.transform.position.x, Orpheus.transform.position.y, camOffset.z);
+                _singlePlayerCam2.transform.position = new Vector3(Eurydice.transform.position.x, Eurydice.transform.position.y, camOffset.z);
+            }
+
+            return;
         }
 
         // Center cameras on players
         if(isSinglePlayer)
         {
-            if (orphView)
-            {
-                characterCenter(Orpheus, _singlePlayerCam1);
-            }
-            else
-            {
-                characterCenter(Eurydice, _singlePlayerCam2);
-            }
+            if (orphView) characterCenter(Orpheus, _singlePlayerCam1);
+            else characterCenter(Eurydice, _singlePlayerCam2);
         }
         
     }
@@ -85,5 +104,32 @@ public class CameraManagerScript : MonoBehaviour
         }
 
         camera.transform.position = new Vector3(camX, camY, camOffset.z);
+    }
+
+    private void transitionCamera(GameObject character, GameObject camera)
+    {
+        if (Mathf.Abs(camera.transform.position.x - character.transform.position.x) <= 0.5)
+        {
+            orphView = !orphView;
+            transition = false;
+        }
+        else
+        {
+            print("character.y: " + character.transform.position.y);
+            // Algebra
+            // Would lerp have been easier? ...probably
+            float m = Mathf.Abs(camera.transform.position.y - character.transform.position.y) / Mathf.Abs(camera.transform.position.x - character.transform.position.x);
+            float b = camera.transform.position.y - (m * camera.transform.position.x);
+
+            print("b: " + b);
+
+            float camX = camera.transform.position.x;
+            if (camera.transform.position.x > character.transform.position.x) camX -= cameraTransitionSpeed; 
+            else camX += cameraTransitionSpeed;
+
+            float camY = (m * camX) + b;
+
+            camera.transform.position = new Vector3(camX, camY, camOffset.z);
+        }
     }
 }
