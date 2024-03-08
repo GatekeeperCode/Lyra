@@ -663,6 +663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+--- !u!1 &200637762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+  m_PrefabInstance: {fileID: 200637761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &201203556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1514,7 +1519,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: OrpCam
   m_TagString: MainCamera
@@ -1580,18 +1584,6 @@ Transform:
   m_Father: {fileID: 412526947}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d8b221ce89ef34c81edb15104cfb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &534326557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2071,7 +2063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 710707654}
   - component: {fileID: 710707656}
-  - component: {fileID: 710707657}
   m_Layer: 0
   m_Name: EuryCam
   m_TagString: Untagged
@@ -2137,18 +2128,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &710707657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710707653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d8b221ce89ef34c81edb15104cfb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &720095126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4334,6 +4313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+--- !u!1 &1582237207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5804191723382334120, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+  m_PrefabInstance: {fileID: 1582237206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585567523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,10 +4673,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28400e3b8792c34dba7fb2f67cdf12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Orpheus: {fileID: 200637762}
+  Eurydice: {fileID: 1582237207}
   _singlePlayerCam1: {fileID: 519420028}
   _singlePlayerCam2: {fileID: 710707653}
   _splitCam1: {fileID: 296726304}
   _splitCam2: {fileID: 120199390}
+  orphView: 1
 --- !u!4 &1713494209
 Transform:
   m_ObjectHideFlags: 0

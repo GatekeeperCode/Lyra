@@ -313,9 +313,9 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 16384
-  playerSpeed: 5
+  playerSpeed: 4.5
   climbingSpeed: 4
-  jumpForce: 7
+  jumpForce: 5
   coyoteTime: 0.15
   max: 5
   min: 1
