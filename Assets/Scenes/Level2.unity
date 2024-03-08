@@ -660,10 +660,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28400e3b8792c34dba7fb2f67cdf12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Orpheus: {fileID: 804177674}
+  Eurydice: {fileID: 591747835}
   _singlePlayerCam1: {fileID: 2109744990}
   _singlePlayerCam2: {fileID: 427997496}
   _splitCam1: {fileID: 804177673}
   _splitCam2: {fileID: 591747834}
+  orphView: 1
 --- !u!4 &242949458
 Transform:
   m_ObjectHideFlags: 0
@@ -1702,7 +1705,6 @@ GameObject:
   m_Component:
   - component: {fileID: 427997499}
   - component: {fileID: 427997498}
-  - component: {fileID: 427997497}
   m_Layer: 0
   m_Name: EuryCam
   m_TagString: Untagged
@@ -1710,18 +1712,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &427997497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427997496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d8b221ce89ef34c81edb15104cfb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &427997498
 Camera:
   m_ObjectHideFlags: 0
@@ -2476,6 +2466,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 120199390, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
   m_PrefabInstance: {fileID: 591747833}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &591747835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5804191723382334120, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+  m_PrefabInstance: {fileID: 591747833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &603001955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3033,6 +3028,11 @@ PrefabInstance:
 --- !u!1 &804177673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 296726304, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+  m_PrefabInstance: {fileID: 804177672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &804177674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
   m_PrefabInstance: {fileID: 804177672}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &805783538
@@ -6831,7 +6831,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2109744991}
   - component: {fileID: 2109744993}
-  - component: {fileID: 2109744992}
   m_Layer: 0
   m_Name: OrpCam
   m_TagString: MainCamera
@@ -6854,18 +6853,6 @@ Transform:
   m_Father: {fileID: 1128787974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2109744992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109744990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d8b221ce89ef34c81edb15104cfb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &2109744993
 Camera:
   m_ObjectHideFlags: 0

@@ -335,8 +335,8 @@ MonoBehaviour:
   ladderLayer:
     serializedVersion: 2
     m_Bits: 12288
-  playerSpeed: 5
-  climbingSpeed: 4
+  playerSpeed: 3.5
+  climbingSpeed: 3
   jumpForce: 7
   coyoteTime: 0.15
 --- !u!95 &336134328982506248
