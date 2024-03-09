@@ -296,7 +296,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5553118672563447253}
   - component: {fileID: 5553118672563447255}
-  - component: {fileID: 5553118672563447252}
   m_Layer: 7
   m_Name: LyraBackground - LastLayer2
   m_TagString: Untagged
@@ -372,20 +371,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5553118672563447252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553118672563447242}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3f277b7968deb4b956adabb35d8d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmountOfParallax: 0.01
-  MainCamera: {fileID: 0}
 --- !u!1 &5553118673198707031
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +381,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5553118673198707030}
   - component: {fileID: 5553118673198707024}
-  - component: {fileID: 5553118673198707025}
   m_Layer: 7
   m_Name: LyraBackground - FirstLayer
   m_TagString: Untagged
@@ -472,20 +456,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5553118673198707025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553118673198707031}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3f277b7968deb4b956adabb35d8d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmountOfParallax: 0.05
-  MainCamera: {fileID: 0}
 --- !u!1 &5553118673215097147
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +466,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5553118673215097146}
   - component: {fileID: 5553118673215097156}
-  - component: {fileID: 5553118673215097157}
   m_Layer: 7
   m_Name: LyraBackground - SecondLayer
   m_TagString: Untagged
@@ -572,17 +541,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5553118673215097157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553118673215097147}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3f277b7968deb4b956adabb35d8d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmountOfParallax: 0.03
-  MainCamera: {fileID: 0}
