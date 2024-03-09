@@ -3604,7 +3604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: {fileID: 428956303}
   _paused: {fileID: 151953546}
-  _nextScene: EndScene
+  _nextScene: Level3
   pausedGame: 0
 --- !u!4 &1005063394
 Transform:
