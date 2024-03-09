@@ -14,9 +14,12 @@ public class OrpheusScript : MonoBehaviour
     public float coyoteTime;
     public float max;
     public float min;
+    //public Animator _OrphView;
+    //public Animator _EuryView;
 
     Rigidbody2D _rbody;
-    Animator _animator;
+    ManagerScript _manager;
+    AudioSource _asource;
 
     public bool _lyreRaise = false;
     bool _startedJump = false;
@@ -25,8 +28,6 @@ public class OrpheusScript : MonoBehaviour
     bool _climbing = true;
     float _lastTimegrounded = 0;
 
-    ManagerScript _manager;
-    AudioSource _asource;
     public AudioClip _clip;
     public float _volume = 0.5f;
     // Start is called before the first frame update
@@ -34,7 +35,6 @@ public class OrpheusScript : MonoBehaviour
     {
         _rbody = GetComponent<Rigidbody2D>();
         _asource = GetComponent<AudioSource>();
-        _animator = GetComponent<Animator>();
         _manager = FindObjectOfType<ManagerScript>();
     }
 
@@ -42,13 +42,15 @@ public class OrpheusScript : MonoBehaviour
     void Update() //display in update, physics in fixed update
     {
         //Paused Screen
-        if (_manager.pausedGame) { 
-            //_animator.speed = 0; 
+        if (_manager.pausedGame) {
+            //_OrphView.speed = 0;
+            //_EuryView.speed = 0; 
             return; 
         }
 
         //Reset animator
-        //_animator.speed = 1;
+        //_OrphView.speed = 1;
+        //_EuryView.speed = 1;
 
         //Check for jumping
         if (IsGrounded())
@@ -111,7 +113,6 @@ public class OrpheusScript : MonoBehaviour
         //Move Character
         float xdir = Input.GetAxis("Horizontal");
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
-        _animator.speed = 1;
 
         if (_climbing)
         {
