@@ -4311,11 +4311,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eurydice
       objectReference: {fileID: 0}
+    - target: {fileID: 6624502486548041418, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+      propertyPath: _EuryView
+      value: 
+      objectReference: {fileID: 1582237209}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
 --- !u!1 &1582237207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5804191723382334120, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+  m_PrefabInstance: {fileID: 1582237206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1582237209 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 336134328982506248, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
   m_PrefabInstance: {fileID: 1582237206}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585567523

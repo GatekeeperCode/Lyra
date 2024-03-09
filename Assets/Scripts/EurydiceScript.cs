@@ -11,11 +11,12 @@ public class EurydiceScript : MonoBehaviour
     public float climbingSpeed;
     public float jumpForce;
     public float coyoteTime;
+    //public Animator _EuryView;
+    //public Animator _OrphView;
 
     Rigidbody2D _rbody;
-    Animator _animator;
-
     ManagerScript _manager;
+
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
@@ -25,7 +26,6 @@ public class EurydiceScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         _manager = FindObjectOfType<ManagerScript>();
     }
 
@@ -34,12 +34,14 @@ public class EurydiceScript : MonoBehaviour
     {
         //Paused Screen
         if (_manager.pausedGame) { 
-            //_animator.speed = 0; 
+            //_EuryView.speed = 0; 
+            //_OrphView.speed = 0;
             return; 
         }
 
-        //Reset animator
-        //_animator.speed = 1;
+        //Reset animators
+        //_EuryView.speed = 1;
+        //_OrphView.speed = 1;
 
         //Check for jumping
         if (IsGrounded())

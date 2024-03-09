@@ -15,11 +15,14 @@ public class CameraManagerScript : MonoBehaviour
     bool isSinglePlayer;
     bool transition = false;
     Vector3 camOffset = new Vector3(2, 2, -10);
+    ManagerScript _manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("playerCount")==2)
+        _manager = FindObjectOfType<ManagerScript>();
+
+        if (PlayerPrefs.GetInt("playerCount")==2)
         {
             _singlePlayerCam2.SetActive(false);
             _singlePlayerCam1.SetActive(false);
@@ -35,21 +38,28 @@ public class CameraManagerScript : MonoBehaviour
             _splitCam1.SetActive(false);
             _splitCam2.SetActive(false);
         }
+
+        _singlePlayerCam1.transform.position = new Vector3(Orpheus.transform.position.x, Orpheus.transform.position.y, camOffset.z);
+        _singlePlayerCam2.transform.position = new Vector3(Eurydice.transform.position.x, Eurydice.transform.position.y, camOffset.z);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Paused Screen
+        if (_manager.pausedGame)
+        {
+            return;
+        }
+
         // Check for camera switching
-        if(Input.GetKeyDown(KeyCode.Space) && isSinglePlayer)
+        if (Input.GetKeyDown(KeyCode.Space) && !transition && isSinglePlayer)
         {
             //Set up transition
             transition = true;
             if (_singlePlayerCam1.activeSelf) _singlePlayerCam2.transform.position = _singlePlayerCam1.transform.position;
             else _singlePlayerCam1.transform.position = _singlePlayerCam2.transform.position;
-
-            print("1: " + _singlePlayerCam1.transform.position);
-            print("2: " + _singlePlayerCam2.transform.position);
 
             //Switch cameras
             _singlePlayerCam2.SetActive(!_singlePlayerCam2.activeSelf);
@@ -115,13 +125,10 @@ public class CameraManagerScript : MonoBehaviour
         }
         else
         {
-            print("character.y: " + character.transform.position.y);
             // Algebra
             // Would lerp have been easier? ...probably
-            float m = Mathf.Abs(camera.transform.position.y - character.transform.position.y) / Mathf.Abs(camera.transform.position.x - character.transform.position.x);
+            float m = (camera.transform.position.y - character.transform.position.y) / (camera.transform.position.x - character.transform.position.x);
             float b = camera.transform.position.y - (m * camera.transform.position.x);
-
-            print("b: " + b);
 
             float camX = camera.transform.position.x;
             if (camera.transform.position.x > character.transform.position.x) camX -= cameraTransitionSpeed; 
