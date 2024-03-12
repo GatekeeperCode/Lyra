@@ -1325,7 +1325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &307066265
 PrefabInstance:
@@ -6389,7 +6389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timer: {fileID: 1094282040}
   _paused: {fileID: 1430538846}
-  _nextScene: EndScene
+  _nextScene: Level4
   pausedGame: 0
 --- !u!4 &1647141227
 Transform:
@@ -6404,7 +6404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1650124227
 PrefabInstance:
@@ -6795,7 +6795,7 @@ RectTransform:
   - {fileID: 1094282039}
   - {fileID: 1430538845}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
