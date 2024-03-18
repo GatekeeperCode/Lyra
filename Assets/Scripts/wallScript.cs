@@ -26,7 +26,7 @@ public class wallScript : MonoBehaviour
     {
         if (_button1Pressed && _button2Pressed)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y - 20), .002f);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y - 20), .01f);
             if(!_asource.isPlaying)
             {
                 _asource.PlayOneShot(_clip, _volume);

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5313401783985912894}
   - component: {fileID: 2894825793788351723}
   - component: {fileID: 7113801919058806459}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Opening Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
