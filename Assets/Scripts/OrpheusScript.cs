@@ -76,7 +76,7 @@ public class OrpheusScript : MonoBehaviour
             _lyreRaise = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.RightControl))
+        if (Input.GetKeyUp(KeyCode.RightControl) || !IsOnFloor())
         {
             _lyreRaise = false;
             _asource.Stop();
@@ -176,7 +176,7 @@ public class OrpheusScript : MonoBehaviour
         _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
     }
 
-    private bool IsOnFloor()
+    public bool IsOnFloor()
     {
         Vector2 playerVector = transform.position;
         RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.2f, playerVector.y), Vector2.down, 1f, floorLayer);

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FloorScript : MonoBehaviour
 {
+    public GameObject[] walls;
+    public float[] wallTop;
+    public float[] wallBottom;
+    public bool[] setFalse;
+    bool onFloor = false;
+
     public GameObject wall1;
     public GameObject wall2;
     public GameObject wall3;
@@ -22,82 +28,64 @@ public class FloorScript : MonoBehaviour
 
 
     OrpheusScript orpheus;
-    bool wall1Exists = false;
-    bool wall2Exists = false;
-    bool wall3Exists = false;
-    bool wall4Exists = false;
-    bool wall5Exists = false;
 
     // Start is called before the first frame update
     void Start()
     {
         orpheus = FindObjectOfType<OrpheusScript>();
-        if(wall1 != null) { wall1Exists = true; startingPosition(wall1, w1Top); }
-        if(wall2 != null) { wall2Exists = true; startingPosition(wall2, w2Top); }
-        if(wall3 != null) { wall3Exists = true; startingPosition(wall3, w3Top); }
-        if(wall4 != null) { wall4Exists = true; startingPosition(wall4, w4Top); }
-        if(wall5 != null) { wall5Exists = true; startingPosition(wall5, w5Top); }
+        for(int i = 0; i < walls.Length; i++)
+        {
+            GameObject wall = walls[i];
+            walls[i].transform.position = new Vector2(wall.transform.position.x, wallTop[i]);
+            if (setFalse[i])
+            {
+                walls[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!orpheus.IsOnFloor())
+        {
+            return;
+        }
+
+        for(int i = 0; i < walls.Length; i++)
+        {
+            if (walls[i].transform.position.y == wallTop[i] && setFalse[i])
+            {
+                walls[i].SetActive(false);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-
-        if (orpheus._lyreRaise)
+        if (!orpheus.IsOnFloor())
         {
-            if (wall1Exists)
+            return;
+        }
+        else if (orpheus._lyreRaise)
+        {
+            for (int i = 0; i < walls.Length; i++)
             {
-                lower(wall1, w1Bottom);
-            }
-            if(wall2Exists)
-            {
-                lower(wall2, w2Bottom);
-            }
-            if (wall3Exists)
-            {
-                lower(wall3, w3Bottom);
-            }
-            if (wall4Exists)
-            {
-                lower(wall4, w4Bottom);
-            }
-            if (wall5Exists)
-            {
-                lower(wall5, w5Bottom);
+                lower(walls[i], wallBottom[i]);
             }
         }
         else
         {
-            if (wall1Exists)
+            for (int i = 0; i < walls.Length; i++)
             {
-                raise(wall1, w1Top);
-            }
-            if (wall2Exists)
-            {
-                raise(wall2, w2Top);
-            }
-            if (wall3Exists)
-            {
-                raise(wall3, w3Top);
-            }
-            if (wall4Exists)
-            {
-                raise(wall4, w4Top);
-            }
-            if (wall5Exists)
-            {
-                raise(wall5, w5Top);
+                raise(walls[i], wallTop[i]);
             }
         }
     }
 
     private void lower(GameObject wall, float bottom)
     {
+        wall.SetActive(true);
         wall.GetComponent<Collider2D>().enabled = true;
         if (wall.transform.position.y > bottom)
         {
@@ -112,10 +100,5 @@ public class FloorScript : MonoBehaviour
         {
             wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y + .1f);
         }
-    }
-
-    private void startingPosition(GameObject wall, float top)
-    {
-        wall.transform.position = new Vector2(wall.transform.position.x, top);
     }
 }
