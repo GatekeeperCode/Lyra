@@ -8,7 +8,7 @@ public class buttonScript : MonoBehaviour
     public bool _isButton1;
     AudioSource _asource;
     public AudioClip _clip;
-    public float _volume = 0.5f;
+    public float _volume = 0.25f;
 
     private void Start()
     {

@@ -34,7 +34,7 @@ public class wallScript : MonoBehaviour
         }
         else if(!_stayDown && (transform.position.y <= firstPos.y - .1) && !_button1Pressed)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y), .02f);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y), .0055f);
             if (!_asource.isPlaying)
             {
                 _asource.PlayOneShot(_clip, _volume);

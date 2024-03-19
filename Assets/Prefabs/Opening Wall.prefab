@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5313401783985912894}
   - component: {fileID: 2894825793788351723}
   - component: {fileID: 7113801919058806459}
+  - component: {fileID: 5985512647727822198}
   m_Layer: 15
   m_Name: Opening Wall
   m_TagString: Untagged
@@ -312,6 +313,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!251 &5985512647727822198
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157158476205735858}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &8080729499562094468
 GameObject:
   m_ObjectHideFlags: 0

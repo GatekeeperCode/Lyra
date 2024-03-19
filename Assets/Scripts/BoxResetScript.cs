@@ -8,7 +8,7 @@ public class BoxResetScript : MonoBehaviour
     public GameObject[] resetPoints;
     AudioSource _asource;
     public AudioClip _clip;
-    public float _volume = 0.5f;
+    public float _volume = 0.25f;
 
     private void Start()
     {
