@@ -42,13 +42,11 @@ public class ManagerScript : MonoBehaviour
         {
             if (!pausedGame) //entering paused screen
             {
-                print("StartTime: " + startTime);
                 pausedStartTime = Time.time;
             } else //leaving paused screen
             {
                 float pausedEndTime = Time.time;
                 startTime = (startTime + (pausedEndTime-pausedStartTime));
-                print("startTime: " + startTime + " pauseStart: " + pausedStartTime + " pauseEnd: " + pausedEndTime);
             }
 
             pausedGame = !pausedGame;

@@ -11,37 +11,55 @@ public class EurydiceScript : MonoBehaviour
     public float climbingSpeed;
     public float jumpForce;
     public float coyoteTime;
-    //public Animator _EuryView;
-    //public Animator _OrphView;
+    public Animator _EuryView;
+    public Animator _OrphView;
 
     Rigidbody2D _rbody;
     ManagerScript _manager;
+
 
     bool _startedJump = false;
     bool _stoppedJump = false;
     bool _facingRight = true;
     bool _climbing = true;
+    bool _paused = false;
     float _lastTimegrounded = 0;
+    Vector3 _pausedVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _manager = FindObjectOfType<ManagerScript>();
+        _pausedVelocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
         //Paused Screen
-        if (_manager.pausedGame) { 
-            //_EuryView.speed = 0; 
-            //_OrphView.speed = 0;
-            return; 
-        }
+        if (_manager.pausedGame != _paused)
+        {
+            // Save values only when _paused starts or ends
+            _paused = _manager.pausedGame;
+            if (_paused)
+            {
+                // During paused screen
+                _pausedVelocity = _rbody.velocity;
+                _EuryView.speed = 0;
+                _OrphView.speed = 0;
+            }
+            else
+            {
+                // Reset after paused screen
+                _rbody.velocity = _pausedVelocity;
+                _EuryView.speed = 1;
+                _OrphView.speed = 1;
+            }
 
-        //Reset animators
-        //_EuryView.speed = 1;
-        //_OrphView.speed = 1;
+        }
+        if (_paused) return; 
+
 
         //Check for jumping
         if (IsGrounded())

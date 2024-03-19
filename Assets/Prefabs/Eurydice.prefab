@@ -339,6 +339,8 @@ MonoBehaviour:
   climbingSpeed: 3
   jumpForce: 7
   coyoteTime: 0.15
+  _EuryView: {fileID: 336134328982506248}
+  _OrphView: {fileID: 6166589964026941100}
 --- !u!95 &336134328982506248
 Animator:
   serializedVersion: 4

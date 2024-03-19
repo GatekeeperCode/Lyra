@@ -14,10 +14,10 @@ public class OrpheusScript : MonoBehaviour
     public float coyoteTime;
     public float max;
     public float min;
-    //public Animator _OrphView;
-    //public Animator _EuryView;
+    public Animator _OrphView;
+    public Animator _EuryView;
 
-    Rigidbody2D _rbody;
+    public Rigidbody2D _rbody;
     ManagerScript _manager;
     AudioSource _asource;
 
@@ -26,7 +26,9 @@ public class OrpheusScript : MonoBehaviour
     bool _stoppedJump = false;
     bool _facingRight = true;
     bool _climbing = true;
+    bool _paused = false;
     float _lastTimegrounded = 0;
+    Vector3 _pausedVelocity;
 
     public AudioClip _clip;
     public float _volume = 0.5f;
@@ -36,21 +38,35 @@ public class OrpheusScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _asource = GetComponent<AudioSource>();
         _manager = FindObjectOfType<ManagerScript>();
+        _pausedVelocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
         //Paused Screen
-        if (_manager.pausedGame) {
-            //_OrphView.speed = 0;
-            //_EuryView.speed = 0; 
-            return; 
-        }
+        if (_manager.pausedGame != _paused)
+        {
+            _paused = _manager.pausedGame;
 
-        //Reset animator
-        //_OrphView.speed = 1;
-        //_EuryView.speed = 1;
+            if (_paused)
+            {
+                // During paused screen
+                _pausedVelocity = _rbody.velocity;
+                _OrphView.speed = 0;
+                _EuryView.speed = 0;
+            }
+            else
+            {
+                // Reset after paused screen
+                _rbody.velocity = _pausedVelocity;
+                _OrphView.speed = 1;
+                _EuryView.speed = 1;
+            }
+
+        }
+        if (_paused) return;
+
 
         //Check for jumping
         if (IsGrounded())

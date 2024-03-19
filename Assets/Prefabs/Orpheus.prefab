@@ -319,6 +319,8 @@ MonoBehaviour:
   coyoteTime: 0.15
   max: 5
   min: 1
+  _OrphView: {fileID: 611543353}
+  _EuryView: {fileID: 1386372701}
   _lyreRaise: 0
   _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
   _volume: 0.5
