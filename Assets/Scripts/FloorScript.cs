@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FloorScript : MonoBehaviour
@@ -9,7 +10,7 @@ public class FloorScript : MonoBehaviour
     public float[] wallBottom;
     public bool[] setFalse;
 
-
+    bool thisPad = false;
     OrpheusScript orpheus;
 
     // Start is called before the first frame update
@@ -30,7 +31,6 @@ public class FloorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         for(int i = 0; i < walls.Length; i++)
         {
             if (walls[i].transform.position.y == wallTop[i] && setFalse[i])
@@ -43,14 +43,14 @@ public class FloorScript : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (orpheus._lyreRaise)
+        if (orpheus._lyreRaise && thisPad)
         {
             for (int i = 0; i < walls.Length; i++)
             {
                 lower(walls[i], wallBottom[i]);
             }
         }
-        else
+        else if(!orpheus._lyreRaise)
         {
             for (int i = 0; i < walls.Length; i++)
             {
@@ -75,6 +75,22 @@ public class FloorScript : MonoBehaviour
         if (wall.transform.position.y < top)
         {
             wall.transform.position = new Vector2(wall.transform.position.x, wall.transform.position.y + .1f);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Orpheus"))
+        {
+            thisPad = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Orpheus"))
+        {
+            thisPad = false;
         }
     }
 }
