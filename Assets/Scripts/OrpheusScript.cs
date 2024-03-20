@@ -73,17 +73,17 @@ public class OrpheusScript : MonoBehaviour
         {
             _lastTimegrounded = Time.time;
         }
-        if (Input.GetKeyDown(KeyCode.RightShift) && WasGrounded())
+        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
         {
             _startedJump = true;
         }
-        if (Input.GetKeyUp(KeyCode.RightShift))
+        if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Joystick1Button5))
         {
             _stoppedJump = true;
         }
 
         //Check for lyre
-        if (Input.GetKey(KeyCode.RightControl) && IsOnFloor())
+        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.Joystick1Button2)) && IsOnFloor())
         {
             if(!_asource.isPlaying)
             {
@@ -92,7 +92,7 @@ public class OrpheusScript : MonoBehaviour
             _lyreRaise = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.RightControl) || !IsOnFloor())
+        if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button2) || !IsOnFloor())
         {
             _lyreRaise = false;
             _asource.Stop();

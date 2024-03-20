@@ -67,11 +67,11 @@ public class EurydiceScript : MonoBehaviour
             _lastTimegrounded = Time.time;
             _rbody.gravityScale = 1;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && WasGrounded())
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
         {
             _startedJump = true;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick1Button4))
         {
             _stoppedJump = true;
         }
