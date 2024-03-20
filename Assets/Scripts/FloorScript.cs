@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,11 +13,13 @@ public class FloorScript : MonoBehaviour
 
     bool thisPad = false;
     OrpheusScript orpheus;
+    ManagerScript manager;
 
     // Start is called before the first frame update
     void Start()
     {
         orpheus = FindObjectOfType<OrpheusScript>();
+        manager = FindObjectOfType<ManagerScript>();
         for(int i = 0; i < walls.Length; i++)
         {
             GameObject wall = walls[i];
@@ -31,7 +34,12 @@ public class FloorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < walls.Length; i++)
+        if (manager.pausedGame)
+        {
+            return;
+        }
+
+        for (int i = 0; i < walls.Length; i++)
         {
             if (walls[i].transform.position.y == wallTop[i] && setFalse[i])
             {
@@ -42,6 +50,10 @@ public class FloorScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (manager.pausedGame)
+        {
+            return;
+        }
 
         if (orpheus._lyreRaise && thisPad)
         {
