@@ -217,8 +217,8 @@ MonoBehaviour:
   _stayDown: 0
   _clip: {fileID: 8300000, guid: 6c3f38672c9ceab47a2bfab8d008aff1, type: 3}
   _volume: 0.25
-  wallUpSpeed: 0.035
-  wallDownSpeed: 0.05
+  wallUpSpeed: 0.025
+  wallDownSpeed: 0.005
 --- !u!82 &7113801919058806459
 AudioSource:
   m_ObjectHideFlags: 0
