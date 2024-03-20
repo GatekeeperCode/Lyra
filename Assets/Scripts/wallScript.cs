@@ -12,6 +12,8 @@ public class wallScript : MonoBehaviour
     public float _volume = 0.8f;
     Vector3 firstPos;
     Vector3 currPos;
+    public float wallUpSpeed = 0.05f;
+    public float wallDownSpeed = 0.05f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class wallScript : MonoBehaviour
     {
         if (_button1Pressed && _button2Pressed)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y - 20), .01f);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y - 20), wallDownSpeed);
             if(!_asource.isPlaying)
             {
                 _asource.PlayOneShot(_clip, _volume);
@@ -34,7 +36,7 @@ public class wallScript : MonoBehaviour
         }
         else if(!_stayDown && (transform.position.y <= firstPos.y - .1) && !_button1Pressed)
         {
-            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y), .0055f);
+            transform.position = Vector2.Lerp(transform.position, new Vector2(firstPos.x, firstPos.y), wallUpSpeed);
             if (!_asource.isPlaying)
             {
                 _asource.PlayOneShot(_clip, _volume);
