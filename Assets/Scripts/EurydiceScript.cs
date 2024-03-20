@@ -40,8 +40,8 @@ public class EurydiceScript : MonoBehaviour
         //Paused Screen
         if (_manager.pausedGame != _paused)
         {
-            // Save values only when _paused starts or ends
             _paused = _manager.pausedGame;
+
             if (_paused)
             {
                 // During paused screen
