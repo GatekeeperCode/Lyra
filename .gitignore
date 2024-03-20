@@ -70,3 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# PS4 Build
+/PS4 Build
+/PS4 Build_BurstDebugInformation_DoNotShip
+/PS4 Build_SymbolFiles
