@@ -76,6 +76,8 @@ public class OrpheusScript : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
         {
             _startedJump = true;
+            _OrphView.SetBool("Jumping", true);
+            _EuryView.SetBool("Jumping", true);
         }
         if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Joystick1Button5))
         {
@@ -90,20 +92,43 @@ public class OrpheusScript : MonoBehaviour
                 _asource.PlayOneShot(_clip, _volume);
             }
             _lyreRaise = true;
+            _OrphView.SetBool("Lyre", true);
+            _EuryView.SetBool("Lyre", true);
 
         }
         if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button2) || !IsOnFloor())
         {
             _lyreRaise = false;
+            _OrphView.SetBool("Lyre", false);
+            _EuryView.SetBool("Lyre", false);
             _asource.Stop();
         }
 
         //Check for climbing
-        if (climbAttempt()) { 
+        if (climbAttempt()) {
+            // Set climbing animations
+            if(Mathf.Abs(_rbody.velocity.y) >= 0.2)
+            {
+                _OrphView.SetBool("Climbing", true);
+                _EuryView.SetBool("Climbing", true);
+                _OrphView.SetBool("Climb", false);
+                _EuryView.SetBool("Climb", false);
+            } else
+            {
+                _OrphView.SetBool("Climbing", false);
+                _EuryView.SetBool("Climbing", false);
+                _OrphView.SetBool("Climb", true);
+                _EuryView.SetBool("Climb", true);
+            }
             _climbing = true;
+
         }
         else {
-            _climbing = false; 
+            _climbing = false;
+            _OrphView.SetBool("Climbing", false);
+            _EuryView.SetBool("Climbing", false);
+            _OrphView.SetBool("Climb", false);
+            _EuryView.SetBool("Climb", false);
         }
 
         //Flip character
@@ -116,6 +141,27 @@ public class OrpheusScript : MonoBehaviour
         {
             Flip();
         }
+
+        // Set standing and walking animator values
+        if(Mathf.Abs(_rbody.velocity.x) >= 0.2)
+        {
+            _OrphView.SetBool("Walking", true);
+            _OrphView.SetBool("Standing", false);
+            _EuryView.SetBool("Walking", true);
+            _EuryView.SetBool("Standing", false);
+        } else
+        {
+            _OrphView.SetBool("Walking", false);
+            _OrphView.SetBool("Standing", true);
+            _EuryView.SetBool("Walking", false);
+            _EuryView.SetBool("Standing", true);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _OrphView.SetBool("Jumping", false);
+        _EuryView.SetBool("Jumping", false);
     }
 
     private void FixedUpdate()

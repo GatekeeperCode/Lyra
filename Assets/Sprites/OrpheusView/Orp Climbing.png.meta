@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0602c1901e7bfb408414bb2c795ee1b
+guid: b18cefaeb09dd3543a0905e01091611c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Orp Standing_0
+      name: Orp Climbing_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a01a03f94e64544a2e8a01f2fbae13
+      internalID: 299047308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4792791b32b70ab499c3b3214b47a1ab
+      internalID: 1670838958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e869bf077b510194a867f294bde68b56
+      internalID: -728030080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_3
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +193,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfdec6739af953040992c1fa1b487e72
-      internalID: 1248238481
+      spriteID: 622f3a4cafbcfb947a1c4eb59c5fe2aa
+      internalID: 739210766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Orp Standing_1
+      name: Orp Climbing_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58fe0474e09ac44e805c2d86a1b5f0d
+      internalID: -1354746878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_5
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e741795218e4ffe46863ce314e0f9496
+      internalID: 865820413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_6
       rect:
         serializedVersion: 2
         x: 0
@@ -151,8 +256,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1dd30be1730c464cad35ba2c49364e8
-      internalID: -130798557
+      spriteID: 6318f3a0711e2724995335e6ceff434f
+      internalID: -1376765712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing_7
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8cb602e2885ae4e960427684d4aee0
+      internalID: -1974252663
       vertices: []
       indices: 
       edges: []
@@ -168,8 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Orp Standing_1: -130798557
-      Orp Standing_0: 1248238481
+      Orp Climbing_2: -728030080
+      Orp Climbing_1: 1670838958
+      Orp Climbing_6: -1376765712
+      Orp Climbing_5: 865820413
+      Orp Climbing_7: -1974252663
+      Orp Climbing_0: 299047308
+      Orp Climbing_4: -1354746878
+      Orp Climbing_3: 739210766
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
