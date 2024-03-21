@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f2d96be4dde30ed4aab5e90645e28991
+guid: 7e6e07f3cdaa98741b048e6a0723217c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eury-Orp jumping_0
+      name: Orp standing - muted_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05b2ee559ba8c0d4b9ec4f918a4f20ca
-      internalID: 74924446
+      spriteID: 5ca73a27962979b40bfd19aad6c25b7f
+      internalID: -1694444171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eury-Orp jumping_1
+      name: Orp standing - muted_1
       rect:
         serializedVersion: 2
         x: 0
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4ab776758b15064cad4b568ff60d760
-      internalID: -496490257
+      spriteID: 871522d6569b54140bedd36bc66157ae
+      internalID: 1391231417
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eury-Orp jumping_0: 74924446
-      Eury-Orp jumping_1: -496490257
+      Orp standing - muted_1: 1391231417
+      Orp standing - muted_0: -1694444171
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

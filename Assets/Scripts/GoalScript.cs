@@ -37,10 +37,10 @@ public class GoalScript : MonoBehaviour
         Vector2 GoalVector = transform.position;
         Vector2 GoalSize = transform.localScale;
 
-        RaycastHit2D OrphFromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 5f, OrphLayer);
-        RaycastHit2D OrphFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 5f, OrphLayer);
-        RaycastHit2D EuryfromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 5f, EuryLayer);
-        RaycastHit2D EuryFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 5f, EuryLayer);
+        RaycastHit2D OrphFromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 4f, OrphLayer);
+        RaycastHit2D OrphFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 4f, OrphLayer);
+        RaycastHit2D EuryfromLeft = Physics2D.Raycast(new Vector2(GoalVector.x - (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.right, 4f, EuryLayer);
+        RaycastHit2D EuryFromRight = Physics2D.Raycast(new Vector2(GoalVector.x + (GoalSize.x*5f), GoalVector.y - (GoalSize.y*2f)), Vector2.left, 4f, EuryLayer);
 
         if (OrphFromLeft.collider != null && OrphFromRight.collider != null) { OrphInGoal = true; }
         if (EuryfromLeft.collider != null && EuryFromRight.collider != null){ EuryInGoal = true; }

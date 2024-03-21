@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f2d96be4dde30ed4aab5e90645e28991
+guid: e212288c9c1fe054d87dc51ec7df10d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eury-Orp jumping_0
+      name: Orp Climbing - muted_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2049
+        width: 1036
+        height: 1023
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b688db6f7ed89c45bb7d745d39eab81
+      internalID: 497843103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b43c81603a9694fa1dfe64fc969b9a
+      internalID: -1339614774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2c993a975a61c4ba7620f1848d6983
+      internalID: 410121535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_3
       rect:
         serializedVersion: 2
         x: 0
@@ -124,20 +187,62 @@ TextureImporter:
         width: 1024
         height: 1024
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05b2ee559ba8c0d4b9ec4f918a4f20ca
-      internalID: 74924446
+      spriteID: a32c7d70f26bba546a65ac46765d7921
+      internalID: -1158633356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eury-Orp jumping_1
+      name: Orp Climbing - muted_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2c7d215ae751c43b61b89170927764
+      internalID: -583026556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_5
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3ae70178e46254794b6799048af58f
+      internalID: -1268666730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_6
       rect:
         serializedVersion: 2
         x: 0
@@ -145,14 +250,35 @@ TextureImporter:
         width: 1024
         height: 1024
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4ab776758b15064cad4b568ff60d760
-      internalID: -496490257
+      spriteID: 1d4b93071b6b2434d9b38ce83cf94603
+      internalID: 1878965742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orp Climbing - muted_7
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29328284aab7d64f9474c4b34061179
+      internalID: 1352753374
       vertices: []
       indices: 
       edges: []
@@ -168,8 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eury-Orp jumping_0: 74924446
-      Eury-Orp jumping_1: -496490257
+      Orp Climbing - muted_1: -1339614774
+      Orp Climbing - muted_6: 1878965742
+      Orp Climbing - muted_4: -583026556
+      Orp Climbing - muted_7: 1352753374
+      Orp Climbing - muted_0: 497843103
+      Orp Climbing - muted_5: -1268666730
+      Orp Climbing - muted_2: 410121535
+      Orp Climbing - muted_3: -1158633356
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

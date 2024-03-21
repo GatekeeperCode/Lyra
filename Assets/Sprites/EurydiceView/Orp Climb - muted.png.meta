@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 830dfba2bb9988e488771e38b72093d2
+guid: c9556dfce34e6564c8d6d08f4badd501
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eury-Orp lyre_0
+      name: Orp Climb - muted_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 256
-        height: 256
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccee0452d9551ea40af2db03228c591f
-      internalID: -348992341
+      spriteID: 7a6877b7e160e9044aa8cd9407bc9834
+      internalID: 1202476593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eury-Orp lyre_1
+      name: Orp Climb - muted_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f5a473040aa84247844fb86305552db
-      internalID: 1936264428
+      spriteID: 6389ddd03249afb4bbf552cf10c22f20
+      internalID: 1116118491
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eury-Orp lyre_1: 1936264428
-      Eury-Orp lyre_0: -348992341
+      Orp Climb - muted_1: 1116118491
+      Orp Climb - muted_0: 1202476593
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
