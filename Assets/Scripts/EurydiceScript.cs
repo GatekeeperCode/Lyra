@@ -39,6 +39,7 @@ public class EurydiceScript : MonoBehaviour
         } else
         {
             playerCount = 1;
+            print("playerCount: " + playerCount);
         }
     }
 
@@ -75,18 +76,7 @@ public class EurydiceScript : MonoBehaviour
             _lastTimegrounded = Time.time;
             _rbody.gravityScale = 1;
         }
-        if (playerCount == 2)
-        {
-            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick2Button4)) && WasGrounded())
-            {
-                _startedJump = true;
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick2Button4))
-            {
-                _stoppedJump = true;
-            }
-        }
-        else
+        if (playerCount == 1)
         {
             if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
             {
@@ -97,8 +87,19 @@ public class EurydiceScript : MonoBehaviour
                 _stoppedJump = true;
             }
         }
+        else
+        {
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick2Button4)) && WasGrounded())
+            {
+                _startedJump = true;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick2Button4))
+            {
+                _stoppedJump = true;
+            }
+        }
 
-        //Check for climbinng
+        //Check for climbing
         if (climbAttempt()) { 
             _climbing = true;
         }
@@ -107,7 +108,14 @@ public class EurydiceScript : MonoBehaviour
         }
 
         //Flip character
-        float xdir = Input.GetAxis("EuroHorizontal");
+        float xdir = 0;
+        if(playerCount == 1)
+        {
+            xdir = Input.GetAxis("EuroHorizontal");
+        } else
+        {
+            xdir = Input.GetAxis("EuroHorizontalOnly");
+        }
         if (xdir < 0 && _facingRight)
         {
             Flip();
@@ -125,9 +133,17 @@ public class EurydiceScript : MonoBehaviour
 
         //Reset constraints
         _rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        
+
         //Move Character
-        float xdir = Input.GetAxis("EuroHorizontal");
+        float xdir = 0;
+        if (playerCount == 1)
+        {
+            xdir = Input.GetAxis("EuroHorizontal");
+        }
+        else
+        {
+            xdir = Input.GetAxis("EuroHorizontalOnly");
+        }
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
         if (_climbing)
@@ -189,7 +205,15 @@ public class EurydiceScript : MonoBehaviour
     {
         _rbody.gravityScale = 0;
 
-        float ydir = Input.GetAxis("EuroVertical");
+        float ydir = 0;
+        if (playerCount == 1)
+        {
+            ydir = Input.GetAxis("EuroVertical");
+        }
+        else
+        {
+            ydir = Input.GetAxis("EuroVerticalOnly");
+        }
         _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
 
     }

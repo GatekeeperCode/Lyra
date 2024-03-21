@@ -27,6 +27,7 @@ public class OrpheusScript : MonoBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     bool _paused = false;
+    int playerCount;
     float _lastTimegrounded = 0;
     Vector3 _pausedVelocity;
 
@@ -39,11 +40,22 @@ public class OrpheusScript : MonoBehaviour
         _asource = GetComponent<AudioSource>();
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
+
+        if (PlayerPrefs.HasKey("PlayerCount"))
+        {
+            playerCount = PlayerPrefs.GetInt("playerCount");
+        }
+        else
+        {
+            playerCount = 1;
+            print("playerCount: " + playerCount);
+        }
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
+
         //Paused Screen
         if (_manager.pausedGame != _paused)
         {
@@ -73,7 +85,7 @@ public class OrpheusScript : MonoBehaviour
         {
             _lastTimegrounded = Time.time;
         }
-        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5))) && WasGrounded())
+        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
         {
             _startedJump = true;
             _OrphView.SetBool("Jumping", true);
@@ -132,7 +144,15 @@ public class OrpheusScript : MonoBehaviour
         }
 
         //Flip character
-        float xdir = Input.GetAxis("Horizontal");
+        float xdir = 0;
+        if (playerCount == 1)
+        {
+            xdir = Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            xdir = Input.GetAxis("HorizontalOnly");
+        }
         if (xdir < 0 && _facingRight)
         {
             Flip();
@@ -173,7 +193,15 @@ public class OrpheusScript : MonoBehaviour
         _rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //Move Character
-        float xdir = Input.GetAxis("Horizontal");
+        float xdir = 0;
+        if (playerCount == 1)
+        {
+            xdir = Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            xdir = Input.GetAxis("HorizontalOnly");
+        }
         _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
         if (_climbing)
@@ -234,7 +262,15 @@ public class OrpheusScript : MonoBehaviour
     {
         _rbody.gravityScale = 0;
 
-        float ydir = Input.GetAxis("Vertical");
+        float ydir = 0;
+        if (playerCount == 1)
+        {
+            ydir = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            ydir = Input.GetAxis("VerticalOnly");
+        }
         _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
     }
 
