@@ -54,7 +54,7 @@ public class CameraManagerScript : MonoBehaviour
         }
 
         // Check for camera switching
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && !transition && isSinglePlayer)
+        if ((Input.GetKeyDown(KeyCode.Space) || Mathf.Abs(Input.GetAxis("LeftCam")) >= 0.2 || Mathf.Abs(Input.GetAxis("RightCam")) >= 0.2) && !transition && isSinglePlayer)
         {
             //Set up transition
             transition = true;

@@ -85,7 +85,7 @@ public class OrpheusScript : MonoBehaviour
         }
 
         //Check for lyre
-        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.Joystick1Button2)) && IsOnFloor())
+        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.Joystick1Button1)) && IsOnFloor())
         {
             if(!_asource.isPlaying)
             {
@@ -96,7 +96,7 @@ public class OrpheusScript : MonoBehaviour
             _EuryView.SetBool("Lyre", true);
 
         }
-        if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button2) || !IsOnFloor())
+        if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button1) || !IsOnFloor())
         {
             _lyreRaise = false;
             _OrphView.SetBool("Lyre", false);
