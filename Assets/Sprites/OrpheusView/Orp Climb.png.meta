@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0602c1901e7bfb408414bb2c795ee1b
+guid: 906e46bb7ae08d24bb451f4508de0219
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Orp Standing_0
+      name: Orp Climb_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfdec6739af953040992c1fa1b487e72
-      internalID: 1248238481
+      spriteID: 65227d249e3305b488051734f30f5fff
+      internalID: -1710927144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Orp Standing_1
+      name: Orp Climb_1
       rect:
         serializedVersion: 2
         x: 0
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1dd30be1730c464cad35ba2c49364e8
-      internalID: -130798557
+      spriteID: 0932823e28325a24c87e3808098ac536
+      internalID: -578187394
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Orp Standing_1: -130798557
-      Orp Standing_0: 1248238481
+      Orp Climb_0: -1710927144
+      Orp Climb_1: -578187394
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
