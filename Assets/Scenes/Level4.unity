@@ -7223,6 +7223,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Opening Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 2894825793788351723, guid: 4cabadada41d434499d29d6d00f432f7, type: 3}
+      propertyPath: _stayDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894825793788351723, guid: 4cabadada41d434499d29d6d00f432f7, type: 3}
+      propertyPath: _button2Pressed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5313401783985912894, guid: 4cabadada41d434499d29d6d00f432f7, type: 3}
       propertyPath: m_Size.y
       value: 0.98708785
@@ -8067,7 +8075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.48
+      value: -3.95
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_LocalPosition.z
