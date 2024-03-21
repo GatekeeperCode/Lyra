@@ -41,7 +41,7 @@ public class OrpheusScript : MonoBehaviour
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
 
-        if (PlayerPrefs.HasKey("PlayerCount"))
+        if (PlayerPrefs.HasKey("playerCount"))
         {
             playerCount = PlayerPrefs.GetInt("playerCount");
         }

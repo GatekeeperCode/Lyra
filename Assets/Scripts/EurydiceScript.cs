@@ -33,7 +33,7 @@ public class EurydiceScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
-        if (PlayerPrefs.HasKey("PlayerCount"))
+        if (PlayerPrefs.HasKey("playerCount"))
         {
             playerCount = PlayerPrefs.GetInt("playerCount");
         } else
