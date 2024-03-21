@@ -101,7 +101,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: PS4
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -120,18 +120,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1793
-        width: 256
-        height: 255
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f35e5888a59649469b48ad8097b1fcd
-      internalID: -1833144366
+      spriteID: aecfeaf6c10744e43a1cf4b889835db7
+      internalID: 702181785
       vertices: []
       indices: 
       edges: []
@@ -140,19 +140,19 @@ TextureImporter:
       name: Eury-Orp walking_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 256
-        height: 256
+        x: 1024
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c49a0f31dd9e2c4ba42ec26d0316905
-      internalID: -705965546
+      spriteID: cfb61e6c9fac3b54e9066ecaefb3a290
+      internalID: 374279069
       vertices: []
       indices: 
       edges: []
@@ -161,19 +161,19 @@ TextureImporter:
       name: Eury-Orp walking_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1280
-        width: 256
-        height: 256
+        x: 2048
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f49e06264dfe32e4aac69fdb0271dec3
-      internalID: -1466879507
+      spriteID: 214b727378d2e344f965e23cd3ed3ea4
+      internalID: 357808035
       vertices: []
       indices: 
       edges: []
@@ -184,17 +184,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1024
-        width: 256
-        height: 256
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1963da8458dcaaf4ea023de71703e3a0
-      internalID: 410676911
+      spriteID: 853a3aed831246f4490b2c73b72b8386
+      internalID: -1142763585
       vertices: []
       indices: 
       edges: []
@@ -203,19 +203,19 @@ TextureImporter:
       name: Eury-Orp walking_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
-        width: 256
-        height: 256
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77f988b0020ce0e41b25adc5c15ccc92
-      internalID: -539889126
+      spriteID: 2d72b97ba7996b1439fcf74b0019298c
+      internalID: -1443988057
       vertices: []
       indices: 
       edges: []
@@ -224,19 +224,19 @@ TextureImporter:
       name: Eury-Orp walking_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 256
-        height: 256
+        x: 2048
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72bf9f77ea0544944ae0dde8f88711e1
-      internalID: -165282178
+      spriteID: ff7e8d42f8b2a1641807f5d7a7942bc0
+      internalID: 691806995
       vertices: []
       indices: 
       edges: []
@@ -246,18 +246,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 256
-        height: 256
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07624c358c94fad42aa5a69c52c8a16d
-      internalID: -49821097
+      spriteID: 8dc14b6583b026d41b08786b12e28821
+      internalID: 1778758428
       vertices: []
       indices: 
       edges: []
@@ -266,19 +266,19 @@ TextureImporter:
       name: Eury-Orp walking_7
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1024
         y: 0
-        width: 256
-        height: 256
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5addc6106776574c9cf0aa9d9426c5f
-      internalID: 1792588818
+      spriteID: 814349c17ea3fc84192e50ce28bdb398
+      internalID: 1925827544
       vertices: []
       indices: 
       edges: []
@@ -294,14 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eury-Orp walking_0: -1833144366
-      Eury-Orp walking_4: -539889126
-      Eury-Orp walking_2: -1466879507
-      Eury-Orp walking_7: 1792588818
-      Eury-Orp walking_1: -705965546
-      Eury-Orp walking_5: -165282178
-      Eury-Orp walking_6: -49821097
-      Eury-Orp walking_3: 410676911
+      Eury-Orp walking_0: 702181785
+      Eury-Orp walking_4: -1443988057
+      Eury-Orp walking_2: 357808035
+      Eury-Orp walking_7: 1925827544
+      Eury-Orp walking_1: 374279069
+      Eury-Orp walking_5: 691806995
+      Eury-Orp walking_6: 1778758428
+      Eury-Orp walking_3: -1142763585
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

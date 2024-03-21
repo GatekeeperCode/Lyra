@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f2d96be4dde30ed4aab5e90645e28991
+guid: 8d1110a1d29487c4b865ce32a1724880
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eury-Orp jumping_0
+      name: Eury-Orp lyre 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05b2ee559ba8c0d4b9ec4f918a4f20ca
-      internalID: 74924446
+      spriteID: 652699cb5615bc043a7e157adceb3f2b
+      internalID: 1138298337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eury-Orp jumping_1
+      name: Eury-Orp lyre 1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4ab776758b15064cad4b568ff60d760
-      internalID: -496490257
+      spriteID: 1b50f698617b1f544aef5dbc7ddd7e69
+      internalID: -1788783976
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eury-Orp jumping_0: 74924446
-      Eury-Orp jumping_1: -496490257
+      Eury-Orp lyre 1_1: -1788783976
+      Eury-Orp lyre 1_0: 1138298337
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
