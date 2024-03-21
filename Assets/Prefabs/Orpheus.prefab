@@ -101,8 +101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386372698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.01, z: 0}
-  m_LocalScale: {x: 3.9221437, y: 4.0241523, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0.04, z: 0}
+  m_LocalScale: {x: 1.0019543, y: 1.0073054, z: 5.2865825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8083368081815838466}
@@ -169,12 +169,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1833144366, guid: 448f3ec221a57a24fa7fb57c085438b4, type: 3}
+  m_Sprite: {fileID: 702181785, guid: 448f3ec221a57a24fa7fb57c085438b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.55}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -321,6 +321,7 @@ MonoBehaviour:
   min: 1
   _OrphView: {fileID: 611543353}
   _EuryView: {fileID: 1386372701}
+  _rbody: {fileID: 0}
   _lyreRaise: 0
   _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
   _volume: 0.5
