@@ -38,7 +38,7 @@ public class ManagerScript : MonoBehaviour
         }
 
         //Paused Screen
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7) || (PlayerPrefs.GetInt("playerCount") == 2 && (Input.GetKeyDown(KeyCode.Joystick2Button7))))
         {
             if (!pausedGame) //entering paused screen
             {

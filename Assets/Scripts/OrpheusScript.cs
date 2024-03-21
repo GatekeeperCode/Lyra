@@ -73,7 +73,7 @@ public class OrpheusScript : MonoBehaviour
         {
             _lastTimegrounded = Time.time;
         }
-        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
+        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5))) && WasGrounded())
         {
             _startedJump = true;
             _OrphView.SetBool("Jumping", true);

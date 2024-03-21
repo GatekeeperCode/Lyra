@@ -23,6 +23,7 @@ public class EurydiceScript : MonoBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     bool _paused = false;
+    int playerCount;
     float _lastTimegrounded = 0;
     Vector3 _pausedVelocity;
 
@@ -32,6 +33,13 @@ public class EurydiceScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
+        if (PlayerPrefs.HasKey("PlayerCount"))
+        {
+            playerCount = PlayerPrefs.GetInt("playerCount");
+        } else
+        {
+            playerCount = 1;
+        }
     }
 
     // Update is called once per frame
@@ -67,13 +75,27 @@ public class EurydiceScript : MonoBehaviour
             _lastTimegrounded = Time.time;
             _rbody.gravityScale = 1;
         }
-        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
+        if (playerCount == 2)
         {
-            _startedJump = true;
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick2Button4)) && WasGrounded())
+            {
+                _startedJump = true;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick2Button4))
+            {
+                _stoppedJump = true;
+            }
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick1Button4))
+        else
         {
-            _stoppedJump = true;
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
+            {
+                _startedJump = true;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick1Button4))
+            {
+                _stoppedJump = true;
+            }
         }
 
         //Check for climbinng
