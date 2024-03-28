@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2894825793788351723}
   - component: {fileID: 7113801919058806459}
   - component: {fileID: 5985512647727822198}
+  - component: {fileID: -7735251396575528845}
   m_Layer: 15
   m_Name: Opening Wall
   m_TagString: Untagged
@@ -334,6 +335,22 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &-7735251396575528845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157158476205735858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &8080729499562094468
 GameObject:
   m_ObjectHideFlags: 0
