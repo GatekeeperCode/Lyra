@@ -2569,6 +2569,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eurydice
       objectReference: {fileID: 0}
+    - target: {fileID: 5804191723382334120, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888708327446788817, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
 --- !u!1 &591747834 stripped
@@ -3139,6 +3147,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4730336940088447072, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 516390807864865660, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
       propertyPath: wall
       value: 
@@ -3150,6 +3162,10 @@ PrefabInstance:
     - target: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
       propertyPath: m_Name
       value: Orpheus
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8083368081815838466, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
       propertyPath: m_RootOrder
@@ -5763,6 +5779,7 @@ GameObject:
   - component: {fileID: 1563994390}
   - component: {fileID: 1563994389}
   - component: {fileID: 1563994388}
+  - component: {fileID: 1563994391}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -5907,6 +5924,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1563994391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563994387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab84b5bb3760574bad675faa045478f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _euryChar: {fileID: 591747835}
+  _eurySpawn: {fileID: 0}
+  _orphChar: {fileID: 804177674}
+  _orphSpawn: {fileID: 0}
+  _netChar: {fileID: 0}
 --- !u!1001 &1565441603
 PrefabInstance:
   m_ObjectHideFlags: 0
