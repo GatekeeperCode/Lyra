@@ -8,7 +8,6 @@ public class NetworkedCharacterScript : MonoBehaviour
     public GameObject _eurySpawn;
     public GameObject _orphChar;
     public GameObject _orphSpawn;
-    public GameObject _netChar;
     
 
     // Start is called before the first frame update
@@ -21,7 +20,10 @@ public class NetworkedCharacterScript : MonoBehaviour
         }
         else
         {
+            GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
 
+            g[0].GetComponent<Transform>().position = _orphSpawn.transform.position;
+            g[1].GetComponent<Transform>().position = _eurySpawn.transform.position;
         }
     }
 
