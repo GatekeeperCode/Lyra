@@ -12,13 +12,21 @@ public class FloorScript : MonoBehaviour
     public bool[] setFalse;
 
     bool thisPad = false;
+    bool haveScript = false;
     OrpheusScript orpheus;
     ManagerScript manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        orpheus = FindObjectOfType<OrpheusScript>();
+        if(PlayerPrefs.GetInt("playerCount") == 3)
+        {
+            Invoke("FindNetworkedScript", 5);
+        }
+        else
+        {
+            Invoke("FindScript", 5);
+        }
         manager = FindObjectOfType<ManagerScript>();
         for(int i = 0; i < walls.Length; i++)
         {
@@ -34,7 +42,7 @@ public class FloorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.pausedGame)
+        if (manager.pausedGame || !haveScript)
         {
             return;
         }
@@ -50,7 +58,7 @@ public class FloorScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (manager.pausedGame)
+        if (manager.pausedGame || !haveScript)
         {
             return;
         }
@@ -104,5 +112,17 @@ public class FloorScript : MonoBehaviour
         {
             thisPad = false;
         }
+    }
+
+    private void FindScript()
+    {
+        orpheus = FindObjectOfType<OrpheusScript>();
+        haveScript = true;
+    }
+
+    private void FindNetworkedScript()
+    {
+        //orpheus = FindObjectOfType<SOMETHING IDK>();
+        //haveScript = true;
     }
 }
