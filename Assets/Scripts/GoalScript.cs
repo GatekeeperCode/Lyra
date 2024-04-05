@@ -26,7 +26,7 @@ public class GoalScript : MonoBehaviour
         if (CharactersInGoal() || Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.Joystick1Button6)) //dev key -> delete later
         {
             manager.Nextlevel();
-        } else if(PlayerPrefs.GetInt("playerCount") == 2 && Input.GetKeyDown(KeyCode.Joystick2Button6))
+        } else if(PlayerPrefs.GetInt("playerCount") == 2 && Input.GetKeyDown(KeyCode.Joystick2Button6)) //also a dev key
         {
             manager.Nextlevel();
         }
