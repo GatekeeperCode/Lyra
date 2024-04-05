@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class ManagerScript : MonoBehaviour
 {
     public Text _timer;
-    public Text _paused;
+    public GameObject _paused;
+    public GameObject _muteButton;
+    public Sprite _muteImage;
+    public Sprite _unMuteImage;
+    public string _thisScene;
     public string _nextScene;
     public bool pausedGame = false;
+    bool muted = false;
     float startTime;
     float pausedStartTime;
     float previousLevelTime;
@@ -77,7 +82,6 @@ public class ManagerScript : MonoBehaviour
     }
     private void EndGame()
     {
-        print("EndGame");
         PlayerPrefs.SetFloat("ThisTime", currentTime);
         if (PlayerPrefs.HasKey("BestTime"))
         {
@@ -96,6 +100,34 @@ public class ManagerScript : MonoBehaviour
         }
 
         SceneManager.LoadScene(_nextScene);
+    }
+
+    public void OnRestartDown()
+    {
+        SceneManager.LoadScene(_thisScene);
+        print("restart");
+    }
+
+    public void onQuitDown()
+    {
+        SceneManager.LoadScene("MenuScene");
+        print("quit");
+    }
+
+    public void onMuteDown()
+    {
+        //Pause/play audioclip here
+
+        if (muted)
+        {
+            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
+        }
+        else
+        {
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
+        }
+        muted = !muted;
+        print("muted");
     }
 
     private void OnApplicationQuit()
