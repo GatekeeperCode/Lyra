@@ -118,6 +118,7 @@ public class ManagerScript : MonoBehaviour
     {
         //Pause/play audioclip here
 
+        print("muted");
         if (muted)
         {
             _muteButton.GetComponent<Image>().sprite = _unMuteImage;
@@ -127,7 +128,6 @@ public class ManagerScript : MonoBehaviour
             _muteButton.GetComponent<Image>().sprite = _muteImage;
         }
         muted = !muted;
-        print("muted");
     }
 
     private void OnApplicationQuit()
