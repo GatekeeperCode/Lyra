@@ -8,28 +8,52 @@ public class NetworkedCharacterScript : MonoBehaviour
     public GameObject _eurySpawn;
     public GameObject _orphChar;
     public GameObject _orphSpawn;
-    
+
+    GameObject[] g;
+    bool p1Spawn;
+    bool p2Spawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        p1Spawn = false;
+        p2Spawn = false;
+
         if(PlayerPrefs.GetInt("playerCount") != 3)
         {
             _euryChar.SetActive(true);
             _orphChar.SetActive(true);
-        }
-        else
-        {
-            GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
-
-            g[0].GetComponent<Transform>().position = _orphSpawn.transform.position;
-            g[1].GetComponent<Transform>().position = _eurySpawn.transform.position;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(!p2Spawn)
+        {
+            GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
+
+            if(g.Length>0)
+            {
+                if(!p1Spawn)
+                {
+                    g[0].transform.position = _orphSpawn.transform.position;
+                    p1Spawn = true;
+                }
+                else
+                {
+                    if(g[0].activeSelf)
+                    {
+                        g[1].transform.position = _eurySpawn.transform.position;
+                    }
+                    else
+                    {
+                        g[0].transform.position = _eurySpawn.transform.position;
+                    }
+
+                    p2Spawn = true;
+                }
+            }
+        }
     }
 }

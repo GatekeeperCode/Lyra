@@ -510,6 +510,8 @@ GameObject:
   - component: {fileID: 113489608}
   - component: {fileID: 113489607}
   - component: {fileID: 113489609}
+  - component: {fileID: 113489611}
+  - component: {fileID: 113489610}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -560,6 +562,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113489606}
   m_Enabled: 1
+--- !u!114 &113489610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113489606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1038735646
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &113489611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113489606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3bd03df13e3c546a4eeed4061140d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &120199390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 120199390, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
@@ -777,7 +807,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 160035743}
-    PlayerPrefab: {fileID: 0}
+    PlayerPrefab: {fileID: 5597981680849827569, guid: d093bb94607d05941b501d5ccefb8f13, type: 3}
     NetworkPrefabs:
     - Override: 0
       Prefab: {fileID: 1157158476205735858, guid: 35d168068c709bd4f88232ebd0701103, type: 3}
@@ -836,6 +866,11 @@ MonoBehaviour:
       OverridingTargetPrefab: {fileID: 0}
     - Override: 0
       Prefab: {fileID: 1157158476205735858, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 5597981680849827569, guid: d093bb94607d05941b501d5ccefb8f13, type: 3}
       SourcePrefabToOverride: {fileID: 0}
       SourceHashToOverride: 0
       OverridingTargetPrefab: {fileID: 0}
