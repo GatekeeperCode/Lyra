@@ -9,10 +9,12 @@ public class NetManagerScript : MonoBehaviour
     public Text single;
     public Text local;
     public Text networked;
+    public Text netInfo;
 
     // Start is called before the first frame update
     void Start()
     {
+        netInfo.gameObject.SetActive(false);
         if (PlayerPrefs.GetInt("playerCount") == 2)
         {
             OnLocalDown();
@@ -47,6 +49,7 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player\n-Selected";
         local.text = "Local Multiplayer";
         networked.text = "Networked Multiplayer";
+        netInfo.gameObject.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 1);
     }
@@ -56,6 +59,7 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player";
         local.text = "Local Multiplayer\n-Selected";
         networked.text = "Networked Multiplayer";
+        netInfo.gameObject.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 2);
     }
@@ -65,6 +69,7 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player";
         local.text = "Local Multiplayer";
         networked.text = "Networked Multiplayer\n-Selected";
+        netInfo.gameObject.SetActive(true);
 
         PlayerPrefs.SetInt("playerCount", 3);
     }
