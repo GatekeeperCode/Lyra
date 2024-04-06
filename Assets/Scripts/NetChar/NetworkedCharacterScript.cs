@@ -9,7 +9,6 @@ public class NetworkedCharacterScript : MonoBehaviour
     public GameObject _orphChar;
     public GameObject _orphSpawn;
 
-    GameObject[] g;
     bool p1Spawn;
     bool p2Spawn;
 
