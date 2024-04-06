@@ -78,3 +78,6 @@ crashlytics-build.properties
 
 # PC Build
 /PC Build
+
+# Build
+/Build
