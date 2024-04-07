@@ -75,3 +75,9 @@ crashlytics-build.properties
 /PS4 Build
 /PS4 Build_BurstDebugInformation_DoNotShip
 /PS4 Build_SymbolFiles
+
+# PC Build
+/PC Build
+
+# Build
+/Build

@@ -136,11 +136,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6624502486548041418, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
 --- !u!4 &2054297449820497868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2499029780133683651, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+  m_PrefabInstance: {fileID: 4479959016192542223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4217113735462259975 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 336134328982506248, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
+  m_PrefabInstance: {fileID: 4479959016192542223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7761991457957185699 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6166589964026941100, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
   m_PrefabInstance: {fileID: 4479959016192542223}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7971550988458812583 stripped
@@ -162,16 +176,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32832
   ladderLayer:
     serializedVersion: 2
-    m_Bits: 0
-  playerSpeed: 0
-  climbingSpeed: 0
-  jumpForce: 0
-  coyoteTime: 0
-  _EuryView: {fileID: 0}
-  _OrphView: {fileID: 0}
+    m_Bits: 12288
+  playerSpeed: 3.5
+  climbingSpeed: 3
+  jumpForce: 7
+  coyoteTime: 0.15
+  _EuryView: {fileID: 4217113735462259975}
+  _OrphView: {fileID: 7761991457957185699}
 --- !u!1001 &6872426242839917338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +193,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1833338815441525757}
     m_Modifications:
+    - target: {fileID: 516390807864865660, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1333433598470827722, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
       propertyPath: m_Name
       value: Orpheus
@@ -269,22 +287,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32832
   ladderLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   floorLayer:
     serializedVersion: 2
-    m_Bits: 0
-  playerSpeed: 0
-  climbingSpeed: 0
-  jumpForce: 0
-  coyoteTime: 0
-  max: 0
-  min: 0
-  _OrphView: {fileID: 0}
-  _EuryView: {fileID: 0}
+    m_Bits: 16384
+  playerSpeed: 4.5
+  climbingSpeed: 4
+  jumpForce: 5
+  coyoteTime: 0.15
+  max: 5
+  min: 1
+  _OrphView: {fileID: 6872426243316832803}
+  _EuryView: {fileID: 6872426243672370503}
   _rbody: {fileID: 0}
   _lyreRaise: 0
-  _clip: {fileID: 0}
+  _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
   _volume: 0.5
+--- !u!95 &6872426243316832803 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 611543353, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+  m_PrefabInstance: {fileID: 6872426242839917338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6872426243672370503 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1386372701, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+  m_PrefabInstance: {fileID: 6872426242839917338}
+  m_PrefabAsset: {fileID: 0}
