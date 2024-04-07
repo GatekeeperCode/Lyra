@@ -44,14 +44,17 @@ public class NetworkedCharacterScript : MonoBehaviour
                 {
                     if(g[0].activeSelf)
                     {
-                        g[1].transform.position = _eurySpawn.transform.position;
+                        if(g.Length>1)
+                        {
+                            g[1].transform.position = _eurySpawn.transform.position;
+                            p2Spawn = true;
+                        }
                     }
                     else
                     {
                         g[0].transform.position = _eurySpawn.transform.position;
+                        p2Spawn = true;
                     }
-
-                    p2Spawn = true;
                 }
             }
         }

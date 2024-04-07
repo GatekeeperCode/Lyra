@@ -15,22 +15,22 @@ public class EuryOrphFlipScript : NetworkBehaviour
         {
             if(IsLocalPlayer)
             {
-                _orph.SetActive(true);
+                _eury.SetActive(false);
             }
             else
             {
-                _eury.SetActive(true);
+                _orph.SetActive(false);
             }
         }
         else
         {
             if (IsLocalPlayer)
             {
-                _eury.SetActive(true);
+                _orph.SetActive(false);
             }
             else
             {
-                _orph.SetActive(true);
+                _eury.SetActive(false);
             }
         }
     }
