@@ -51,18 +51,21 @@ public class NetworkedCharacterScript : MonoBehaviour
                 {
                     if (g[0].activeSelf)
                     {
-                        print("g[1]");
-                        g[1].transform.position = _eurySpawn.transform.position;
-                        print("g[1] not broken");
+                        if(g.Length>1)
+                        {
+                            print("g[1]");
+                            g[1].transform.position = _eurySpawn.transform.position;
+                            print("g[1] not broken");
+                            p2Spawn = true;
+                        }
                     }
                     else
                     {
                         print("g[2]");
                         g[0].transform.position = _eurySpawn.transform.position;
+                        p2Spawn = true;
                         print("g[2] not broken");
                     }
-
-                    p2Spawn = true;
                 }
             }
             
