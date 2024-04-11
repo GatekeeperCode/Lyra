@@ -11,6 +11,8 @@ TagManager:
   - OrphWall
   - Box
   - NetCharacter
+  - EuryMainCam
+  - CamManager
   layers:
   - Default
   - TransparentFX

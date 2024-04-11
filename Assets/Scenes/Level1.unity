@@ -2918,7 +2918,7 @@ GameObject:
   - component: {fileID: 710707656}
   m_Layer: 0
   m_Name: EuryCam
-  m_TagString: Untagged
+  m_TagString: EuryMainCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6383,7 +6383,7 @@ GameObject:
   - component: {fileID: 1713494208}
   m_Layer: 0
   m_Name: CamManager
-  m_TagString: Untagged
+  m_TagString: CamManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -41,6 +41,7 @@ public class OrphNetworkScript : NetworkBehaviour
         _asource = GetComponent<AudioSource>();
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
+        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
 
         if (PlayerPrefs.HasKey("playerCount"))
         {

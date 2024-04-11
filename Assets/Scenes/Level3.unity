@@ -7874,7 +7874,7 @@ GameObject:
   - component: {fileID: 1561669607}
   m_Layer: 0
   m_Name: EuryCam
-  m_TagString: Untagged
+  m_TagString: EuryMainCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,6 +13,7 @@ public class CameraManagerScript : MonoBehaviour
     public bool orphView = true;
     float cameraTransitionSpeed = 0.2f;
     bool isSinglePlayer;
+    bool isNetworked;
     bool transition = false;
     Vector3 camOffset = new Vector3(2, 2, -10);
     ManagerScript _manager;
@@ -27,14 +28,26 @@ public class CameraManagerScript : MonoBehaviour
             _singlePlayerCam2.SetActive(false);
             _singlePlayerCam1.SetActive(false);
             isSinglePlayer = false;
+            isNetworked = false;
             _splitCam1.SetActive(true);
             _splitCam2.SetActive(true);
+        }
+        else if(PlayerPrefs.GetInt("playerCount")==3)
+        {
+            _singlePlayerCam2.SetActive(true);
+            _singlePlayerCam1.SetActive(true);
+            isSinglePlayer = false;
+            isNetworked = true;
+            orphView = false;
+            _splitCam1.SetActive(false);
+            _splitCam2.SetActive(false);
         }
         else
         {
             _singlePlayerCam2.SetActive(false);
             _singlePlayerCam1.SetActive(true);
             isSinglePlayer = true;
+            isNetworked = false;
             _splitCam1.SetActive(false);
             _splitCam2.SetActive(false);
         }
@@ -82,7 +95,7 @@ public class CameraManagerScript : MonoBehaviour
         }
 
         // Center cameras on players
-        if(isSinglePlayer)
+        if(isSinglePlayer || isNetworked)
         {
             if (orphView) characterCenter(Orpheus, _singlePlayerCam1);
             else characterCenter(Eurydice, _singlePlayerCam2);

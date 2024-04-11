@@ -42,6 +42,7 @@ public class EuryNetworkScript : NetworkBehaviour
             playerCount = 1;
             print("playerCount: " + playerCount);
         }
+        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
     }
 
     // Update is called once per frame
