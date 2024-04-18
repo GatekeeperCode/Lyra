@@ -13,6 +13,7 @@ TagManager:
   - NetCharacter
   - EuryMainCam
   - CamManager
+  - NetMan
   layers:
   - Default
   - TransparentFX
