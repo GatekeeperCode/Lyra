@@ -34,37 +34,28 @@ public class NetworkedCharacterScript : MonoBehaviour
 
             if (g.Length == 1)
             {
-                print("length: " + g.Length);
                 if (!p1Spawn)
                 {
-                    print("entered p1spawning section");
                     g[0].transform.position = _orphSpawn.transform.position;
                     p1Spawn = true;
-                    print("p1 spawned");
                 }
             }
             else if (g.Length == 2)
             {
-                print("length: " + g.Length);
-                print("entering p2spawing section");
                 if(!p2Spawn)
                 {
                     if (g[0].activeSelf)
                     {
                         if(g.Length>1)
                         {
-                            print("g[1]");
                             g[1].transform.position = _eurySpawn.transform.position;
-                            print("g[1] not broken");
                             p2Spawn = true;
                         }
                     }
                     else
                     {
-                        print("g[2]");
                         g[0].transform.position = _eurySpawn.transform.position;
                         p2Spawn = true;
-                        print("g[2] not broken");
                     }
                 }
             }
