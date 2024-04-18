@@ -11,11 +11,14 @@ public class EuryOrphFlipScript : NetworkBehaviour
     GameObject _orphCam;
     GameObject _euryCam;
 
+    CameraManagerScript cms;
+
     // Start is called before the first frame update
     void Start()
     {
         _orphCam = GameObject.FindGameObjectWithTag("MainCamera");
         _euryCam = GameObject.FindGameObjectWithTag("EuryMainCam");
+        cms = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>();
 
         if(IsHost)
         {
@@ -23,6 +26,7 @@ public class EuryOrphFlipScript : NetworkBehaviour
             {
                 _eury.SetActive(false);
                 _euryCam.SetActive(false);
+                cms.orphView = true;
             }
             else
             {
@@ -36,6 +40,7 @@ public class EuryOrphFlipScript : NetworkBehaviour
             {
                 _orph.SetActive(false);
                 _orphCam.SetActive(false);
+                cms.orphView = false;
             }
             else
             {
