@@ -14,13 +14,13 @@ public class Level1NetManScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))
+        if(PlayerPrefs.GetInt("playerCount")==3 && PlayerPrefs.GetInt("host")==1)
         {
             NetworkManager.Singleton.StartHost();
             print("Hosting");
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if ((PlayerPrefs.GetInt("playerCount") == 3 && PlayerPrefs.GetInt("host") == 0))
         {
             NetworkManager.Singleton.StartClient();
         }
