@@ -8,13 +8,7 @@ public class Level1NetManScript : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(PlayerPrefs.GetInt("playerCount")==3 && PlayerPrefs.GetInt("host")==1)
+        if (PlayerPrefs.GetInt("playerCount") == 3 && PlayerPrefs.GetInt("host") == 1)
         {
             NetworkManager.Singleton.StartHost();
             print("Hosting");
@@ -24,5 +18,11 @@ public class Level1NetManScript : NetworkBehaviour
         {
             NetworkManager.Singleton.StartClient();
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 }
