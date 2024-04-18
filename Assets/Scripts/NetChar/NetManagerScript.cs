@@ -9,12 +9,13 @@ public class NetManagerScript : MonoBehaviour
     public Text single;
     public Text local;
     public Text networked;
-    public Text netInfo;
+
+    public GameObject _hostButton;
+    public GameObject _clientButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        netInfo.gameObject.SetActive(false);
         if (PlayerPrefs.GetInt("playerCount") == 2)
         {
             OnLocalDown();
@@ -49,7 +50,8 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player\n-Selected";
         local.text = "Local Multiplayer";
         networked.text = "Networked Multiplayer";
-        netInfo.gameObject.SetActive(false);
+        _hostButton.SetActive(false);
+        _clientButton.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 1);
     }
@@ -59,7 +61,8 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player";
         local.text = "Local Multiplayer\n-Selected";
         networked.text = "Networked Multiplayer";
-        netInfo.gameObject.SetActive(false);
+        _hostButton.SetActive(false);
+        _clientButton.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 2);
     }
@@ -69,9 +72,28 @@ public class NetManagerScript : MonoBehaviour
         single.text = "Single Player";
         local.text = "Local Multiplayer";
         networked.text = "Networked Multiplayer\n-Selected";
-        netInfo.gameObject.SetActive(true);
+
+        _hostButton.SetActive(true);
+        _clientButton.SetActive(true);
+        _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice) - Selected";
+        _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus)";
 
         PlayerPrefs.SetInt("playerCount", 3);
+        PlayerPrefs.SetInt("host", 0);
+    }
+
+    public void becomeClient()
+    {
+        PlayerPrefs.SetInt("host", 0);
+        _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice) - Selected";
+        _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus)";
+    }
+
+    public void becomeHost()
+    {
+        PlayerPrefs.SetInt("host", 1);
+        _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus) - Selected";
+        _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice)";
     }
 
     private void OnApplicationQuit()
