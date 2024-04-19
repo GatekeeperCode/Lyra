@@ -4327,6 +4327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005063394}
   - component: {fileID: 1005063393}
+  - component: {fileID: 1005063395}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -4369,6 +4370,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005063395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005063392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8353d7e0a39a43947a53fb5cde5cc279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: {fileID: 15625680}
+  _paused: {fileID: 534053076}
+  _muteButton: {fileID: 114753421}
+  _muteImage: {fileID: 21300000, guid: 13300e960ca29b84abfcc89907a0dd2e, type: 3}
+  _unMuteImage: {fileID: 21300000, guid: e8da1a7f380e75346aeb43bb89fe61b9, type: 3}
+  _thisScene: Level2
+  _nextScene: Level3
+  pausedGame: 0
 --- !u!1 &1070155915
 GameObject:
   m_ObjectHideFlags: 0

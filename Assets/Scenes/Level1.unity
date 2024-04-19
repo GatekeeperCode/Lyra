@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 113489609}
   - component: {fileID: 113489611}
   - component: {fileID: 113489610}
+  - component: {fileID: 113489612}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -561,7 +562,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113489606}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &113489610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +591,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3bd03df13e3c546a4eeed4061140d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &113489612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113489606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8353d7e0a39a43947a53fb5cde5cc279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: {fileID: 2003200325}
+  _paused: {fileID: 697207362}
+  _muteButton: {fileID: 1144138854}
+  _muteImage: {fileID: 21300000, guid: 13300e960ca29b84abfcc89907a0dd2e, type: 3}
+  _unMuteImage: {fileID: 21300000, guid: e8da1a7f380e75346aeb43bb89fe61b9, type: 3}
+  _thisScene: Level1
+  _nextScene: Level2
+  pausedGame: 0
 --- !u!1 &120199390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 120199390, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
