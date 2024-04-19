@@ -95,7 +95,7 @@ public class EuryNetworkScript : NetworkBehaviour
         }
 
         //Flip character
-        float xdir = 0;
+        float xdir = _rbody.velocity.x;
         
         if(IsLocalPlayer)
         {
