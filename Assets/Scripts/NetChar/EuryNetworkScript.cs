@@ -23,9 +23,9 @@ public class EuryNetworkScript : NetworkBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     bool _paused = false;
-    int playerCount;
     float _lastTimegrounded = 0;
     Vector3 _pausedVelocity;
+    Transform _transform;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +33,8 @@ public class EuryNetworkScript : NetworkBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
-        if (PlayerPrefs.HasKey("playerCount"))
-        {
-            playerCount = PlayerPrefs.GetInt("playerCount");
-        }
-        else
-        {
-            playerCount = 1;
-            print("playerCount: " + playerCount);
-        }
+        _transform = transform;
+
         GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
     }
 
@@ -78,18 +71,8 @@ public class EuryNetworkScript : NetworkBehaviour
             _lastTimegrounded = Time.time;
             _rbody.gravityScale = 1;
         }
-        if (playerCount == 1)
-        {
-            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
-            {
-                _startedJump = true;
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick1Button4))
-            {
-                _stoppedJump = true;
-            }
-        }
-        else
+
+        if (IsLocalPlayer)
         {
             if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick2Button4)) && WasGrounded())
             {
@@ -113,14 +96,12 @@ public class EuryNetworkScript : NetworkBehaviour
 
         //Flip character
         float xdir = 0;
-        if (playerCount == 1)
-        {
-            xdir = Input.GetAxis("EuroHorizontal");
-        }
-        else
+        
+        if(IsLocalPlayer)
         {
             xdir = Input.GetAxis("EuroHorizontalOnly");
         }
+
         if (xdir < 0 && _facingRight)
         {
             Flip();
@@ -141,15 +122,14 @@ public class EuryNetworkScript : NetworkBehaviour
 
         //Move Character
         float xdir = 0;
-        if (playerCount == 1)
-        {
-            xdir = Input.GetAxis("EuroHorizontal");
-        }
-        else
+        if(IsLocalPlayer)
         {
             xdir = Input.GetAxis("EuroHorizontalOnly");
+
+            Vector2 axes = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
+            StepMovement(axes);
+            ReportMoveServerRpc(axes, _transform.position);
         }
-        _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
 
         if (_climbing)
         {
@@ -175,6 +155,13 @@ public class EuryNetworkScript : NetworkBehaviour
             _stoppedJump = false;
         }
     }
+
+    private void StepMovement(Vector2 axes)
+    {
+        print("Step Movement");
+        _rbody.velocity = axes;
+    }
+
     private bool IsGrounded()
     {
         Vector2 playerVector = transform.position;
@@ -211,17 +198,46 @@ public class EuryNetworkScript : NetworkBehaviour
         _rbody.gravityScale = 0;
 
         float ydir = 0;
-        if (playerCount == 1)
-        {
-            ydir = Input.GetAxis("EuroVertical");
-        }
-        else
+        if(IsLocalPlayer)
         {
             ydir = Input.GetAxis("EuroVerticalOnly");
+            Vector2 axes = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
+            StepMovement(axes);
+            ReportMoveServerRpc(axes, _transform.position);
         }
-        _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
-
     }
 
+    [ServerRpc (RequireOwnership = false)]
+    private void ReportMoveServerRpc(Vector2 axes, Vector2 posn)
+    {
+        print(axes);
+        StepMovement(axes);
+        if (Vector2.Distance(_transform.position, posn) > 0.1f)
+        {
+            //Yell at that client specifically
+            ulong clientId = GetComponentInParent<NetworkObject>().OwnerClientId;
+            ClientRpcParams stuff = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { clientId } }
+            };
+            FixPosnClientRpc(_transform.position, stuff);
+        }
+        ReportMoveClientRpc(_transform.position);
+    }
+
+    [ClientRpc]
+    private void ReportMoveClientRpc(Vector2 posn)
+    {
+        if (!IsLocalPlayer)
+        {
+            _transform.position = posn;
+        }
+    }
+
+    [ClientRpc]
+    private void FixPosnClientRpc(Vector2 posn, ClientRpcParams stuff)
+    {
+        _transform.position = posn;
+    }
 }
 
