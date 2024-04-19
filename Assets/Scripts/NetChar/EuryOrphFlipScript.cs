@@ -31,7 +31,7 @@ public class EuryOrphFlipScript : NetworkBehaviour
             else
             {
                 _orph.SetActive(false);
-                _eury.GetComponent<EuryNetworkScript>().enabled = false;
+                //_eury.GetComponent<EuryNetworkScript>().enabled = false;
             }
         }
         else
@@ -45,7 +45,7 @@ public class EuryOrphFlipScript : NetworkBehaviour
             else
             {
                 _eury.SetActive(false);
-                _orph.GetComponent<OrphNetworkScript>().enabled = false;
+                //_orph.GetComponent<OrphNetworkScript>().enabled = false;
             }
         }
     }
