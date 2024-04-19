@@ -847,6 +847,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 764806737}
     m_Modifications:
+    - target: {fileID: -4504282231910875108, guid: 61046b2fa98941c4683476f81f6676e2, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1149047709
+      objectReference: {fileID: 0}
     - target: {fileID: 1157158476205735858, guid: 61046b2fa98941c4683476f81f6676e2, type: 3}
       propertyPath: m_Name
       value: Orpheus Lyre Structure
@@ -4817,6 +4821,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2175157434952845640, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480462982795630495, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 72158427
+      objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5566,6 +5578,10 @@ PrefabInstance:
     - target: {fileID: 1157158476205735858, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480462982795630495, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 36937657
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_RootOrder
@@ -6382,7 +6398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6614997
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7393,6 +7409,10 @@ PrefabInstance:
     - target: {fileID: 1157158476205735858, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480462982795630495, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2212632644
       objectReference: {fileID: 0}
     - target: {fileID: 5435375844277618113, guid: 07ff278ed52343b45b7baad498951c64, type: 3}
       propertyPath: m_RootOrder
