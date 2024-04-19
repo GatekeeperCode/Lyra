@@ -28,7 +28,6 @@ public class OrphNetworkScript : NetworkBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     bool _paused = false;
-    int playerCount;
     float _lastTimegrounded = 0;
     Vector3 _pausedVelocity;
 
@@ -42,22 +41,11 @@ public class OrphNetworkScript : NetworkBehaviour
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
         GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
-
-        if (PlayerPrefs.HasKey("playerCount"))
-        {
-            playerCount = PlayerPrefs.GetInt("playerCount");
-        }
-        else
-        {
-            playerCount = 1;
-            print("playerCount: " + playerCount);
-        }
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
-
         //Paused Screen
         if (_manager.pausedGame != _paused)
         {
@@ -81,113 +69,97 @@ public class OrphNetworkScript : NetworkBehaviour
         }
         if (_paused) return;
 
-
-        //Check for jumping
-        if (IsGrounded())
+        if (IsLocalPlayer && IsServer)
         {
-            _lastTimegrounded = Time.time;
-        }
-        if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
-        {
-            _startedJump = true;
-            _OrphView.SetBool("Jumping", true);
-            _EuryView.SetBool("Jumping", true);
-        }
-        if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Joystick1Button5))
-        {
-            _stoppedJump = true;
-        }
-
-        //Check for lyre
-        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.Joystick1Button1)) && IsOnFloor())
-        {
-            if (!_asource.isPlaying)
+            //Check for jumping
+            if (IsGrounded())
             {
-                _asource.PlayOneShot(_clip, _volume);
+                _lastTimegrounded = Time.time;
             }
-            _lyreRaise = true;
-            _OrphView.SetBool("Lyre", true);
-            _EuryView.SetBool("Lyre", true);
-
-        }
-        if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button1) || !IsOnFloor())
-        {
-            _lyreRaise = false;
-            _OrphView.SetBool("Lyre", false);
-            _EuryView.SetBool("Lyre", false);
-            _asource.Stop();
-        }
-
-        //Check for climbing
-        if (climbAttempt())
-        {
-            // Set climbing animations
-            if (Mathf.Abs(_rbody.velocity.y) >= 0.2)
+            if ((Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Joystick1Button5)) && WasGrounded())
             {
-                _OrphView.SetBool("Climbing", true);
-                _EuryView.SetBool("Climbing", true);
-                _OrphView.SetBool("Climb", false);
-                _EuryView.SetBool("Climb", false);
+                _startedJump = true;
+                setAnimationClientRpc("Jumping", true);
+            }
+            if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Joystick1Button5))
+            {
+                _stoppedJump = true;
+            }
+
+            //Check for lyre
+            if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.Joystick1Button1)) && IsOnFloor())
+            {
+                if (!_asource.isPlaying)
+                {
+                    _asource.PlayOneShot(_clip, _volume);
+                }
+                _lyreRaise = true;
+                setAnimationClientRpc("Lyre", true);
+
+            }
+            if (Input.GetKeyUp(KeyCode.RightControl) || Input.GetKeyUp(KeyCode.Joystick1Button1) || !IsOnFloor())
+            {
+                _lyreRaise = false;
+                setAnimationClientRpc("Lyre", false);
+                _asource.Stop();
+            }
+
+            //Check for climbing
+            if (climbAttempt())
+            {
+                // Set climbing animations
+                if (Mathf.Abs(_rbody.velocity.y) >= 0.2)
+                {
+                    setAnimationClientRpc("Climbing", true);
+                    setAnimationClientRpc("Climb", false);
+                }
+                else
+                {
+                    setAnimationClientRpc("Climbing", false);
+                    setAnimationClientRpc("Climb", true);
+                }
+                _climbing = true;
+
             }
             else
             {
-                _OrphView.SetBool("Climbing", false);
-                _EuryView.SetBool("Climbing", false);
-                _OrphView.SetBool("Climb", true);
-                _EuryView.SetBool("Climb", true);
+                _climbing = false;
+                setAnimationClientRpc("Climbing", false);
+                setAnimationClientRpc("Climb", false);
             }
-            _climbing = true;
 
-        }
-        else
-        {
-            _climbing = false;
-            _OrphView.SetBool("Climbing", false);
-            _EuryView.SetBool("Climbing", false);
-            _OrphView.SetBool("Climb", false);
-            _EuryView.SetBool("Climb", false);
-        }
+            //Flip character
+            float xdir = Input.GetAxis("Horizontal");
+            if (xdir < 0 && _facingRight)
+            {
+                FlipClientRpc();
+            }
+            else if (xdir > 0 && !_facingRight)
+            {
+                FlipClientRpc();
+            }
 
-        //Flip character
-        float xdir = 0;
-        if (playerCount == 1)
-        {
-            xdir = Input.GetAxis("Horizontal");
-        }
-        else
-        {
-            xdir = Input.GetAxis("HorizontalOnly");
-        }
-        if (xdir < 0 && _facingRight)
-        {
-            Flip();
-        }
-        else if (xdir > 0 && !_facingRight)
-        {
-            Flip();
+            // Set standing and walking animator values
+            if (Mathf.Abs(_rbody.velocity.x) >= 0.2)
+            {
+                setAnimationClientRpc("Walking", true);
+                setAnimationClientRpc("Standing", false);
+            }
+            else
+            {
+                setAnimationClientRpc("Walking", false);
+                setAnimationClientRpc("Standing", true);
+            }
+
+            moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
         }
 
-        // Set standing and walking animator values
-        if (Mathf.Abs(_rbody.velocity.x) >= 0.2)
-        {
-            _OrphView.SetBool("Walking", true);
-            _OrphView.SetBool("Standing", false);
-            _EuryView.SetBool("Walking", true);
-            _EuryView.SetBool("Standing", false);
-        }
-        else
-        {
-            _OrphView.SetBool("Walking", false);
-            _OrphView.SetBool("Standing", true);
-            _EuryView.SetBool("Walking", false);
-            _EuryView.SetBool("Standing", true);
-        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _OrphView.SetBool("Jumping", false);
-        _EuryView.SetBool("Jumping", false);
+        setAnimationClientRpc("Jumping", false);
     }
 
     private void FixedUpdate()
@@ -198,41 +170,72 @@ public class OrphNetworkScript : NetworkBehaviour
         //Reset constraints
         _rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        //Move Character
-        float xdir = 0;
-        if (playerCount == 1)
+        //Move Orpheus on all machines
+        if(IsLocalPlayer && IsServer)
         {
-            xdir = Input.GetAxis("Horizontal");
-        }
-        else
-        {
-            xdir = Input.GetAxis("HorizontalOnly");
-        }
-        _rbody.velocity = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
+            //Move Orpheus
+            float xdir = Input.GetAxis("Horizontal");
+            setOrpheusVelocityClientRpc(xdir * playerSpeed, _rbody.velocity.y);
 
-        if (_climbing)
-        {
-            Climb();
-        }
-        else
-        {
-            _rbody.gravityScale = 1;
-        }
+            float ydir = Input.GetAxis("Vertical");
+            ClimbClientRpc(ydir, _climbing);
 
-        if (_startedJump)
-        {
-            _rbody.velocity = new Vector2(_rbody.velocity.x, jumpForce);
-            _startedJump = false;
-        }
-        if (_stoppedJump)
-        {
-            if (_rbody.velocity.y > 0)
+
+            if (_startedJump)
             {
-                _rbody.velocity = new Vector2(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+                _startedJump = false;
+                setOrpheusVelocityClientRpc(_rbody.velocity.x, jumpForce);
+                moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
             }
-            _stoppedJump = false;
+            if (_stoppedJump)
+            {
+                _stoppedJump = false;
+                if (_rbody.velocity.y > 0)
+                {
+                    setOrpheusVelocityClientRpc(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
+                    moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
+                }
+            }
         }
     }
+
+    [ClientRpc]
+    private void moveOrpheusLogicClientRpc(bool startedJump, bool stoppedJump, bool climbing, bool lyreRaise)
+    {
+        if (!IsServer)
+        {
+            _startedJump = startedJump;
+            _stoppedJump = stoppedJump;
+            _climbing = climbing;
+            _lyreRaise = lyreRaise;
+
+            print("Started jump: " + startedJump);
+            print("Stopped jump: " + stoppedJump);
+            print("Climbing: " + climbing);
+            print("lyre: " + lyreRaise);
+
+
+        }
+    }
+
+    [ClientRpc]
+    private void setAnimationClientRpc(string name, bool value)
+    {
+        if(IsServer)
+        {
+            _OrphView.SetBool(name, value);
+        } else
+        {
+            _EuryView.SetBool(name, value);
+        }
+    }
+
+    [ClientRpc]
+    private void setOrpheusVelocityClientRpc(float xdir, float ydir)
+    {
+        _rbody.velocity = new Vector2(xdir, ydir);
+    }
+
     private bool IsGrounded()
     {
         Vector2 playerVector = transform.position;
@@ -246,7 +249,8 @@ public class OrphNetworkScript : NetworkBehaviour
         return ((Time.time - _lastTimegrounded) < coyoteTime);
     }
 
-    private void Flip()
+    [ClientRpc]
+    private void FlipClientRpc()
     {
         _facingRight = !_facingRight;
         Vector3 theScale = transform.localScale;
@@ -265,20 +269,19 @@ public class OrphNetworkScript : NetworkBehaviour
         return (hitAbove.collider != null || hitMiddle.collider != null || hitBelow.collider != null);
     }
 
-    private void Climb()
+    [ClientRpc]
+    private void ClimbClientRpc(float ydir, bool climbing)
     {
-        _rbody.gravityScale = 0;
-
-        float ydir = 0;
-        if (playerCount == 1)
+        if (climbing)
         {
-            ydir = Input.GetAxis("Vertical");
+            _rbody.gravityScale = 0;
+            _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
         }
         else
         {
-            ydir = Input.GetAxis("VerticalOnly");
+            _rbody.gravityScale = 1;
         }
-        _rbody.velocity = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
+
     }
 
     public bool IsOnFloor()
