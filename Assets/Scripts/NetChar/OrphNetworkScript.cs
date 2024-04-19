@@ -28,7 +28,6 @@ public class OrphNetworkScript : NetworkBehaviour
     bool _facingRight = true;
     bool _climbing = true;
     bool _paused = false;
-    int playerCount;
     float _lastTimegrounded = 0;
     Vector3 _pausedVelocity;
 
@@ -42,16 +41,6 @@ public class OrphNetworkScript : NetworkBehaviour
         _manager = FindObjectOfType<ManagerScript>();
         _pausedVelocity = Vector3.zero;
         GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
-
-        if (PlayerPrefs.HasKey("playerCount"))
-        {
-            playerCount = PlayerPrefs.GetInt("playerCount");
-        }
-        else
-        {
-            playerCount = 1;
-            print("playerCount: " + playerCount);
-        }
     }
 
     // Update is called once per frame
@@ -197,7 +186,6 @@ public class OrphNetworkScript : NetworkBehaviour
                 _startedJump = false;
                 setOrpheusVelocityClientRpc(_rbody.velocity.x, jumpForce);
                 moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
-
             }
             if (_stoppedJump)
             {
@@ -220,6 +208,13 @@ public class OrphNetworkScript : NetworkBehaviour
             _stoppedJump = stoppedJump;
             _climbing = climbing;
             _lyreRaise = lyreRaise;
+
+            print("Started jump: " + startedJump);
+            print("Stopped jump: " + stoppedJump);
+            print("Climbing: " + climbing);
+            print("lyre: " + lyreRaise);
+
+
         }
     }
 
