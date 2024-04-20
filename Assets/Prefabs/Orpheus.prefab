@@ -191,10 +191,10 @@ GameObject:
   - component: {fileID: 8083368081815838466}
   - component: {fileID: 8733309759833049574}
   - component: {fileID: -8388914318460466223}
-  - component: {fileID: 516390807864865660}
   - component: {fileID: -4730336940088447072}
   - component: {fileID: 611543353}
   - component: {fileID: 872162181}
+  - component: {fileID: 516390807864865660}
   m_Layer: 9
   m_Name: Orpheus
   m_TagString: Orpheus
@@ -292,39 +292,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &516390807864865660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333433598470827722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b5fa48dc790bf41b2d924bee088f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 32832
-  ladderLayer:
-    serializedVersion: 2
-    m_Bits: 12288
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  playerSpeed: 4.5
-  climbingSpeed: 4
-  jumpForce: 5
-  coyoteTime: 0.15
-  max: 5
-  min: 1
-  _OrphView: {fileID: 611543353}
-  _EuryView: {fileID: 1386372701}
-  _rbody: {fileID: 0}
-  _lyreRaise: 0
-  _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
-  _volume: 0.5
 --- !u!61 &-4730336940088447072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -467,3 +434,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &516390807864865660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333433598470827722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b5fa48dc790bf41b2d924bee088f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 32832
+  ladderLayer:
+    serializedVersion: 2
+    m_Bits: 12288
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  playerSpeed: 4.5
+  climbingSpeed: 4
+  jumpForce: 5
+  coyoteTime: 0.15
+  max: 5
+  min: 1
+  _OrphView: {fileID: 611543353}
+  _EuryView: {fileID: 1386372701}
+  _rbody: {fileID: 0}
+  _lyreRaise: 0
+  _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
+  _volume: 0.5
