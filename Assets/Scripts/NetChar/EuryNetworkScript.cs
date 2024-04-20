@@ -158,7 +158,6 @@ public class EuryNetworkScript : NetworkBehaviour
 
     private void StepMovement(Vector2 axes)
     {
-        print("Step Movement");
         _rbody.velocity = axes;
     }
 
@@ -210,7 +209,6 @@ public class EuryNetworkScript : NetworkBehaviour
     [ServerRpc (RequireOwnership = false)]
     private void ReportMoveServerRpc(Vector2 axes, Vector2 posn)
     {
-        print(axes);
         StepMovement(axes);
         if (Vector2.Distance(_transform.position, posn) > 0.1f)
         {
