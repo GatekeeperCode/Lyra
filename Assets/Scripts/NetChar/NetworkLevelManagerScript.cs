@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NetworkLevelManagerScript : MonoBehaviour
+public class NetworkLevelManagerScript : NetworkBehaviour
 {
     public Text _timer;
     public GameObject _paused;
@@ -22,16 +23,20 @@ public class NetworkLevelManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
-        pausedStartTime = startTime;
-        if (_nextScene == "Level2")
+        if (IsServer)
         {
-            previousLevelTime = 0;
+            startTime = Time.time;
+            pausedStartTime = startTime;
+            if (_nextScene == "Level2")
+            {
+                previousLevelTime = 0;
+            }
+            else
+            {
+                previousLevelTime = (float)PlayerPrefs.GetFloat("CurrentTime");
+            }
         }
-        else
-        {
-            previousLevelTime = (float)PlayerPrefs.GetFloat("CurrentTime");
-        }
+
     }
 
     // Update is called once per frame
