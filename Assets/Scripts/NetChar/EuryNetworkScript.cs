@@ -15,7 +15,7 @@ public class EuryNetworkScript : NetworkBehaviour
     public Animator _OrphView;
 
     Rigidbody2D _rbody;
-    ManagerScript _manager;
+    NetworkLevelManagerScript _manager;
 
 
     bool _startedJump = false;
@@ -31,7 +31,7 @@ public class EuryNetworkScript : NetworkBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        _manager = FindObjectOfType<ManagerScript>();
+        _manager = FindObjectOfType<NetworkLevelManagerScript>();
         _pausedVelocity = Vector3.zero;
         _transform = transform;
 

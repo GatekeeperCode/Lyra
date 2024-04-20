@@ -19,7 +19,7 @@ public class OrphNetworkScript : NetworkBehaviour
     public Animator _EuryView;
 
     public Rigidbody2D _rbody;
-    ManagerScript _manager;
+    NetworkLevelManagerScript _manager;
     AudioSource _asource;
 
     public bool _lyreRaise = false;
@@ -38,7 +38,7 @@ public class OrphNetworkScript : NetworkBehaviour
     {
         _rbody = GetComponent<Rigidbody2D>();
         _asource = GetComponent<AudioSource>();
-        _manager = FindObjectOfType<ManagerScript>();
+        _manager = FindObjectOfType<NetworkLevelManagerScript>();
         _pausedVelocity = Vector3.zero;
         GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
     }
