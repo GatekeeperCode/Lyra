@@ -14,6 +14,7 @@ public class FloorScript : MonoBehaviour
     bool thisPad = false;
     bool haveScript = false;
     OrpheusScript orpheus;
+    OrphNetworkScript netOrpheus;
     ManagerScript manager;
 
     // Start is called before the first frame update
@@ -63,20 +64,40 @@ public class FloorScript : MonoBehaviour
             return;
         }
 
-        if (orpheus._lyreRaise && thisPad)
+        if(PlayerPrefs.GetInt("playerCount") == 3)
         {
-            for (int i = 0; i < walls.Length; i++)
+            if (netOrpheus._lyreRaise && thisPad)
             {
-                lower(walls[i], wallBottom[i]);
+                for (int i = 0; i < walls.Length; i++)
+                {
+                    lower(walls[i], wallBottom[i]);
+                }
+            }
+            else if (!netOrpheus._lyreRaise)
+            {
+                for (int i = 0; i < walls.Length; i++)
+                {
+                    raise(walls[i], wallTop[i]);
+                }
+            }
+        } else
+        {
+            if (orpheus._lyreRaise && thisPad)
+            {
+                for (int i = 0; i < walls.Length; i++)
+                {
+                    lower(walls[i], wallBottom[i]);
+                }
+            }
+            else if (!orpheus._lyreRaise)
+            {
+                for (int i = 0; i < walls.Length; i++)
+                {
+                    raise(walls[i], wallTop[i]);
+                }
             }
         }
-        else if(!orpheus._lyreRaise)
-        {
-            for (int i = 0; i < walls.Length; i++)
-            {
-                raise(walls[i], wallTop[i]);
-            }
-        }
+
     }
 
     private void lower(GameObject wall, float bottom)
@@ -122,7 +143,7 @@ public class FloorScript : MonoBehaviour
 
     private void FindNetworkedScript()
     {
-        //orpheus = FindObjectOfType<SOMETHING IDK>();
-        //haveScript = true;
+        netOrpheus = FindObjectOfType<OrphNetworkScript>();
+        haveScript = true;
     }
 }
