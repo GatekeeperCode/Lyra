@@ -105,20 +105,17 @@ public class ManagerScript : MonoBehaviour
     public void OnRestartDown()
     {
         SceneManager.LoadScene(_thisScene);
-        print("restart");
     }
 
     public void onQuitDown()
     {
         SceneManager.LoadScene("MenuScene");
-        print("quit");
     }
 
     public void onMuteDown()
     {
         //Pause/play audioclip here
 
-        print("muted");
         if (muted)
         {
             _muteButton.GetComponent<Image>().sprite = _unMuteImage;

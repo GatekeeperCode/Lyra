@@ -8,14 +8,18 @@ public class GoalScript : MonoBehaviour
     public LayerMask OrphLayer;
     public LayerMask EuryLayer;
     ManagerScript manager;
+    NetworkLevelManagerScript networkManager;
     AudioSource _asource;
     public AudioClip _clip;
     public float _volume = 0.5f;
+    int playerCount = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerCount = PlayerPrefs.GetInt("playerCount");
+        networkManager = FindObjectOfType<NetworkLevelManagerScript>();
         manager = FindObjectOfType<ManagerScript>();
         _asource = GetComponent<AudioSource>();
     }
@@ -25,7 +29,13 @@ public class GoalScript : MonoBehaviour
     {
         if (CharactersInGoal() || Input.GetKeyDown(KeyCode.G) || Input.GetKeyDown(KeyCode.Joystick1Button6)) //dev key -> delete later
         {
-            manager.Nextlevel();
+            if(playerCount == 3)
+            {
+                networkManager.Nextlevel();
+            } else
+            {
+                manager.Nextlevel();
+            }
         } else if(PlayerPrefs.GetInt("playerCount") == 2 && Input.GetKeyDown(KeyCode.Joystick2Button6)) //also a dev key
         {
             manager.Nextlevel();
