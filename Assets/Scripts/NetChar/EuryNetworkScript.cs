@@ -164,8 +164,8 @@ public class EuryNetworkScript : NetworkBehaviour
     private bool IsGrounded()
     {
         Vector2 playerVector = transform.position;
-        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.08f, playerVector.y), Vector2.down, 1f, groundLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.08f, playerVector.y), Vector2.down, 1f, groundLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(playerVector.x - 0.27f, playerVector.y), Vector2.down, 1f, groundLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(playerVector.x + 0.26f, playerVector.y), Vector2.down, 1f, groundLayer);
         return (hitLeft.collider != null || hitRight.collider != null);
     }
 
