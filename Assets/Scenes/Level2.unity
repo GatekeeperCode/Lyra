@@ -4330,6 +4330,7 @@ GameObject:
   - component: {fileID: 1005063395}
   - component: {fileID: 1005063396}
   - component: {fileID: 1005063397}
+  - component: {fileID: 1005063398}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: LevelMan
@@ -4420,6 +4421,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d6beb51d68c2b48bc767c91007b1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1005063398
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005063392}
+  m_Enabled: 1
 --- !u!1 &1070155915
 GameObject:
   m_ObjectHideFlags: 0

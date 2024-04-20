@@ -174,6 +174,8 @@ public class OrphNetworkScript : NetworkBehaviour
         if(IsLocalPlayer && IsServer)
         {
             //Move Orpheus
+            positionFixClientRpc(transform.position);
+
             float xdir = Input.GetAxis("Horizontal");
             setOrpheusVelocityClientRpc(xdir * playerSpeed, _rbody.velocity.y);
 
@@ -196,6 +198,15 @@ public class OrphNetworkScript : NetworkBehaviour
                     moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
                 }
             }
+        }
+    }
+
+    [ClientRpc]
+    private void positionFixClientRpc(Vector2 posn)
+    {
+        if (!IsLocalPlayer && Vector2.Distance(transform.position, posn) > 0.1f)
+        {
+            transform.position = posn;
         }
     }
 
