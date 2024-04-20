@@ -179,7 +179,6 @@ public class OrphNetworkScript : NetworkBehaviour
 
             float ydir = Input.GetAxis("Vertical");
             ClimbClientRpc(ydir, _climbing);
-            print("Truth climb: " + _climbing);
 
 
             if (_startedJump)
@@ -260,20 +259,12 @@ public class OrphNetworkScript : NetworkBehaviour
         RaycastHit2D hitMiddle = Physics2D.Raycast(new Vector2(playerVector.x + 0.1f, playerVector.y), Vector2.left, .3f, ladderLayer);
         RaycastHit2D hitBelow = Physics2D.Raycast(new Vector2(playerVector.x + 0.1f, playerVector.y - 0.1f), Vector2.down, .3f, ladderLayer);
 
-
-        print("high: " + (hitAbove.collider != null));
-        print("med: " + (hitMiddle.collider != null));
-        print("low: " + (hitBelow.collider != null));
-        print("playervector: " + playerVector.x);
-
-
         return (hitAbove.collider != null || hitMiddle.collider != null || hitBelow.collider != null);
     }
 
     [ClientRpc]
     private void ClimbClientRpc(float ydir, bool climbing)
     {
-        print("climbing: " + climbing);
         if (climbing)
         {
             _rbody.gravityScale = 0;
