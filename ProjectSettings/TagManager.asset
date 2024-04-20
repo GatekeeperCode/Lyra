@@ -14,6 +14,7 @@ TagManager:
   - EuryMainCam
   - CamManager
   - NetMan
+  - LevelMan
   layers:
   - Default
   - TransparentFX

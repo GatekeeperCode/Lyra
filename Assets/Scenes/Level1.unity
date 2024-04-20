@@ -513,9 +513,10 @@ GameObject:
   - component: {fileID: 113489611}
   - component: {fileID: 113489610}
   - component: {fileID: 113489612}
+  - component: {fileID: 113489613}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelMan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -611,6 +612,18 @@ MonoBehaviour:
   _thisScene: Level1
   _nextScene: Level2
   pausedGame: 0
+--- !u!114 &113489613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113489606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d6beb51d68c2b48bc767c91007b1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &120199390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 120199390, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
