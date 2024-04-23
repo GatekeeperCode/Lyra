@@ -140,7 +140,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6624502486548041418, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd1d6ac6bbe7a4e4f84e69cc2ba9a6dc, type: 3}
 --- !u!4 &2054297449820497868 stripped
 Transform:
@@ -261,7 +262,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 516390807864865660, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
 --- !u!4 &3418838158347250712 stripped
 Transform:
@@ -302,10 +304,15 @@ MonoBehaviour:
   min: 1
   _OrphView: {fileID: 6872426243316832803}
   _EuryView: {fileID: 6872426243672370503}
-  _rbody: {fileID: 0}
+  _rbody: {fileID: 6110071457515206859}
   _lyreRaise: 0
   _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
   _volume: 0.5
+--- !u!50 &6110071457515206859 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: -8388914318460466223, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
+  m_PrefabInstance: {fileID: 6872426242839917338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &6872426243316832803 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 611543353, guid: 7e834b3c90c8a9340aec174111669e6b, type: 3}
