@@ -106,7 +106,21 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         }
         else
         {
-            SceneManager.LoadScene(_nextScene);
+            //SceneManager.LoadScene(_nextScene);
+            NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
+
+
+//            if(PlayerPrefs.GetInt("playerCount")==3)
+//            {
+//                if(IsServer)
+//                {
+//                    changeSceneClientRpc();
+//                }
+//            }
+//            else
+//            {
+//               SceneManager.LoadScene(_nextScene);
+//            }
         }
     }
 
@@ -160,5 +174,12 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     private void OnApplicationQuit()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    [ClientRpc]
+    void changeSceneClientRpc()
+    {
+        NetworkManager.SceneManager.LoadScene(_nextScene, LoadSceneMode.Additive);
+        NetworkManager.SceneManager.UnloadScene(SceneManager.GetActiveScene());
     }
 }
