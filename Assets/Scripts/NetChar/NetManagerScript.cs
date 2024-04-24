@@ -12,6 +12,8 @@ public class NetManagerScript : MonoBehaviour
 
     public GameObject _hostButton;
     public GameObject _clientButton;
+    public InputField _ipAddress;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class NetManagerScript : MonoBehaviour
 
     public void OnBackButtonDown()
     {
+        PlayerPrefs.SetString("ipAddress", _ipAddress.text);
         SceneManager.LoadScene("MenuScene");
     }
 
@@ -52,6 +55,7 @@ public class NetManagerScript : MonoBehaviour
         networked.text = "Networked Multiplayer";
         _hostButton.SetActive(false);
         _clientButton.SetActive(false);
+        _ipAddress.gameObject.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 1);
     }
@@ -63,6 +67,7 @@ public class NetManagerScript : MonoBehaviour
         networked.text = "Networked Multiplayer";
         _hostButton.SetActive(false);
         _clientButton.SetActive(false);
+        _ipAddress.gameObject.SetActive(false);
 
         PlayerPrefs.SetInt("playerCount", 2);
     }
@@ -75,6 +80,8 @@ public class NetManagerScript : MonoBehaviour
 
         _hostButton.SetActive(true);
         _clientButton.SetActive(true);
+        _ipAddress.gameObject.SetActive(true);
+
         _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice) - Selected";
         _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus)";
 
@@ -87,6 +94,7 @@ public class NetManagerScript : MonoBehaviour
         PlayerPrefs.SetInt("host", 0);
         _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice) - Selected";
         _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus)";
+        _ipAddress.gameObject.SetActive(true);
     }
 
     public void becomeHost()
@@ -94,6 +102,7 @@ public class NetManagerScript : MonoBehaviour
         PlayerPrefs.SetInt("host", 1);
         _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus) - Selected";
         _clientButton.GetComponentInChildren<Text>().text = "Client (Eurydice)";
+        _ipAddress.gameObject.SetActive(true);
     }
 
     private void OnApplicationQuit()
