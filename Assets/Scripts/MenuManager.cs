@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MenuManager : MonoBehaviour
 {
+    public GameObject _muteButton;
+    public Sprite _muteImage;
+    public Sprite _unMuteImage;
+
     AudioSource _audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +20,11 @@ public class MenuManager : MonoBehaviour
         if (PlayerPrefs.HasKey("TimeCut"))
         {
             _audio.time = PlayerPrefs.GetFloat("TimeCut");
+        }
+        if (PlayerPrefs.GetInt("Muted") == 1)
+        {
+            _audio.Pause();
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
         }
     }
 
@@ -38,14 +49,19 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("NetworkScene");
     }
-    private void onMuteButtonDown()
+    public void onMuteButtonDown()
     {
-        if(_audio.isPlaying)
+        if (_audio.isPlaying)
         {
             _audio.Pause();
-        } else
+            PlayerPrefs.SetInt("Muted", 1);
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
+        }
+        else
         {
             _audio.Play();
+            PlayerPrefs.SetInt("Muted", 0);
+            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
         }
     }
 
