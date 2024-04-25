@@ -27,7 +27,6 @@ public class NetworkButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(_host.gameObject.activeSelf);
         if(_host.gameObject.activeSelf)
         {
             btnNav.selectOnDown = _client.gameObject.GetComponent<Button>();
