@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class NetManagerScript : MonoBehaviour
 {
     public Text single;
@@ -14,6 +15,7 @@ public class NetManagerScript : MonoBehaviour
     public GameObject _clientButton;
     public InputField _ipAddress;
 
+    AudioSource _audio;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,12 @@ public class NetManagerScript : MonoBehaviour
         } else
         {
             onSinglePlayerDown();
+        }
+
+        _audio = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("TimeCut"))
+        {
+            _audio.time = PlayerPrefs.GetFloat("TimeCut");
         }
     }
 
@@ -44,8 +52,21 @@ public class NetManagerScript : MonoBehaviour
 
     public void OnBackButtonDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         PlayerPrefs.SetString("ipAddress", _ipAddress.text);
         SceneManager.LoadScene("MenuScene");
+    }
+
+    private void onMuteButtonDown()
+    {
+        if (_audio.isPlaying)
+        {
+            _audio.Pause();
+        }
+        else
+        {
+            _audio.Play();
+        }
     }
 
     public void onSinglePlayerDown()

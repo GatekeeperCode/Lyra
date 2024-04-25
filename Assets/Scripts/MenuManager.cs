@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class MenuManager : MonoBehaviour
 {
-
+    AudioSource _audio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _audio = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("TimeCut"))
+        {
+            _audio.time = PlayerPrefs.GetFloat("TimeCut");
+        }
     }
 
     // Update is called once per frame
@@ -24,12 +29,24 @@ public class MenuManager : MonoBehaviour
 
     public void OnStartButtonDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("Level1");
     }
 
     public void onNetworkedDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("NetworkScene");
+    }
+    private void onMuteButtonDown()
+    {
+        if(_audio.isPlaying)
+        {
+            _audio.Pause();
+        } else
+        {
+            _audio.Play();
+        }
     }
 
     private void OnApplicationQuit()
