@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,10 @@ public class NetManagerScript : MonoBehaviour
     public GameObject _hostButton;
     public GameObject _clientButton;
     public InputField _ipAddress;
+
+    public GameObject _muteButton;
+    public Sprite _muteImage;
+    public Sprite _unMuteImage;
 
     AudioSource _audio;
 
@@ -37,6 +42,11 @@ public class NetManagerScript : MonoBehaviour
         {
             _audio.time = PlayerPrefs.GetFloat("TimeCut");
         }
+        if (PlayerPrefs.GetInt("Muted") == 1)
+        {
+            _audio.Pause();
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
+        }
     }
 
     // Update is called once per frame
@@ -57,15 +67,19 @@ public class NetManagerScript : MonoBehaviour
         SceneManager.LoadScene("MenuScene");
     }
 
-    private void onMuteButtonDown()
+    public void onMuteButtonDown()
     {
         if (_audio.isPlaying)
         {
             _audio.Pause();
+            PlayerPrefs.SetInt("Muted", 1);
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
         }
         else
         {
             _audio.Play();
+            PlayerPrefs.SetInt("Muted", 0);
+            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
         }
     }
 
