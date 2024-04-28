@@ -373,6 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102349150}
   - component: {fileID: 102349149}
+  - component: {fileID: 102349151}
   m_Layer: 0
   m_Name: Star (4)
   m_TagString: Untagged
@@ -447,6 +448,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &102349151
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102349148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44a135479809fbc48a021a444f23d172, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &246482126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,6 +2188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964711694}
   - component: {fileID: 1964711693}
+  - component: {fileID: 1964711695}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -2233,14 +2255,34 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964711692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.09393142, y: -0.055551745, z: -0.034340248, w: 0.99343425}
   m_LocalPosition: {x: 8.131401, y: 3.7602, z: 0}
   m_LocalScale: {x: 1.741339, y: 1.741339, z: 1.741339}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.979, y: -6.077, z: -3.375}
+--- !u!95 &1964711695
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964711692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d5b6c0a871ad5e4eb1fe403902bf080, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1996247021
 GameObject:
   m_ObjectHideFlags: 0
