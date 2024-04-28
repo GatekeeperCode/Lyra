@@ -23,8 +23,18 @@ public class MenuManager : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("Muted") == 1)
         {
-            _audio.Pause();
-            _muteButton.GetComponent<Image>().sprite = _muteImage;
+            onMuteButtonDown();
+            StartCoroutine(postStart());
+        }
+    }
+
+    private IEnumerator postStart()
+    {
+        yield return new WaitForSeconds(.0000001f);
+        if (_audio.isPlaying) 
+        { 
+            onMuteButtonDown();
+            print("Initial mute did not work");
         }
     }
 

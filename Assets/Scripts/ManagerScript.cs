@@ -14,7 +14,8 @@ public class ManagerScript : MonoBehaviour
     public string _thisScene;
     public string _nextScene;
     public bool pausedGame = false;
-    bool muted = false;
+
+    AudioSource _audio;
     float startTime;
     float pausedStartTime;
     float previousLevelTime;
@@ -30,6 +31,16 @@ public class ManagerScript : MonoBehaviour
         } else
         {
             previousLevelTime = (float)PlayerPrefs.GetFloat("CurrentTime");
+        }
+
+        _audio = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("TimeCut"))
+        {
+            _audio.time = PlayerPrefs.GetFloat("TimeCut");
+        }
+        if (PlayerPrefs.GetInt("Muted") == 1)
+        {
+            onMuteButtonDown();
         }
     }
 
@@ -77,6 +88,8 @@ public class ManagerScript : MonoBehaviour
             EndGame();
         } else
         {
+            PlayerPrefs.SetFloat("TimeCut", _audio.time);
+
             SceneManager.LoadScene(_nextScene);
         }
     }
@@ -99,32 +112,39 @@ public class ManagerScript : MonoBehaviour
             PlayerPrefs.SetFloat("BestTime", currentTime);
         }
 
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+
         SceneManager.LoadScene(_nextScene);
     }
 
     public void OnRestartDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+
         SceneManager.LoadScene(_thisScene);
     }
 
     public void onQuitDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void onMuteDown()
+    public void onMuteButtonDown()
     {
-        //Pause/play audioclip here
-
-        if (muted)
+        if (_audio.isPlaying)
         {
-            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
+            _audio.Pause();
+            PlayerPrefs.SetInt("Muted", 1);
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
         }
         else
         {
-            _muteButton.GetComponent<Image>().sprite = _muteImage;
+            _audio.Play();
+            PlayerPrefs.SetInt("Muted", 0);
+            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
         }
-        muted = !muted;
     }
 
     private void OnApplicationQuit()

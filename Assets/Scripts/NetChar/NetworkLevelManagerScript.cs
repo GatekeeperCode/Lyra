@@ -15,6 +15,8 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public string _thisScene;
     public string _nextScene;
     public bool pausedGame = false;
+
+    AudioSource _audio;
     bool muted = false;
     float startTime;
     float pausedStartTime;
@@ -36,6 +38,16 @@ public class NetworkLevelManagerScript : NetworkBehaviour
             {
                 previousLevelTime = (float)PlayerPrefs.GetFloat("CurrentTime");
             }
+        }
+
+        _audio = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("TimeCut"))
+        {
+            _audio.time = PlayerPrefs.GetFloat("TimeCut");
+        }
+        if (PlayerPrefs.GetInt("Muted") == 1)
+        {
+            onMuteButtonDown();
         }
 
     }
@@ -106,6 +118,8 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         }
         else
         {
+            PlayerPrefs.SetFloat("TimeCut", _audio.time);
+
             //SceneManager.LoadScene(_nextScene);
             NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
 
@@ -143,32 +157,36 @@ public class NetworkLevelManagerScript : NetworkBehaviour
             PlayerPrefs.SetFloat("BestTime", currentTime.Value);
         }
 
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene(_nextScene);
     }
 
     public void OnRestartDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene(_thisScene);
     }
 
     public void onQuitDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void onMuteDown()
+    public void onMuteButtonDown()
     {
-        //Pause/play audioclip here
-
-        if (muted)
+        if (_audio.isPlaying)
         {
-            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
+            _audio.Pause();
+            PlayerPrefs.SetInt("Muted", 1);
+            _muteButton.GetComponent<Image>().sprite = _muteImage;
         }
         else
         {
-            _muteButton.GetComponent<Image>().sprite = _muteImage;
+            _audio.Play();
+            PlayerPrefs.SetInt("Muted", 0);
+            _muteButton.GetComponent<Image>().sprite = _unMuteImage;
         }
-        muted = !muted;
     }
 
     private void OnApplicationQuit()
@@ -179,6 +197,7 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     [ClientRpc]
     void changeSceneClientRpc()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         NetworkManager.SceneManager.LoadScene(_nextScene, LoadSceneMode.Additive);
         NetworkManager.SceneManager.UnloadScene(SceneManager.GetActiveScene());
     }
