@@ -44,8 +44,7 @@ public class NetManagerScript : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("Muted") == 1)
         {
-            _audio.Pause();
-            _muteButton.GetComponent<Image>().sprite = _muteImage;
+            onMuteButtonDown();
         }
     }
 

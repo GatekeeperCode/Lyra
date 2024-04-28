@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class EndSceneManager : MonoBehaviour
 {
     public Text _Time;
+    //public GameObject _muteButton;
+    public Sprite _muteImage;
+    public Sprite _unMuteImage;
+
+    AudioSource _audio;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +26,27 @@ public class EndSceneManager : MonoBehaviour
 
         _Time.text = "Time: " + (PlayerPrefs.GetFloat("ThisTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("ThisTime")%60).ToString("00") +
                         "\nBest: " + (PlayerPrefs.GetFloat("BestTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("BestTime")%60).ToString("00");
+
+        _audio = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("TimeCut"))
+        {
+            _audio.time = PlayerPrefs.GetFloat("TimeCut");
+        }
+        if (PlayerPrefs.GetInt("Muted") == 1)
+        {
+            onMuteButtonDown();
+            StartCoroutine(postStart());
+        }
+    }
+
+    private IEnumerator postStart()
+    {
+        yield return new WaitForSeconds(.0000001f);
+        if (_audio.isPlaying)
+        {
+            onMuteButtonDown();
+            print("Initial mute did not work");
+        }
     }
 
     // Update is called once per frame
@@ -36,7 +62,24 @@ public class EndSceneManager : MonoBehaviour
 
     public void OnRestartButtonDown()
     {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void onMuteButtonDown()
+    {
+        if (_audio.isPlaying)
+        {
+            _audio.Pause();
+            PlayerPrefs.SetInt("Muted", 1);
+            //_muteButton.GetComponent<Image>().sprite = _muteImage;
+        }
+        else
+        {
+            _audio.Play();
+            PlayerPrefs.SetInt("Muted", 0);
+            //_muteButton.GetComponent<Image>().sprite = _unMuteImage;
+        }
     }
 
     private void OnApplicationQuit()
