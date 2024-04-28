@@ -84,6 +84,8 @@ public class NetManagerScript : MonoBehaviour
 
     public void onSinglePlayerDown()
     {
+        becomeClient();
+
         single.text = "Single Player\n-Selected";
         local.text = "Local Multiplayer";
         networked.text = "Networked Multiplayer";
@@ -96,6 +98,8 @@ public class NetManagerScript : MonoBehaviour
 
     public void OnLocalDown()
     {
+        becomeClient();
+
         single.text = "Single Player";
         local.text = "Local Multiplayer\n-Selected";
         networked.text = "Networked Multiplayer";
@@ -120,7 +124,14 @@ public class NetManagerScript : MonoBehaviour
         _hostButton.GetComponentInChildren<Text>().text = "Host (Orpheus)";
 
         PlayerPrefs.SetInt("playerCount", 3);
-        PlayerPrefs.SetInt("host", 0);
+        if(PlayerPrefs.GetInt("host") == 1)
+        {
+            becomeHost();
+        }
+        else
+        {
+            becomeClient();
+        }
     }
 
     public void becomeClient()
