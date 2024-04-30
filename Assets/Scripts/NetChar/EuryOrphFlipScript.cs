@@ -13,10 +13,12 @@ public class EuryOrphFlipScript : NetworkBehaviour
 
     CameraManagerScript cms;
     bool hasDipped;
+    public bool alreadyRun;
 
     private void Start()
     {
         hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
+        alreadyRun = false;
     }
 
     // Start is called before the first frame update
@@ -24,58 +26,48 @@ public class EuryOrphFlipScript : NetworkBehaviour
     {
         hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
 
-        if (!hasDipped)
+        if(!alreadyRun)
         {
-            print("Hello");
-
-            _orphCam = GameObject.FindGameObjectWithTag("MainCamera");
-            _euryCam = GameObject.FindGameObjectWithTag("EuryMainCam");
-            cms = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>();
-
-            //if(IsOwnedByServer)
-            //{
-            //    print(1);
-            //}
-            //else
-            //{
-            //    print(2);
-            //}
-
             if (IsHost)
             {
-                if (IsLocalPlayer)
+                if (IsLocalPlayer && !hasDipped)
                 {
-                    print(1);
+                    _orphCam = GameObject.FindGameObjectWithTag("MainCamera");
+                    _euryCam = GameObject.FindGameObjectWithTag("EuryMainCam");
+                    cms = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>();
+
                     _eury.SetActive(false);
                     _euryCam.SetActive(false);
                     cms.orphView = true;
+                    GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff = true;
                 }
                 else
                 {
-                    print(2);
                     _orph.SetActive(false);
                     //_eury.GetComponent<EuryNetworkScript>().enabled = false;
                 }
             }
             else
             {
-                print("Should appear twice");
-                if (IsLocalPlayer)
+                if (IsLocalPlayer && !hasDipped)
                 {
-                    print(3);
+                    _orphCam = GameObject.FindGameObjectWithTag("MainCamera");
+                    _euryCam = GameObject.FindGameObjectWithTag("EuryMainCam");
+                    cms = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>();
+
                     _orph.SetActive(false);
                     _orphCam.SetActive(false);
                     cms.orphView = false;
+                    GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff = true;
                 }
                 else
                 {
-                    print(4);
                     _eury.SetActive(false);
                     //_orph.GetComponent<OrphNetworkScript>().enabled = false;
                 }
             }
 
-            GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff = true;
+            alreadyRun = true;
         }
     }
 }

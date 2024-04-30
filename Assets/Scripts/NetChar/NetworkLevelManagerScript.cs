@@ -50,6 +50,12 @@ public class NetworkLevelManagerScript : NetworkBehaviour
             onMuteButtonDown();
         }
 
+        GameObject[] players = GameObject.FindGameObjectsWithTag("NetCharacter");
+
+        for(int i=0; i<players.Length; i++)
+        {
+            players[i].GetComponent<EuryOrphFlipScript>().alreadyRun = false;
+        }
     }
 
     // Update is called once per frame
