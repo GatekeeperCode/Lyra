@@ -40,12 +40,13 @@ public class OrphNetworkScript : NetworkBehaviour
         _asource = GetComponent<AudioSource>();
         _manager = FindObjectOfType<NetworkLevelManagerScript>();
         _pausedVelocity = Vector3.zero;
-        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
+        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
+
         //Paused Screen
         if (_manager.pausedGame != _paused)
         {
