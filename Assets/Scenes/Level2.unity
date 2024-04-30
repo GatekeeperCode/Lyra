@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 242949459}
   m_Layer: 0
   m_Name: CamManager
-  m_TagString: Untagged
+  m_TagString: CamManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

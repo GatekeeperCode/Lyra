@@ -34,13 +34,13 @@ public class EuryNetworkScript : NetworkBehaviour
         _manager = FindObjectOfType<NetworkLevelManagerScript>();
         _pausedVelocity = Vector3.zero;
         _transform = transform;
-
-        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
     }
 
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
+        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
+
         //Paused Screen
         if (_manager.pausedGame != _paused)
         {
