@@ -920,6 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242949458}
   - component: {fileID: 242949457}
+  - component: {fileID: 242949459}
   m_Layer: 0
   m_Name: CamManager
   m_TagString: Untagged
@@ -961,6 +962,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242949459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242949456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7996e1ef0eb58194c99587273d7e15d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camOff: 0
 --- !u!4 &251705131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5553118672031555898, guid: 64491f29459b9194b9509bcc95f446a4, type: 3}
