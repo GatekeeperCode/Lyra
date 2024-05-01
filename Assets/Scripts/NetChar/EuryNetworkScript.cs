@@ -210,7 +210,7 @@ public class EuryNetworkScript : NetworkBehaviour
     private void ReportMoveServerRpc(Vector2 axes, Vector2 posn)
     {
         StepMovement(axes);
-        if (Vector2.Distance(_transform.position, posn) > 0.1f)
+        if (Vector2.Distance(_transform.position, posn) > 0.2f)
         {
             //Yell at that client specifically
             ulong clientId = GetComponentInParent<NetworkObject>().OwnerClientId;
@@ -235,7 +235,7 @@ public class EuryNetworkScript : NetworkBehaviour
     [ClientRpc]
     private void FixPosnClientRpc(Vector2 posn, ClientRpcParams stuff)
     {
-        _transform.position = posn;
+        _transform.position = Vector2.Lerp(_transform.position, posn, 0.1f);
     }
 }
 
