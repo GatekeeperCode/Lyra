@@ -1910,7 +1910,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: One Player Box (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5860886632127949147, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
 --- !u!4 &446195083 stripped
 Transform:
@@ -1922,6 +1923,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6715389765533501891, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_PrefabInstance: {fileID: 446195082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &446195085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446195084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3251690712
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &446299076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2844,6 +2861,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5262822495979949418, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_PrefabInstance: {fileID: 1624485219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &608334011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608334005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1466249038
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &653896522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6652,7 +6685,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: One Player Box
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5860886632127949147, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
 --- !u!4 &1346949141 stripped
 Transform:
@@ -6664,6 +6698,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6715389765533501891, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_PrefabInstance: {fileID: 1346949140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1346949143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346949142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2669011891
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1371055286
 GameObject:
   m_ObjectHideFlags: 0
@@ -8515,7 +8565,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: One Player Box
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5860886632127949147, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
 --- !u!1 &1625039381
 GameObject:
@@ -9932,6 +9983,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5262822495979949418, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_PrefabInstance: {fileID: 2127340511}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1778466503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778466497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2413477910
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &1785462842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11748,7 +11815,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: One Player Box
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5860886632127949147, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f6739e16b7743d44bb17f3937dc7adc, type: 3}
 --- !u!4 &2130368843 stripped
 Transform:
