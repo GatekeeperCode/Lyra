@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class EndSceneManager : MonoBehaviour
+public class EndSceneManager : NetworkBehaviour
 {
     public Text _Time;
     //public GameObject _muteButton;
@@ -63,6 +64,11 @@ public class EndSceneManager : MonoBehaviour
     public void OnRestartButtonDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
+        NetworkManager.Singleton.Shutdown();
+        if(NetworkManager.Singleton != null)
+        {
+            Destroy(NetworkManager.Singleton.gameObject);
+        }
         SceneManager.LoadScene("MenuScene");
     }
 
