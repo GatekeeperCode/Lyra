@@ -74,11 +74,11 @@ public class EuryNetworkScript : NetworkBehaviour
 
         if (IsLocalPlayer)
         {
-            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick2Button4)) && WasGrounded())
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && WasGrounded())
             {
                 _startedJump = true;
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick2Button4))
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Joystick1Button4))
             {
                 _stoppedJump = true;
             }
