@@ -99,7 +99,7 @@ public class EuryNetworkScript : NetworkBehaviour
         
         if(IsLocalPlayer)
         {
-            xdir = Input.GetAxis("EuroHorizontalOnly");
+            xdir = Input.GetAxis("EuroHorizontal");
         }
 
         if (xdir < 0 && _facingRight)
@@ -124,7 +124,7 @@ public class EuryNetworkScript : NetworkBehaviour
         float xdir = 0;
         if(IsLocalPlayer)
         {
-            xdir = Input.GetAxis("EuroHorizontalOnly");
+            xdir = Input.GetAxis("EuroHorizontal");
 
             Vector2 axes = new Vector2(xdir * playerSpeed, _rbody.velocity.y);
             StepMovement(axes);
