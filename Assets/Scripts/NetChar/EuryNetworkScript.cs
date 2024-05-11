@@ -199,7 +199,7 @@ public class EuryNetworkScript : NetworkBehaviour
         float ydir = 0;
         if(IsLocalPlayer)
         {
-            ydir = Input.GetAxis("EuroVerticalOnly");
+            ydir = Input.GetAxis("EuroVertical");
             Vector2 axes = new Vector2(_rbody.velocity.x, climbingSpeed * ydir);
             StepMovement(axes);
             ReportMoveServerRpc(axes, _transform.position);
