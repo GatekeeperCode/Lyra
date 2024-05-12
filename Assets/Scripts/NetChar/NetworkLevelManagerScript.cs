@@ -17,7 +17,6 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public bool pausedGame = false;
 
     AudioSource _audio;
-    bool muted = false;
     float startTime;
     float pausedStartTime;
     float previousLevelTime;
