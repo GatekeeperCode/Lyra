@@ -107,21 +107,21 @@ public class CameraManagerScript : MonoBehaviour
     {
         // Determine Camera X Value
         float camX = camera.transform.position.x;
-        if (camera.transform.position.x - character.transform.position.x >= camOffset.x) //character to left
+        if (character != null && camera.transform.position.x - character.transform.position.x >= camOffset.x) //character to left
         {
             camX = character.transform.position.x + camOffset.x;
-        } else if (character.transform.position.x - camera.transform.position.x >= camOffset.x) //character to right
+        } else if (character != null && character.transform.position.x - camera.transform.position.x >= camOffset.x) //character to right
         {
             camX = character.transform.position.x - camOffset.x;
         }
 
         // Determine Camera Y Value
         float camY = camera.transform.position.y;
-        if (camera.transform.position.y - character.transform.position.y >= camOffset.y) //character below
+        if (character != null && camera.transform.position.y - character.transform.position.y >= camOffset.y) //character below
         {
             camY = character.transform.position.y + camOffset.y;
         }
-        else if (character.transform.position.y - camera.transform.position.y >= camOffset.y) //character above
+        else if (character != null && character.transform.position.y - camera.transform.position.y >= camOffset.y) //character above
         {
             camY = character.transform.position.y - camOffset.y;
         }
