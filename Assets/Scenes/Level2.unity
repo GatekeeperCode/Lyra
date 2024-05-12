@@ -4708,6 +4708,8 @@ MonoBehaviour:
   _thisScene: Level2
   _nextScene: Level3
   pausedGame: 0
+  _orphSpawn: {fileID: 1109318570}
+  _eurySpawn: {fileID: 20210912}
 --- !u!114 &1005063396
 MonoBehaviour:
   m_ObjectHideFlags: 0

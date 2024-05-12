@@ -700,6 +700,8 @@ MonoBehaviour:
   _thisScene: Level1
   _nextScene: Level2
   pausedGame: 0
+  _orphSpawn: {fileID: 1147539481}
+  _eurySpawn: {fileID: 1555832420}
 --- !u!114 &113489613
 MonoBehaviour:
   m_ObjectHideFlags: 0

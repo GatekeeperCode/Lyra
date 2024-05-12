@@ -28,7 +28,7 @@ public class NetworkedCharacterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!p2Spawn)
+        if(!p2Spawn && PlayerPrefs.GetInt("playerCount") == 3)
         {
             GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
 

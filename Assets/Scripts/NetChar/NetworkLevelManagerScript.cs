@@ -15,6 +15,8 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public string _thisScene;
     public string _nextScene;
     public bool pausedGame = false;
+    public GameObject _orphSpawn;
+    public GameObject _eurySpawn;
 
     AudioSource _audio;
     float startTime;
@@ -69,8 +71,6 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         //Paused Screen
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
-            print("P pressed");
-
             pauseGameServerRpc(pausedGame);  
         }
 
@@ -124,22 +124,7 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         else
         {
             PlayerPrefs.SetFloat("TimeCut", _audio.time);
-
-            //SceneManager.LoadScene(_nextScene);
             NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
-
-
-//            if(PlayerPrefs.GetInt("playerCount")==3)
-//            {
-//                if(IsServer)
-//                {
-//                    changeSceneClientRpc();
-//                }
-//            }
-//            else
-//            {
-//               SceneManager.LoadScene(_nextScene);
-//            }
         }
     }
 
@@ -167,23 +152,48 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
     }
 
-    private IEnumerator sceneChangeWait()
-    {
-        yield return new WaitForSeconds(2);
-        NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
-    }
-
-
     public void OnRestartDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        NetworkManager.Singleton.SceneManager.LoadScene(_thisScene, LoadSceneMode.Single);
+
+        bool p1Spawn = false;
+        bool p2Spawn = false;
+
+        GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
+
+        if (g.Length == 1)
+        {
+            if (!p1Spawn)
+            {
+                g[0].transform.position = _orphSpawn.transform.position;
+                print("player 1 spawned");
+                p1Spawn = true;
+            }
+        }
+        else if (g.Length == 2)
+        {
+            if (!p2Spawn)
+            {
+                g[1].transform.position = _eurySpawn.transform.position;
+                p2Spawn = true;
+            }
+            if (!p1Spawn)
+            {
+                g[0].transform.position = _orphSpawn.transform.position;
+                p1Spawn = true;
+            }
+        }
     }
 
     public void onQuitDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        NetworkManager.Singleton.SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
+        NetworkManager.Singleton.Shutdown();
+        if (NetworkManager.Singleton != null)
+        {
+            Destroy(NetworkManager.Singleton.gameObject);
+        }
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void onMuteButtonDown()

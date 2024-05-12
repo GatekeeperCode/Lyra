@@ -465,5 +465,5 @@ MonoBehaviour:
   _EuryView: {fileID: 1386372701}
   _rbody: {fileID: 0}
   _lyreRaise: 0
-  _clip: {fileID: 8300000, guid: 0bdcba2f6fd3f7b43b59b4305bac56d8, type: 3}
+  _clip: {fileID: 8300000, guid: 5e7f2fae246408441817be25d4712a7c, type: 3}
   _volume: 0.5
