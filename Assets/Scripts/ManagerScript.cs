@@ -41,6 +41,17 @@ public class ManagerScript : MonoBehaviour
         if (PlayerPrefs.GetInt("Muted") == 1)
         {
             onMuteButtonDown();
+            StartCoroutine(postStart());
+        }
+    }
+
+    private IEnumerator postStart()
+    {
+        yield return new WaitForSeconds(.0000001f);
+        if (_audio.isPlaying)
+        {
+            onMuteButtonDown();
+            print("Initial mute did not work");
         }
     }
 

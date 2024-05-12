@@ -17,7 +17,6 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public bool pausedGame = false;
 
     AudioSource _audio;
-    bool muted = false;
     float startTime;
     float pausedStartTime;
     float previousLevelTime;
@@ -68,8 +67,10 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         }
 
         //Paused Screen
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7) || (PlayerPrefs.GetInt("playerCount") == 2 && (Input.GetKeyDown(KeyCode.Joystick2Button7))))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
+            print("P pressed");
+
             pauseGameServerRpc(pausedGame);  
         }
 
@@ -83,11 +84,9 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void pauseGameServerRpc(bool oldPaused)
     {
-        print("P pressed");
-
         if (!oldPaused) //entering paused screen
         {
             pausedStartTime = Time.time;
@@ -178,13 +177,13 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public void OnRestartDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        SceneManager.LoadScene(_thisScene);
+        NetworkManager.Singleton.SceneManager.LoadScene(_thisScene, LoadSceneMode.Single);
     }
 
     public void onQuitDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        SceneManager.LoadScene("MenuScene");
+        NetworkManager.Singleton.SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 
     public void onMuteButtonDown()

@@ -152,7 +152,7 @@ public class OrphNetworkScript : NetworkBehaviour
                 setAnimationClientRpc("Standing", true);
             }
 
-            moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
+            moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise, _facingRight);
         }
 
 
@@ -188,7 +188,7 @@ public class OrphNetworkScript : NetworkBehaviour
             {
                 _startedJump = false;
                 setOrpheusVelocityClientRpc(_rbody.velocity.x, jumpForce);
-                moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
+                moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise, _facingRight);
             }
             if (_stoppedJump)
             {
@@ -196,7 +196,7 @@ public class OrphNetworkScript : NetworkBehaviour
                 if (_rbody.velocity.y > 0)
                 {
                     setOrpheusVelocityClientRpc(_rbody.velocity.x, _rbody.velocity.y * 0.1f);
-                    moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise);
+                    moveOrpheusLogicClientRpc(_startedJump, _stoppedJump, _climbing, _lyreRaise, _facingRight);
                 }
             }
         }
@@ -212,7 +212,7 @@ public class OrphNetworkScript : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void moveOrpheusLogicClientRpc(bool startedJump, bool stoppedJump, bool climbing, bool lyreRaise)
+    private void moveOrpheusLogicClientRpc(bool startedJump, bool stoppedJump, bool climbing, bool lyreRaise, bool facingRight)
     {
         if (!IsServer)
         {
@@ -220,6 +220,10 @@ public class OrphNetworkScript : NetworkBehaviour
             _stoppedJump = stoppedJump;
             _climbing = climbing;
             _lyreRaise = lyreRaise;
+            if(_facingRight != facingRight)
+            {
+                FlipClientRpc();
+            }
         }
     }
 
