@@ -20,7 +20,7 @@ public class PausedScript : MonoBehaviour
 
     private void OnDisable()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     // Update is called once per frame

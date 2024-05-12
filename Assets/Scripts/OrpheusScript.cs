@@ -32,7 +32,7 @@ public class OrpheusScript : MonoBehaviour
     Vector3 _pausedVelocity;
 
     public AudioClip _clip;
-    public float _volume = 0.5f;
+    public float _volume = 1f;
     // Start is called before the first frame update
     void Start()
     {
