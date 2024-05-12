@@ -67,8 +67,10 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         }
 
         //Paused Screen
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7) || (PlayerPrefs.GetInt("playerCount") == 2 && (Input.GetKeyDown(KeyCode.Joystick2Button7))))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
+            print("P pressed");
+
             pauseGameServerRpc(pausedGame);  
         }
 
@@ -82,11 +84,9 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         _timer.text = minutes.ToString("00") + ":" + seconds.ToString("00") + " ";
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void pauseGameServerRpc(bool oldPaused)
     {
-        print("P pressed");
-
         if (!oldPaused) //entering paused screen
         {
             pausedStartTime = Time.time;
