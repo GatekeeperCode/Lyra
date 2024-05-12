@@ -372,12 +372,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1512540377}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 9, y: 306}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 7.9999695, y: 278.75406}
+  m_SizeDelta: {x: 223.9218, y: 84.838}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &302852881
 MonoBehaviour:
@@ -413,7 +413,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Orpheus Controls: \nLeft/Right Arrow - Move Left/Right \nRight Shift -
-    Jump\nUp/Down Arrow - Climb Ladders\nLeft Control - Play Lyre"
+    Jump\nUp/Down Arrow - Climb Ladders\nRight Control - Play Lyre"
 --- !u!222 &302852882
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2165,8 +2165,8 @@ RectTransform:
   - {fileID: 673040533}
   - {fileID: 1849941145}
   - {fileID: 212620327}
-  - {fileID: 2075421492}
   - {fileID: 302852880}
+  - {fileID: 2075421492}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3609,12 +3609,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1512540377}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 184}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 9, y: 168}
+  m_SizeDelta: {x: 223.9226, y: 92.136}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2075421493
 MonoBehaviour:
