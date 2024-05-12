@@ -37,6 +37,8 @@ public class NetworkedCharacterScript : MonoBehaviour
                 if (!p1Spawn)
                 {
                     g[0].transform.position = _orphSpawn.transform.position;
+                    g[0].transform.GetChild(0).localPosition = Vector2.zero;
+                    g[0].transform.GetChild(1).localPosition = Vector2.zero;
                     p1Spawn = true;
                 }
             }
@@ -45,11 +47,15 @@ public class NetworkedCharacterScript : MonoBehaviour
                 if(!p2Spawn)
                 {
                     g[1].transform.position = _eurySpawn.transform.position;
+                    g[1].transform.GetChild(0).localPosition = Vector2.zero;
+                    g[1].transform.GetChild(1).localPosition = Vector2.zero;
                     p2Spawn = true;
                 }
                 if(!p1Spawn)
                 {
                     g[0].transform.position = _orphSpawn.transform.position;
+                    g[0].transform.GetChild(0).localPosition = Vector2.zero;
+                    g[0].transform.GetChild(1).localPosition = Vector2.zero;
                     p1Spawn = true;
                 }
             }
