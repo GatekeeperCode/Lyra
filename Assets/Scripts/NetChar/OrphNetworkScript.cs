@@ -220,7 +220,7 @@ public class OrphNetworkScript : NetworkBehaviour
             _stoppedJump = stoppedJump;
             _climbing = climbing;
             _lyreRaise = lyreRaise;
-            if(facingRight != _facingRight)
+            if(_facingRight != facingRight)
             {
                 FlipClientRpc();
             }
