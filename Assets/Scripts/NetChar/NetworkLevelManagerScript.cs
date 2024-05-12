@@ -152,13 +152,6 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
     }
 
-    private IEnumerator sceneChangeWait()
-    {
-        yield return new WaitForSeconds(2);
-        NetworkManager.Singleton.SceneManager.LoadScene(_nextScene, LoadSceneMode.Single);
-    }
-
-
     public void OnRestartDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
