@@ -158,13 +158,22 @@ public class NetworkLevelManagerScript : NetworkBehaviour
 
         GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
 
-        g[0].transform.position = _orphSpawn.transform.position;
-        g[0].transform.GetChild(0).localPosition = Vector2.zero;
-        g[0].transform.GetChild(1).localPosition = Vector2.zero;
+        if(g.Length == 1)
+        {
+            g[0].transform.position = _orphSpawn.transform.position;
+            g[0].transform.GetChild(0).localPosition = Vector2.zero;
+            g[0].transform.GetChild(1).localPosition = Vector2.zero;
+        }
+        else
+        {
+            g[0].transform.position = _orphSpawn.transform.position;
+            g[0].transform.GetChild(0).localPosition = Vector2.zero;
+            g[0].transform.GetChild(1).localPosition = Vector2.zero;
 
-        g[1].transform.position = _orphSpawn.transform.position;
-        g[1].transform.GetChild(0).localPosition = Vector2.zero;
-        g[1].transform.GetChild(1).localPosition = Vector2.zero;
+            g[1].transform.position = _orphSpawn.transform.position;
+            g[1].transform.GetChild(0).localPosition = Vector2.zero;
+            g[1].transform.GetChild(1).localPosition = Vector2.zero;
+        }
     }
 
     public void onQuitDown()
