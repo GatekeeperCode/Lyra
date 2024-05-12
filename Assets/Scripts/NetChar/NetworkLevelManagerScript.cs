@@ -156,32 +156,15 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
 
-        bool p1Spawn = false;
-        bool p2Spawn = false;
-
         GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
-    
-        if (g.Length == 1)
-        {
-            if (!p1Spawn)
-            {
-                g[0].transform.position = _orphSpawn.transform.position;
-                p1Spawn = true;
-            }
-        }
-        else if (g.Length == 2)
-        {
-            if (!p2Spawn)
-            {
-                g[1].transform.position = _eurySpawn.transform.position;
-                p2Spawn = true;
-            }
-            if (!p1Spawn)
-            {
-                g[0].transform.position = _orphSpawn.transform.position;
-                p1Spawn = true;
-            }
-        }
+
+        g[0].transform.position = _orphSpawn.transform.position;
+        g[0].transform.GetChild(0).localPosition = Vector2.zero;
+        g[0].transform.GetChild(1).localPosition = Vector2.zero;
+
+        g[1].transform.position = _orphSpawn.transform.position;
+        g[1].transform.GetChild(0).localPosition = Vector2.zero;
+        g[1].transform.GetChild(1).localPosition = Vector2.zero;
     }
 
     public void onQuitDown()
