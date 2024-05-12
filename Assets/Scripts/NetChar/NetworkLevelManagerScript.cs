@@ -172,7 +172,7 @@ public class NetworkLevelManagerScript : NetworkBehaviour
                 g[0].transform.GetChild(0).localPosition = Vector2.zero;
                 g[0].transform.GetChild(1).localPosition = Vector2.zero;
 
-                g[1].transform.position = _orphSpawn.transform.position;
+                g[1].transform.position = _eurySpawn.transform.position;
                 g[1].transform.GetChild(0).localPosition = Vector2.zero;
                 g[1].transform.GetChild(1).localPosition = Vector2.zero;
             }
@@ -181,28 +181,16 @@ public class NetworkLevelManagerScript : NetworkBehaviour
 
     public void onQuitDown()
     {
-        quitServerRpc();
-    }
-
-    [ServerRpc (RequireOwnership = false)]
-    private void quitServerRpc()
-    {
-        if(PlayerPrefs.GetInt("playerCount")==3)
+        if (PlayerPrefs.GetInt("playerCount") == 3)
         {
-            quitClientRpc();
             NetworkManager.Singleton.Shutdown();
             if (NetworkManager.Singleton != null)
             {
                 Destroy(NetworkManager.Singleton.gameObject);
             }
+            SceneManager.LoadScene("MenuScene");
         }
-    }
 
-    [ClientRpc]
-    private void quitClientRpc()
-    {
-        PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        SceneManager.LoadScene("MenuScene");
     }
 
     public void onMuteButtonDown()
