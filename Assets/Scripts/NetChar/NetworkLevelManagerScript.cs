@@ -160,13 +160,12 @@ public class NetworkLevelManagerScript : NetworkBehaviour
         bool p2Spawn = false;
 
         GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
-
+    
         if (g.Length == 1)
         {
             if (!p1Spawn)
             {
                 g[0].transform.position = _orphSpawn.transform.position;
-                print("player 1 spawned");
                 p1Spawn = true;
             }
         }
@@ -187,12 +186,24 @@ public class NetworkLevelManagerScript : NetworkBehaviour
 
     public void onQuitDown()
     {
-        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+        quitServerRpc();
+    }
+
+    [ServerRpc (RequireOwnership = false)]
+    private void quitServerRpc()
+    {
+        quitClientRpc();
         NetworkManager.Singleton.Shutdown();
         if (NetworkManager.Singleton != null)
         {
             Destroy(NetworkManager.Singleton.gameObject);
         }
+    }
+
+    [ClientRpc]
+    private void quitClientRpc()
+    {
+        PlayerPrefs.SetFloat("TimeCut", _audio.time);
         SceneManager.LoadScene("MenuScene");
     }
 
