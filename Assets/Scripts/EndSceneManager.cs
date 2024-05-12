@@ -64,11 +64,16 @@ public class EndSceneManager : NetworkBehaviour
     public void OnRestartButtonDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        NetworkManager.Singleton.Shutdown();
-        if(NetworkManager.Singleton != null)
+
+        if(PlayerPrefs.GetInt("playerCount")==3)
         {
-            Destroy(NetworkManager.Singleton.gameObject);
+            NetworkManager.Singleton.Shutdown();
+            if (NetworkManager.Singleton != null)
+            {
+                Destroy(NetworkManager.Singleton.gameObject);
+            }
         }
+
         SceneManager.LoadScene("MenuScene");
     }
 

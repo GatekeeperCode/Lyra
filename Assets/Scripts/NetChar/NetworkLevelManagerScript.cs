@@ -154,25 +154,28 @@ public class NetworkLevelManagerScript : NetworkBehaviour
 
     public void OnRestartDown()
     {
-        PlayerPrefs.SetFloat("TimeCut", _audio.time);
-
-        GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
-
-        if(g.Length == 1)
+        if(PlayerPrefs.GetInt("playerCount")==3)
         {
-            g[0].transform.position = _orphSpawn.transform.position;
-            g[0].transform.GetChild(0).localPosition = Vector2.zero;
-            g[0].transform.GetChild(1).localPosition = Vector2.zero;
-        }
-        else
-        {
-            g[0].transform.position = _orphSpawn.transform.position;
-            g[0].transform.GetChild(0).localPosition = Vector2.zero;
-            g[0].transform.GetChild(1).localPosition = Vector2.zero;
+            PlayerPrefs.SetFloat("TimeCut", _audio.time);
 
-            g[1].transform.position = _orphSpawn.transform.position;
-            g[1].transform.GetChild(0).localPosition = Vector2.zero;
-            g[1].transform.GetChild(1).localPosition = Vector2.zero;
+            GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
+
+            if (g.Length == 1)
+            {
+                g[0].transform.position = _orphSpawn.transform.position;
+                g[0].transform.GetChild(0).localPosition = Vector2.zero;
+                g[0].transform.GetChild(1).localPosition = Vector2.zero;
+            }
+            else
+            {
+                g[0].transform.position = _orphSpawn.transform.position;
+                g[0].transform.GetChild(0).localPosition = Vector2.zero;
+                g[0].transform.GetChild(1).localPosition = Vector2.zero;
+
+                g[1].transform.position = _orphSpawn.transform.position;
+                g[1].transform.GetChild(0).localPosition = Vector2.zero;
+                g[1].transform.GetChild(1).localPosition = Vector2.zero;
+            }
         }
     }
 
@@ -184,11 +187,14 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     [ServerRpc (RequireOwnership = false)]
     private void quitServerRpc()
     {
-        quitClientRpc();
-        NetworkManager.Singleton.Shutdown();
-        if (NetworkManager.Singleton != null)
+        if(PlayerPrefs.GetInt("playerCount")==3)
         {
-            Destroy(NetworkManager.Singleton.gameObject);
+            quitClientRpc();
+            NetworkManager.Singleton.Shutdown();
+            if (NetworkManager.Singleton != null)
+            {
+                Destroy(NetworkManager.Singleton.gameObject);
+            }
         }
     }
 

@@ -130,16 +130,22 @@ public class ManagerScript : MonoBehaviour
 
     public void OnRestartDown()
     {
-        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+        if(PlayerPrefs.GetInt("playerCount") != 3)
+        {
+            PlayerPrefs.SetFloat("TimeCut", _audio.time);
 
-        SceneManager.LoadScene(_thisScene);
+            SceneManager.LoadScene(_thisScene);
+        }
     }
 
     public void onQuitDown()
     {
-        PlayerPrefs.SetFloat("TimeCut", _audio.time);
+        if(PlayerPrefs.GetInt("playerCount") != 3)
+        {
+            PlayerPrefs.SetFloat("TimeCut", _audio.time);
 
-        SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("MenuScene");
+        }
     }
 
     public void onMuteButtonDown()
