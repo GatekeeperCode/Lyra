@@ -177,13 +177,13 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     public void OnRestartDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        SceneManager.LoadScene(_thisScene);
+        NetworkManager.Singleton.SceneManager.LoadScene(_thisScene, LoadSceneMode.Single);
     }
 
     public void onQuitDown()
     {
         PlayerPrefs.SetFloat("TimeCut", _audio.time);
-        SceneManager.LoadScene("MenuScene");
+        NetworkManager.Singleton.SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
     }
 
     public void onMuteButtonDown()
