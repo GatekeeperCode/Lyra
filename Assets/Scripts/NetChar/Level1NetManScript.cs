@@ -19,7 +19,6 @@ public class Level1NetManScript : NetworkBehaviour
             }
 
             NetworkManager.Singleton.StartHost();
-            print("Hosting");
         }
 
         if ((PlayerPrefs.GetInt("playerCount") == 3 && PlayerPrefs.GetInt("host") == 0))
