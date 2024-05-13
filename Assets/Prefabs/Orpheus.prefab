@@ -448,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 32832
+    m_Bits: 33856
   ladderLayer:
     serializedVersion: 2
     m_Bits: 12288

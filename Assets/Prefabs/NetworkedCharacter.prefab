@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orph: {fileID: 5611077812110171600}
   _eury: {fileID: 7971550988458812583}
+  alreadyRun: 0
 --- !u!114 &7419006643523515788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 32832
+    m_Bits: 33856
   ladderLayer:
     serializedVersion: 2
     m_Bits: 12288
