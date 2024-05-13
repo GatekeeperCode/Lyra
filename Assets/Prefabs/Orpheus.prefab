@@ -466,4 +466,4 @@ MonoBehaviour:
   _rbody: {fileID: 0}
   _lyreRaise: 0
   _clip: {fileID: 8300000, guid: 5e7f2fae246408441817be25d4712a7c, type: 3}
-  _volume: 0.5
+  _volume: 1
