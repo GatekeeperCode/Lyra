@@ -156,26 +156,30 @@ public class NetworkLevelManagerScript : NetworkBehaviour
     {
         if(PlayerPrefs.GetInt("playerCount")==3)
         {
-            PlayerPrefs.SetFloat("TimeCut", _audio.time);
+            resetServerRpc();        
+        }
+    }
 
-            GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
+    [ServerRpc (RequireOwnership = false)]
+    private void resetServerRpc()
+    {
+        GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
 
-            if (g.Length == 1)
-            {
-                g[0].transform.position = _orphSpawn.transform.position;
-                g[0].transform.GetChild(0).localPosition = Vector2.zero;
-                g[0].transform.GetChild(1).localPosition = Vector2.zero;
-            }
-            else
-            {
-                g[0].transform.position = _orphSpawn.transform.position;
-                g[0].transform.GetChild(0).localPosition = Vector2.zero;
-                g[0].transform.GetChild(1).localPosition = Vector2.zero;
+        if (g.Length == 1)
+        {
+            g[0].transform.position = _orphSpawn.transform.position;
+            g[0].transform.GetChild(0).localPosition = Vector2.zero;
+            g[0].transform.GetChild(1).localPosition = Vector2.zero;
+        }
+        else
+        {
+            g[0].transform.position = _orphSpawn.transform.position;
+            g[0].transform.GetChild(0).localPosition = Vector2.zero;
+            g[0].transform.GetChild(1).localPosition = Vector2.zero;
 
-                g[1].transform.position = _eurySpawn.transform.position;
-                g[1].transform.GetChild(0).localPosition = Vector2.zero;
-                g[1].transform.GetChild(1).localPosition = Vector2.zero;
-            }
+            g[1].transform.position = _eurySpawn.transform.position;
+            g[1].transform.GetChild(0).localPosition = Vector2.zero;
+            g[1].transform.GetChild(1).localPosition = Vector2.zero;
         }
     }
 

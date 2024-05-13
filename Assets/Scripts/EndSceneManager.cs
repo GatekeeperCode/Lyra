@@ -17,16 +17,26 @@ public class EndSceneManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("BestTime"))
+        if (PlayerPrefs.GetInt("playerCount") != 3 || (PlayerPrefs.GetInt("playerCount") == 3 && IsServer))
         {
-            PlayerPrefs.SetFloat("BestTime", 0);
-        }if (!PlayerPrefs.HasKey("ThisTime"))
-        {
-            PlayerPrefs.SetFloat("ThisTime", 0);
-        }
+            if (!PlayerPrefs.HasKey("BestTime"))
+            {
+                PlayerPrefs.SetFloat("BestTime", 0);
+            }
+            if (!PlayerPrefs.HasKey("ThisTime"))
+            {
+                PlayerPrefs.SetFloat("ThisTime", 0);
+            }
 
-        _Time.text = "Time: " + (PlayerPrefs.GetFloat("ThisTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("ThisTime")%60).ToString("00") +
-                        "\nBest: " + (PlayerPrefs.GetFloat("BestTime")/60).ToString("00") + ":" + (PlayerPrefs.GetFloat("BestTime")%60).ToString("00");
+            string results = "Time: " + (PlayerPrefs.GetFloat("ThisTime") / 60).ToString("00") + ":" + (PlayerPrefs.GetFloat("ThisTime") % 60).ToString("00") +
+                            "\nBest: " + (PlayerPrefs.GetFloat("BestTime") / 60).ToString("00") + ":" + (PlayerPrefs.GetFloat("BestTime") % 60).ToString("00");
+            _Time.text = results;
+
+            if(PlayerPrefs.GetInt("playerCount") == 3)
+            {
+                setTimeClientRpc(results);
+            }
+        }
 
         _audio = GetComponent<AudioSource>();
         if (PlayerPrefs.HasKey("TimeCut"))
@@ -60,6 +70,14 @@ public class EndSceneManager : NetworkBehaviour
         }
     }
 
+    [ClientRpc]
+    private void setTimeClientRpc(string results)
+    {
+        if(!IsServer)
+        {
+            _Time.text = results;
+        }
+    }
 
     public void OnRestartButtonDown()
     {
