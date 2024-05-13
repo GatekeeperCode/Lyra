@@ -30,7 +30,6 @@ public class NetworkedCharacterScript : MonoBehaviour
     {
         if(!p2Spawn && PlayerPrefs.GetInt("playerCount") == 3)
         {
-            print("running");
             GameObject[] g = GameObject.FindGameObjectsWithTag("NetCharacter");
 
             if (g.Length == 1)
