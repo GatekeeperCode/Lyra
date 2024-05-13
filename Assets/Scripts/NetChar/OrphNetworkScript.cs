@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class OrphNetworkScript : NetworkBehaviour
@@ -45,7 +46,10 @@ public class OrphNetworkScript : NetworkBehaviour
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
-        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
+        if (SceneManager.GetActiveScene().buildIndex != 6)
+        {
+            GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Orpheus = gameObject;
+        }
 
         //Paused Screen
         if (_manager.pausedGame != _paused)

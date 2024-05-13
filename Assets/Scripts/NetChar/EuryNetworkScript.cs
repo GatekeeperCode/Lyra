@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class EuryNetworkScript : NetworkBehaviour
 {
@@ -39,7 +40,10 @@ public class EuryNetworkScript : NetworkBehaviour
     // Update is called once per frame
     void Update() //display in update, physics in fixed update
     {
-        GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
+        if (SceneManager.GetActiveScene().buildIndex != 6)
+        {
+            GameObject.FindGameObjectWithTag("CamManager").GetComponent<CameraManagerScript>().Eurydice = gameObject;
+        }
 
         //Paused Screen
         if (_manager.pausedGame != _paused)

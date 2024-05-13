@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class EuryOrphFlipScript : NetworkBehaviour
 {
@@ -16,18 +17,26 @@ public class EuryOrphFlipScript : NetworkBehaviour
     public bool alreadyRun;
 
     private void Start()
-    {
-        hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
-        alreadyRun = false;
+    {   
+        if(SceneManager.GetActiveScene().buildIndex != 6)
+        {
+            hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
+            alreadyRun = false;
+        }
+        else
+        {
+            hasDipped = false;
+            alreadyRun = true;
+        }
     }
 
     // Start is called before the first frame update
     void Update()
     {
-        hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
-
         if(!alreadyRun)
         {
+            hasDipped = GameObject.FindGameObjectWithTag("CamManager").GetComponent<CamDissapearVariable>()._camOff;
+
             if (IsHost)
             {
                 if (IsLocalPlayer && !hasDipped)
